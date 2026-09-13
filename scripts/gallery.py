@@ -198,10 +198,19 @@ draw();
 """
 
 
+# 在线版（docs/index.html）比本地画廊页多出来的那一行
+DOC_META = ('  <span class="meta">MIT · '
+            '<a href="https://github.com/loki2046-mao/loki-theme-kit" style="color:#f0f0ea">GitHub 仓库</a> · '
+            '<a href="https://github.com/loki2046-mao/loki-theme-kit#readme" style="color:#f0f0ea">怎么接入</a></span>\n')
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--sets", default=str(SKILL / "sets"))
     ap.add_argument("--out", default=str(SKILL / "previews" / "gallery.html"))
+    ap.add_argument("--docs", default=str(SKILL / "docs" / "index.html"),
+                    help="同时写一份在线版（GitHub Pages，带仓库链接）")
+    ap.add_argument("--no-docs", action="store_true", help="不写在线版")
     args = ap.parse_args()
 
     cards = build(Path(args.sets))
@@ -216,6 +225,14 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(page, encoding="utf-8")
     print(f"画廊已生成：{out}（{len(cards)} 套，{out.stat().st_size // 1024} KB，单文件自包含）")
+
+    # 在线版跟画廊页同一份数据，只多一行仓库链接 —— 免得两边各改一次、改着改着就不一样了
+    if not args.no_docs:
+        docout = Path(args.docs)
+        docout.parent.mkdir(parents=True, exist_ok=True)
+        docout.write_text(page.replace("</header>", DOC_META + "</header>", 1), encoding="utf-8")
+        (docout.parent / ".nojekyll").write_text("", encoding="utf-8")
+        print(f"在线版已生成：{docout}（+ .nojekyll）")
 
 
 if __name__ == "__main__":

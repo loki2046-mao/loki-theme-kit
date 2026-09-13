@@ -127,8 +127,8 @@ python3 scripts/auto.py --project <用户的项目目录>
 
 一行接入产出的东西：
 `<script src="./loki-themes/loki-themes.js"></script>`（放在 `<head>` 或 `<body>` 顶部）
-→ 自带悬浮切换器、记住选择、删掉即还原。体积：35 套全带 **144 KB**，10 套 **54 KB**，
-2 套 **22 KB**。
+→ 自带悬浮切换器、记住选择、删掉即还原。体积（自包含 JS，2026-09-13 实测）：35 套全带 **151 KB**，
+10 套 **61 KB**，2 套 **27 KB**（`loki-ease` + `loki-pop`）。
 
 可选参数（写在 script 标签上）：`data-theme="loki-desk"`（首次用哪套）、
 `data-switcher="off"`、`data-autotag="on"`（自动给常见元素贴契约类名，默认关）。

@@ -183,7 +183,7 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     (out / f"{args.name}.js").write_text(js, encoding="utf-8")
     (out / f"{args.name}.css").write_text(
-        f"/* Loki 外观套组工坊 —— {len(chosen)} 套主题（{out.name}/{args.name}.css）\n"
+        f"/* Loki 外观套组工坊 —— {len(chosen)} 套主题\n"
         f"   用 <link> 引这个的话，主题切换要你自己写：改 <html data-theme=\"…\">。 */\n" + css,
         encoding="utf-8")
     (out / "index.html").write_text(f"""<!doctype html>
