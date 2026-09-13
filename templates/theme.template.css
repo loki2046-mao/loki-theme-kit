@@ -1,0 +1,84 @@
+/* <套组名>（<id>）
+   来源板：<你参考的那张图/场景>    量到的像素主色：<#xxxxxx 占比> …
+   结构装置：<从 references/design-language.md 挑的 2–4 个>
+   —— 写完记得 python3 scripts/check.py --only <id> */
+
+:root[data-theme="<id>"] {
+  /* 底与面 */
+  --bg-canvas: #ffffff;
+  --bg-canvas-soft: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-paper: #ffffff;
+  --bg-metal: #1a1a1a;            /* 侧栏底 */
+
+  /* 三档文字（G2 会量） */
+  --text-primary: #111111;
+  --text-secondary: #333333;
+  --text-muted: #666666;
+
+  /* 强调（G3 会量 accent-ink 压在 accent-copper 上） */
+  --accent-copper: #c2410c;
+  --accent-copper-deep: #9a3412;
+  --accent-ink: #ffffff;
+
+  /* 线 */
+  --border-subtle: #e5e5e5;
+  --border-active: #c2410c;
+
+  /* 状态 */
+  --state-running: #0e7490;
+  --state-success: #15803d;
+  --state-warning: #a16207;
+  --state-danger: #b91c1c;
+
+  /* 结构件的第一根杠杆 */
+  --radius-panel: 12px;
+  --radius-control: 8px;
+  --shadow-soft: none;
+  --shadow-panel: none;
+
+  /* 标题字体 */
+  --font-display: -apple-system, "PingFang SC", sans-serif;
+  --display-weight: 700;
+  --display-spacing: 0em;
+
+  /* 侧栏独立配色（不写就跟随上面） */
+  --sidebar-text: #f5f5f5;
+  --sidebar-muted: #a3a3a3;
+  --sidebar-hover: rgba(255, 255, 255, .12);
+  --sidebar-active: rgba(255, 255, 255, .22);
+  --sidebar-rule: rgba(255, 255, 255, .14);
+
+  /* 材质层：护眼套组必须全 none */
+  --canvas-texture: none;
+  --canvas-noise: none;
+  --canvas-ambient: none;
+  --canvas-mark: none;
+  --surface-highlight: none;
+  --surface-glow: none;
+}
+
+/* ---- 结构装置：至少 6 条规则、12 行，否则 G4 判定为"只是换色" ---- */
+
+:root[data-theme="<id>"] .loki-surface-strong {
+  /* 例：border-radius: 0; border: 2px solid var(--text-primary); */
+}
+
+:root[data-theme="<id>"] .loki-nav-item-active {
+  /* 例：box-shadow: inset 3px 0 0 var(--accent-copper); */
+}
+
+:root[data-theme="<id>"] .loki-nav-group-label {
+  /* 例：text-transform: uppercase; letter-spacing: .16em; */
+}
+
+:root[data-theme="<id>"] .loki-button-primary,
+:root[data-theme="<id>"] .loki-sidebar .loki-button-primary,
+:root[data-theme="<id>"] .loki-composer .loki-button-primary {
+  /* 按钮要写全三层选择器，否则会被宿主的侧栏/输入区规则压住 */
+}
+
+:root[data-theme="<id>"] main h1 {
+  /* 页标题 */
+}

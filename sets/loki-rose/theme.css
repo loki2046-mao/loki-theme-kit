@@ -1,0 +1,85 @@
+/* loki-rose —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-rose"] {
+
+  --bg-canvas: #f6e2e3;
+  --bg-canvas-soft: #fdeff0;
+  --bg-surface: #fffafa;
+  --bg-elevated: #ffffff;
+  --bg-paper: #f2d6d9;
+  --bg-metal: #efd4d9;
+  --sidebar-text: #4a2733;
+  --sidebar-muted: #79555f;
+  --sidebar-hover: rgba(196, 73, 95, .1);
+  --sidebar-active: rgba(196, 73, 95, .2);
+  --sidebar-rule: rgba(74, 39, 51, .16);
+  --border-subtle: #e6c9cd;
+  --border-active: #c4495f;
+  --text-primary: #4a2733;
+  --text-secondary: #704a56;
+  --text-muted: #7f5d67;
+  --accent-copper: #c4495f;
+  --accent-copper-deep: #96334a;
+  --accent-cream: #e8b4b8;
+  --accent-ink: #ffffff;
+  --state-running: #c4495f;
+  --state-success: #46835c;
+  --state-warning: #b58200;
+  --state-danger: #b3243c;
+  --shadow-soft: 0 2px 6px rgba(74, 39, 51, .1);
+  --shadow-panel: 3px 3px 0 rgba(232, 180, 184, .6), 0 10px 22px rgba(74, 39, 51, .1);
+  --radius-panel: 14px;
+  --radius-control: 10px;
+  --font-display: "Avenir Next", "PingFang SC", sans-serif;
+  --display-weight: 600;
+  --display-spacing: 0.005em;
+}
+
+:root[data-theme="loki-rose"] .loki-workbench-toolbar, :root[data-theme="loki-rose"] .loki-sidebar-head {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(196, 73, 95, .12) 0 8px,
+    transparent 8px 16px
+  );
+}
+:root[data-theme="loki-rose"] .loki-surface, :root[data-theme="loki-rose"] .loki-surface-strong, :root[data-theme="loki-rose"] .loki-paper, :root[data-theme="loki-rose"] .loki-empty-hero {
+  box-shadow: var(--shadow-panel), inset 0 1px 0 rgba(255, 255, 255, .8);
+}
+:root[data-theme="loki-rose"] .loki-surface-strong:not([class*="fixed"]) { position: relative; }
+:root[data-theme="loki-rose"] .loki-surface-strong:not([class*="fixed"])::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 7px;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='7' viewBox='0 0 40 7'%3E%3Cpath d='M0 5 3 2 6 5 9 2 12 6 15 3 18 6 21 2 24 5 27 2 30 6 33 3 36 5 40 3V7H0Z' fill='%23f6e2e3'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 40px 7px;
+}
+:root[data-theme="loki-rose"] .loki-sidebar .loki-nav-item-active { position: relative; }
+:root[data-theme="loki-rose"] .loki-sidebar .loki-nav-item-active::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-style: solid;
+  border-width: 0 12px 12px 0;
+  border-color: transparent var(--bg-metal) transparent transparent;
+}
+:root[data-theme="loki-rose"] main h1 {
+  width: fit-content;
+  background-image: linear-gradient(180deg, transparent 56%, rgba(232, 180, 184, .9) 56% 96%, transparent 96%);
+}
+:root[data-theme="loki-rose"] .loki-nav-group-label::after {
+  content: "";
+  flex: 1;
+  align-self: center;
+  margin-left: 4px;
+  border-top: 1px dashed rgba(74, 39, 51, .22);
+}
+:root[data-theme="loki-rose"] .loki-nav-item:nth-child(3n) { transform: rotate(-.3deg); }
+:root[data-theme="loki-rose"] .loki-nav-item:nth-child(3n + 1) { transform: rotate(.25deg); }
+:root[data-theme="loki-rose"] .loki-bubble-user { background: #c4495f; color: #fff; }
+:root[data-theme="loki-rose"] .loki-button-secondary { border-style: dashed; }

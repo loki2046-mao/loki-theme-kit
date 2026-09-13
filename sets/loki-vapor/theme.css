@@ -1,0 +1,67 @@
+/* loki-vapor —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-vapor"] {
+
+  --bg-canvas: #1b1033;
+  --bg-canvas-soft: #221543;
+  --bg-surface: #241547;
+  --bg-elevated: #2b1a52;
+  --bg-paper: #241547;
+  --bg-metal: #150c29;
+  --sidebar-text: #f2e9ff;
+  --sidebar-muted: #a99ecb;
+  --sidebar-hover: rgba(94, 241, 255, .12);
+  --sidebar-active: rgba(255, 95, 210, .32);
+  --sidebar-rule: rgba(242, 233, 255, .16);
+  --border-subtle: #3a2a63;
+  --border-active: #5ef1ff;
+  --text-primary: #f2e9ff;
+  --text-secondary: #cabfe8;
+  --text-muted: #a99ecb;
+  --accent-copper: #5ef1ff;
+  --accent-copper-deep: #23b6cc;
+  --accent-cream: #ff5fd2;
+  --accent-ink: #1b1033;
+  --state-running: #5ef1ff;
+  --state-success: #6ef0c0;
+  --state-warning: #ffd76e;
+  --state-danger: #ff7ba6;
+  --shadow-soft: 0 0 18px rgba(94, 241, 255, .18);
+  --shadow-panel: 0 10px 30px rgba(6, 2, 18, .6);
+  --radius-panel: 12px;
+  --radius-control: 10px;
+  --font-display: "Iowan Old Style", "Songti SC", Georgia, serif;
+  --display-weight: 700;
+  --display-spacing: 0.04em;
+}
+
+:root[data-theme="loki-vapor"] .loki-chat-stream {
+  background-image:
+    radial-gradient(circle at 50% 4%, rgba(255, 95, 210, .3) 0, rgba(255, 120, 90, .2) 24%, transparent 44%),
+    repeating-linear-gradient(0deg, rgba(94, 241, 255, .07) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(90deg, rgba(255, 95, 210, .07) 0 1px, transparent 1px 34px);
+}
+:root[data-theme="loki-vapor"] main h1, :root[data-theme="loki-vapor"] .loki-brand-name {
+  font-style: italic;
+  color: #f7f1ff;
+  text-shadow: 0 1px 0 #9be8ff, 0 -1px 0 #ff5fd2, 0 0 18px rgba(94, 241, 255, .45);
+}
+:root[data-theme="loki-vapor"] .loki-surface, :root[data-theme="loki-vapor"] .loki-surface-strong, :root[data-theme="loki-vapor"] .loki-paper {
+  border: 1px solid rgba(94, 241, 255, .35);
+  border-top: 2px solid #ff5fd2;
+}
+:root[data-theme="loki-vapor"] .loki-sidebar .loki-nav-item-active {
+  background-image: linear-gradient(90deg, rgba(255, 95, 210, .38), rgba(94, 241, 255, .22));
+  box-shadow: 0 0 14px rgba(255, 95, 210, .35);
+}
+:root[data-theme="loki-vapor"] .loki-button-primary, :root[data-theme="loki-vapor"] .loki-sidebar .loki-button-primary, :root[data-theme="loki-vapor"] .loki-composer .loki-button-primary {
+  border-radius: 999px;
+  box-shadow: 0 0 16px rgba(94, 241, 255, .4);
+}
+:root[data-theme="loki-vapor"] .loki-button-secondary, :root[data-theme="loki-vapor"] .loki-sidebar .loki-button-secondary { border-radius: 999px; }
+:root[data-theme="loki-vapor"] .loki-header-sticker {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 95, 210, .7);
+  padding: 3px;
+  box-shadow: 0 0 18px rgba(255, 95, 210, .4);
+}

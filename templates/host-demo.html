@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="loki-ease">
+<head>
+<meta charset="utf-8">
+<title>Loki 外观套组演示 · loki-theme-kit</title>
+<!-- 防首帧闪色：任何样式之前先把主题名放好 -->
+<script>
+  (function () { try { var t = localStorage.getItem("loki_theme"); document.documentElement.setAttribute("data-theme", t || "loki-ease"); } catch (e) {} })();
+</script>
+<link rel="stylesheet" href="./host-base.css">
+<link rel="stylesheet" href="./index.css">
+<link rel="stylesheet" href="./theme-switcher.css">
+<style>
+  body { padding: 0; }
+  .demo-note { margin: 22px 26px 0; padding: 10px 14px; font-size: 12.5px;
+    border-left: 3px solid var(--accent-copper); background: color-mix(in srgb, var(--accent-copper) 10%, transparent); }
+</style>
+</head>
+<body>
+<div class="demo-note">
+  <b>Loki 外观套组工坊</b> · 参考宿主演示页 —— 作者 Loki<br>
+  这个页面是<b>参考宿主</b>：左侧栏、卡片、按钮、输入框全部只用了契约类名 + 主题令牌。
+  右下角切换主题，整个页面会跟着变——你的 App 做到这一步，就说明套组接上了。
+</div>
+
+<div class="loki-app">
+  <aside class="loki-sidebar">
+    <div class="loki-sidebar-head">
+      <span class="loki-brand-name">Loki Assistant</span>
+      <span class="loki-brand-sub">主题套组演示</span>
+    </div>
+
+    <div class="loki-nav-group">
+      <div class="loki-nav-group-label"><span class="loki-nav-group-dot"></span>工作台</div>
+      <a class="loki-nav-item loki-nav-item-active" href="#"><span class="loki-nav-icon">◆</span>对话</a>
+      <a class="loki-nav-item" href="#"><span class="loki-nav-icon">▤</span>项目</a>
+    </div>
+    <div class="loki-nav-group">
+      <div class="loki-nav-group-label"><span class="loki-nav-group-dot"></span>知识</div>
+      <a class="loki-nav-item" href="#"><span class="loki-nav-icon">▣</span>文档库</a>
+      <a class="loki-nav-item" href="#"><span class="loki-nav-icon">✦</span>记忆库</a>
+    </div>
+    <div class="loki-nav-spacer"></div>
+    <div id="switcher-mount"></div>
+  </aside>
+
+  <main>
+    <div class="loki-header-row">
+      <span class="loki-header-sticker">◆</span>
+      <h1>文档库</h1>
+    </div>
+    <p class="loki-page-sub">契约钩子都挂上了：卡片、按钮、输入区、提示条、导航激活态。</p>
+
+    <div class="loki-row">
+      <div class="loki-surface-strong">
+        <div class="loki-card-title">主卡片 .loki-surface-strong</div>
+        <div class="loki-card-body">大多数主题的辨识度都做在这个元素上：圆角、边框、投影、角标。</div>
+        <div class="loki-card-meta">令牌 31–37 个 · 结构规则 7–40 条</div>
+      </div>
+      <div class="loki-surface">
+        <div class="loki-card-title">普通卡片 .loki-surface</div>
+        <div class="loki-card-body">比主卡片轻一档的容器。</div>
+      </div>
+      <div class="loki-paper">
+        <div class="loki-card-title">纸片 .loki-paper</div>
+        <div class="loki-card-body">消息、片段、引用用它。</div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+      <button class="loki-button-primary">主按钮</button>
+      <button class="loki-button-secondary">次按钮</button>
+      <span class="loki-tint-success">成功提示条</span>
+      <span class="loki-tint-warning">警告提示条</span>
+    </div>
+
+    <div class="loki-composer">
+      <input class="loki-input" placeholder="输入框 .loki-input">
+      <button class="loki-button-primary">发送</button>
+    </div>
+  </main>
+</div>
+
+<script>
+  /* 切换器代码直接内联（不用 ES module import：file:// 打开时 Chrome 会因 CORS 拦掉 import，
+     内联成普通脚本就任何方式打开都能用） */
+__SWITCHER_JS__
+  const THEMES = __THEMES__;
+  const GROUP_LABELS = __GROUP_LABELS__;
+  restoreTheme(THEMES.map((t) => t.id));
+  createThemeSwitcher({ sets: THEMES, mount: document.getElementById("switcher-mount"), groups: GROUP_LABELS });
+</script>
+</body></html>

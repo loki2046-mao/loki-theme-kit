@@ -1,0 +1,136 @@
+/* loki-8bit —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-8bit"] {
+
+  --bg-canvas: #0d2b51;
+  --bg-canvas-soft: #113560;
+  --bg-surface: #143a63;
+  --bg-elevated: #1a4470;
+  --bg-paper: #0b2244;
+  --bg-metal: #061626;
+  --sidebar-text: #ebcfa7;
+  --sidebar-muted: #93a9c4;
+  --sidebar-hover: rgba(235, 207, 167, .14);
+  --sidebar-active: rgba(235, 207, 167, .26);
+  --sidebar-rule: rgba(235, 207, 167, .24);
+  --border-subtle: #2f5a8a;
+  --border-active: #f2c879;
+  --text-primary: #f3e4c6;
+  --text-secondary: #c3cfe0;
+  --text-muted: #93a9c4;
+  --accent-copper: #f0842c;
+  --accent-copper-deep: #c25c12;
+  --accent-cream: #f2c879;
+  --accent-ink: #08131f;
+  --state-running: #f0842c;
+  --state-success: #6fd08c;
+  --state-warning: #f2c879;
+  --state-danger: #ef5a5a;
+  --shadow-soft: 4px 4px 0 rgba(4, 12, 24, .9);
+  --shadow-panel: 6px 6px 0 rgba(4, 12, 24, .8);
+  --radius-panel: 0;
+  --radius-control: 0;
+  --surface-highlight: rgba(255, 255, 255, .07);
+  --surface-glow: none;
+  --font-display: "Menlo", "SF Mono", "PingFang SC", monospace;
+  --display-weight: 700;
+  --display-spacing: 0.06em;
+  /* 装饰槽位：原作者在这里挂过一件小道具（位置与尺寸已定，图片不随包分发）。
+     想挂自己的图就覆盖这个变量，例如 --deco-a: url("/your/icon.png"); */
+  --deco-a: none;
+  /* 装饰槽位：原作者在这里挂过一件小道具（位置与尺寸已定，图片不随包分发）。
+     想挂自己的图就覆盖这个变量，例如 --deco-a: url("/your/icon.png"); */
+  --deco-b: none;
+  /* 装饰槽位：原作者在这里挂过一件小道具（位置与尺寸已定，图片不随包分发）。
+     想挂自己的图就覆盖这个变量，例如 --deco-a: url("/your/icon.png"); */
+  --deco-c: none;
+  /* 装饰槽位：原作者在这里挂过一件小道具（位置与尺寸已定，图片不随包分发）。
+     想挂自己的图就覆盖这个变量，例如 --deco-a: url("/your/icon.png"); */
+  --deco-d: none;
+}
+
+:root[data-theme="loki-8bit"] .loki-surface, :root[data-theme="loki-8bit"] .loki-surface-strong, :root[data-theme="loki-8bit"] .loki-paper, :root[data-theme="loki-8bit"] .loki-empty-hero {
+  border: 3px solid #1f4a7a;
+  image-rendering: pixelated;
+}
+:root[data-theme="loki-8bit"] .loki-surface, :root[data-theme="loki-8bit"] .loki-surface-strong, :root[data-theme="loki-8bit"] .loki-paper, :root[data-theme="loki-8bit"] .loki-empty-hero, :root[data-theme="loki-8bit"] .loki-mascot-frame, :root[data-theme="loki-8bit"] .loki-bubble-assistant, :root[data-theme="loki-8bit"] .loki-bubble-user {
+  border: 3px solid #061626;
+  border-radius: 0;
+  box-shadow: 5px 5px 0 rgba(4, 12, 24, .85);
+}
+:root[data-theme="loki-8bit"] .loki-button-primary, :root[data-theme="loki-8bit"] .loki-sidebar .loki-button-primary, :root[data-theme="loki-8bit"] .loki-composer .loki-button-primary {
+  background: #f0842c;
+  color: #08131f;
+  border: 3px solid #061626;
+  border-radius: 0;
+  box-shadow: 4px 4px 0 #061626;
+  font-weight: 700;
+}
+:root[data-theme="loki-8bit"] .loki-button-primary:active, :root[data-theme="loki-8bit"] .loki-sidebar .loki-button-primary:active {
+  transform: translate(3px, 3px);
+  box-shadow: 1px 1px 0 #061626;
+}
+:root[data-theme="loki-8bit"] .loki-button-secondary, :root[data-theme="loki-8bit"] .loki-sidebar .loki-button-secondary, :root[data-theme="loki-8bit"] .loki-input {
+  border: 3px solid #061626;
+  border-radius: 0;
+  background: #143a63;
+  color: #f3e4c6;
+}
+:root[data-theme="loki-8bit"] .loki-chat-stream {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, .035) 0 1px,
+    transparent 1px 3px
+  );
+}
+:root[data-theme="loki-8bit"] .loki-button-primary, :root[data-theme="loki-8bit"] .loki-button-secondary {
+  border: 3px solid #061626;
+  box-shadow: 3px 3px 0 rgba(4, 12, 24, .9);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+:root[data-theme="loki-8bit"] .loki-button-primary:active {
+  transform: translate(3px, 3px);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+}
+:root[data-theme="loki-8bit"] .loki-sidebar .loki-nav-item-active { box-shadow: inset 4px 0 0 #f2c879; }
+:root[data-theme="loki-8bit"] .loki-nav-icon { border-radius: 0; }
+:root[data-theme="loki-8bit"] .loki-nav-item, :root[data-theme="loki-8bit"] .loki-nav-group-label, :root[data-theme="loki-8bit"] .loki-workbench-toolbar {
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+:root[data-theme="loki-8bit"] main h1, :root[data-theme="loki-8bit"] .loki-brand-name {
+  text-shadow: 3px 3px 0 #061626;
+}
+:root[data-theme="loki-8bit"] .loki-workbench-toolbar, :root[data-theme="loki-8bit"] .loki-composer {
+  border-color: #061626;
+  border-width: 3px;
+}
+:root[data-theme="loki-8bit"] .loki-sticker-title {
+  background: #f0842c;
+  border: 3px solid #061626;
+  box-shadow: 4px 4px 0 #061626;
+  transform: none;
+  color: #08131f;
+}
+:root[data-theme="loki-8bit"] .loki-header-sticker, :root[data-theme="loki-8bit"] .loki-sticker {
+  image-rendering: pixelated;
+}
+:root[data-theme="loki-8bit"] .loki-bubble-user { border-radius: 0; border: 2px solid #061626; }
+:root[data-theme="loki-8bit"] .loki-bubble-assistant { border-radius: 0; border: 2px solid #2f5a8a; }
+:root[data-theme="loki-8bit"] body {
+  background-image: repeating-conic-gradient(rgba(255, 255, 255, .022) 0% 25%, transparent 0% 50%);
+  background-size: 16px 16px;
+}
+:root[data-theme="loki-8bit"] .loki-empty-hero {
+  background-repeat: no-repeat;
+}
+:root[data-theme="loki-8bit"] .loki-empty-hero {
+  background-image: var(--deco-a),
+    var(--deco-b),
+    var(--deco-c),
+    var(--deco-d);
+  background-position: right 22px top 18px, right 96px top 26px, right 26px bottom 18px, left 20px bottom 16px;
+  background-size: 52px, 40px, 32px, 48px;
+  image-rendering: pixelated;
+}

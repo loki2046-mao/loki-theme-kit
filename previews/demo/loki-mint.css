@@ -1,0 +1,96 @@
+/* loki-mint —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-mint"] {
+
+  --bg-canvas: #e6f0ea;
+  --bg-canvas-soft: #eff7f2;
+  --bg-surface: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-paper: #dcebe3;
+  --bg-metal: #16332b;
+  --sidebar-text: #eaf6f0;
+  --sidebar-muted: #9dc2b5;
+  --sidebar-hover: rgba(143, 212, 193, .16);
+  --sidebar-active: rgba(143, 212, 193, .3);
+  --sidebar-rule: rgba(234, 246, 240, .22);
+  --border-subtle: #b7d2c6;
+  --border-active: #1f8a70;
+  --text-primary: #14312a;
+  --text-secondary: #3e5f56;
+  --text-muted: #537068;
+  --accent-copper: #1e846c;
+  --accent-copper-deep: #146352;
+  --accent-cream: #f2c14e;
+  --accent-ink: #ffffff;
+  --state-running: #1f8a70;
+  --state-success: #2f8f57;
+  --state-warning: #b07a00;
+  --state-danger: #b8342f;
+  --shadow-soft: 0 1px 2px rgba(20, 49, 42, .08);
+  --shadow-panel: 0 2px 8px rgba(20, 49, 42, .07);
+  --radius-panel: 12px;
+  --radius-control: 8px;
+  /* 手写体：拉丁走 Marker Felt，中文落到楷体 */
+  --font-display: "Marker Felt", "Chalkboard SE", "Kaiti SC", "STKaiti", "PingFang SC", cursive;
+  --display-weight: 600;
+  --display-spacing: 0.01em;
+}
+
+:root[data-theme="loki-mint"] .loki-chat-stream {
+  background-image:
+    linear-gradient(90deg, transparent 0 51px, rgba(203, 90, 78, .3) 51px 52px, transparent 52px),
+    linear-gradient(rgba(31, 138, 112, .13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(31, 138, 112, .13) 1px, transparent 1px);
+  background-size: 100% 100%, 26px 26px, 26px 26px;
+}
+:root[data-theme="loki-mint"] .loki-surface-strong:not([class*="fixed"]) { position: relative; }
+:root[data-theme="loki-mint"] .loki-surface-strong:not([class*="fixed"])::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 18px;
+  width: 62px;
+  height: 16px;
+  background: rgba(242, 193, 78, .95);
+  box-shadow: 0 2px 3px rgba(20, 49, 42, .16);
+  border-left: 1px solid rgba(20, 49, 42, .18);
+  border-right: 1px solid rgba(20, 49, 42, .18);
+  transform: rotate(-2.5deg);
+}
+:root[data-theme="loki-mint"] .loki-surface-strong:not([class*="fixed"])::after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  bottom: 16px;
+  left: 5px;
+  width: 9px;
+  pointer-events: none;
+  /* 孔心用画布色、外圈一道深色薄边——白卡片上也能看清是“打孔”而不是“脏点” */
+  background-image: radial-gradient(
+    circle at 4px 4px,
+    var(--bg-canvas) 2.8px,
+    rgba(20, 49, 42, .4) 3.1px,
+    rgba(20, 49, 42, 0) 4px
+  );
+  background-size: 9px 24px;
+  background-repeat: repeat-y;
+}
+:root[data-theme="loki-mint"] .loki-nav-group-label {
+  width: fit-content;
+  padding: 1px 7px;
+  border-radius: 3px;
+  background: rgba(242, 193, 78, .5);
+  box-shadow: 0 1px 0 rgba(20, 49, 42, .14);
+  transform: rotate(-.8deg);
+}
+:root[data-theme="loki-mint"] .loki-nav-item-active {
+  background-image: linear-gradient(180deg, transparent 38%, rgba(242, 193, 78, .82) 38% 94%, transparent 94%);
+}
+:root[data-theme="loki-mint"] .loki-sidebar .loki-nav-item {
+  border-radius: 10px;
+  border-bottom: 1px dashed rgba(143, 212, 193, .3);
+}
+:root[data-theme="loki-mint"] .loki-button-primary, :root[data-theme="loki-mint"] .loki-sidebar .loki-button-primary { border-radius: 999px; }
+:root[data-theme="loki-mint"] .loki-input { border-bottom-style: dashed; }
+:root[data-theme="loki-mint"] .loki-conversation-item { border-bottom: 1px dotted rgba(143, 212, 193, .32); }
+:root[data-theme="loki-mint"] main h1 { border-bottom: 2px dashed var(--border-subtle); padding-bottom: 5px; }

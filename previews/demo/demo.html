@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="loki-sticker">
+<head>
+<meta charset="utf-8">
+<title>Loki 外观套组演示 · loki-theme-kit</title>
+<!-- 防首帧闪色：任何样式之前先把主题名放好 -->
+<script>
+  (function () { try { var t = localStorage.getItem("loki_theme"); document.documentElement.setAttribute("data-theme", t || "loki-sticker"); } catch (e) {} })();
+</script>
+<link rel="stylesheet" href="./host-base.css">
+<link rel="stylesheet" href="./index.css">
+<link rel="stylesheet" href="./theme-switcher.css">
+<style>
+  body { padding: 0; }
+  .demo-note { margin: 22px 26px 0; padding: 10px 14px; font-size: 12.5px;
+    border-left: 3px solid var(--accent-copper); background: color-mix(in srgb, var(--accent-copper) 10%, transparent); }
+</style>
+</head>
+<body>
+<div class="demo-note">
+  <b>Loki 外观套组工坊</b> · 参考宿主演示页 —— 作者 Loki<br>
+  这个页面是<b>参考宿主</b>：左侧栏、卡片、按钮、输入框全部只用了契约类名 + 主题令牌。
+  右下角切换主题，整个页面会跟着变——你的 App 做到这一步，就说明套组接上了。
+</div>
+
+<div class="loki-app">
+  <aside class="loki-sidebar">
+    <div class="loki-sidebar-head">
+      <span class="loki-brand-name">Loki Assistant</span>
+      <span class="loki-brand-sub">主题套组演示</span>
+    </div>
+
+    <div class="loki-nav-group">
+      <div class="loki-nav-group-label"><span class="loki-nav-group-dot"></span>工作台</div>
+      <a class="loki-nav-item loki-nav-item-active" href="#"><span class="loki-nav-icon">◆</span>对话</a>
+      <a class="loki-nav-item" href="#"><span class="loki-nav-icon">▤</span>项目</a>
+    </div>
+    <div class="loki-nav-group">
+      <div class="loki-nav-group-label"><span class="loki-nav-group-dot"></span>知识</div>
+      <a class="loki-nav-item" href="#"><span class="loki-nav-icon">▣</span>文档库</a>
+      <a class="loki-nav-item" href="#"><span class="loki-nav-icon">✦</span>记忆库</a>
+    </div>
+    <div class="loki-nav-spacer"></div>
+    <div id="switcher-mount"></div>
+  </aside>
+
+  <main>
+    <div class="loki-header-row">
+      <span class="loki-header-sticker">◆</span>
+      <h1>文档库</h1>
+    </div>
+    <p class="loki-page-sub">契约钩子都挂上了：卡片、按钮、输入区、提示条、导航激活态。</p>
+
+    <div class="loki-row">
+      <div class="loki-surface-strong">
+        <div class="loki-card-title">主卡片 .loki-surface-strong</div>
+        <div class="loki-card-body">大多数主题的辨识度都做在这个元素上：圆角、边框、投影、角标。</div>
+        <div class="loki-card-meta">令牌 31–37 个 · 结构规则 7–40 条</div>
+      </div>
+      <div class="loki-surface">
+        <div class="loki-card-title">普通卡片 .loki-surface</div>
+        <div class="loki-card-body">比主卡片轻一档的容器。</div>
+      </div>
+      <div class="loki-paper">
+        <div class="loki-card-title">纸片 .loki-paper</div>
+        <div class="loki-card-body">消息、片段、引用用它。</div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+      <button class="loki-button-primary">主按钮</button>
+      <button class="loki-button-secondary">次按钮</button>
+      <span class="loki-tint-success">成功提示条</span>
+      <span class="loki-tint-warning">警告提示条</span>
+    </div>
+
+    <div class="loki-composer">
+      <input class="loki-input" placeholder="输入框 .loki-input">
+      <button class="loki-button-primary">发送</button>
+    </div>
+  </main>
+</div>
+
+<script>
+  /* 切换器代码直接内联（不用 ES module import：file:// 打开时 Chrome 会因 CORS 拦掉 import，
+     内联成普通脚本就任何方式打开都能用） */
+/* 主题切换器（原生 JS，无依赖，可直接抄）
+ *
+ * 设计要点（这几条都是踩过坑才加上的）：
+ *  1. 主题名存在 <html data-theme="…">，CSS 用 :root[data-theme="x"] 选择器接管，不需要 class 列表；
+ *  2. 读 localStorage 必须放在「挂载之后」，不要在模块顶层读——服务端渲染时读到 undefined，
+ *     客户端首帧读到记忆值，两边 HTML 不一致，React 会报 hydration mismatch；
+ *  3. 想彻底没有首帧闪白，在 <head> 里放一个内联脚本（见 templates/theme-switcher-flash-guard.html），
+ *     在样式之前就把 data-theme 设好。
+ */
+
+const STORAGE_KEY = "loki_theme";
+const FALLBACK = "loki-ease";   // 装完套组后，把这里改成你想默认的那套
+
+/** 切主题：只改一个属性 + 记一笔 */
+function applyTheme(id, root = document.documentElement) {
+  root.dataset.theme = id;
+  try { localStorage.setItem(STORAGE_KEY, id); } catch { /* 隐私模式下写不进去，忽略 */ }
+}
+
+/** 恢复上次选择；没有记忆或记忆的主题已经不存在 → 用 fallback */
+function restoreTheme(availableIds, root = document.documentElement) {
+  let saved = null;
+  try { saved = localStorage.getItem(STORAGE_KEY); } catch { /* ignore */ }
+  const id = availableIds.includes(saved) ? saved : FALLBACK;
+  root.dataset.theme = id;
+  return id;
+}
+
+/**
+ * 造一个切换器元素，塞进 mount。
+ * @param {{sets: Array<{id:string,label:string,group?:string,accent?:string,surface?:string}>, mount: HTMLElement, groups?: Record<string,string>}} opts
+ */
+function createThemeSwitcher({ sets, mount, groups = {} }) {
+  const box = document.createElement("details");
+  box.className = "lk-theme-picker";
+  const current = document.documentElement.dataset.theme || FALLBACK;
+  const cur = sets.find((s) => s.id === current);
+
+  box.innerHTML = `
+    <summary class="lk-theme-summary">
+      <span class="lk-theme-dot" style="background:${(cur && cur.accent) || "#888"}"></span>
+      <span>外观</span>
+      <span class="lk-theme-current">${(cur && cur.label) || current}</span>
+    </summary>
+    <div class="lk-theme-panel" role="listbox"></div>`;
+  const panel = box.querySelector(".lk-theme-panel");
+
+  const byGroup = {};
+  for (const s of sets) (byGroup[s.group || ""] ||= []).push(s);
+
+  for (const [g, list] of Object.entries(byGroup)) {
+    if (g && groups[g]) {
+      const h = document.createElement("div");
+      h.className = "lk-theme-group";
+      h.textContent = groups[g];
+      panel.appendChild(h);
+    }
+    for (const s of list) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "lk-theme-item";
+      b.dataset.themeId = s.id;
+      b.setAttribute("role", "option");
+      b.setAttribute("aria-selected", String(s.id === current));
+      b.innerHTML = `<span class="lk-theme-swatch" style="background:${s.surface || "#fff"}">
+                       <i style="background:${s.accent || "#888"}"></i></span>
+                     <span class="lk-theme-label">${s.label || s.id}</span>`;
+      b.onclick = () => {
+        applyTheme(s.id);
+        panel.querySelectorAll(".lk-theme-item").forEach((x) =>
+          x.setAttribute("aria-selected", String(x.dataset.themeId === s.id)));
+        box.querySelector(".lk-theme-current").textContent = s.label || s.id;
+        const dot = box.querySelector(".lk-theme-dot");
+        if (dot) dot.style.background = s.accent || "#888";
+      };
+      panel.appendChild(b);
+    }
+  }
+  mount.appendChild(box);
+  return box;
+}
+
+  const THEMES = [{"id": "loki-sticker", "label": "音乐贴纸", "group": "art", "accent": "#b03d24", "surface": "#f7f5eb"}, {"id": "loki-blueprint", "label": "蓝图", "group": "calm", "accent": "#dbe8ff", "surface": "#10305a"}, {"id": "poster-stream", "label": "展流", "group": "art", "accent": "#d23f31", "surface": "#f6f5f2"}, {"id": "loki-die", "label": "模切贴纸", "group": "art", "accent": "#b04a33", "surface": "#fdfcfa"}, {"id": "loki-neon", "label": "霓虹电台", "group": "retro", "accent": "#55e2fa", "surface": "#131a1f"}, {"id": "loki-sandbox", "label": "沙盘", "group": "retro", "accent": "#a85a24", "surface": "#f7e3bb"}, {"id": "loki-egg", "label": "彩蛋", "group": "art", "accent": "#733436", "surface": "#f3f2eb"}, {"id": "loki-pop", "label": "贴纸波普", "group": "art", "accent": "#ff6b00", "surface": "#fff3e2"}, {"id": "loki-guide", "label": "入场指南", "group": "art", "accent": "#b8441a", "surface": "#fbf6ee"}, {"id": "loki-butter", "label": "黄油海报", "group": "art", "accent": "#c9761f", "surface": "#fceccb"}, {"id": "loki-manual", "label": "现场手册", "group": "art", "accent": "#b03d36", "surface": "#f6f5f0"}, {"id": "loki-indigo", "label": "靖蓝夜色", "group": "calm", "accent": "#7c5cff", "surface": "#191a3a"}, {"id": "loki-navkit", "label": "导航件", "group": "art", "accent": "#ab4a22", "surface": "#f4f2ec"}, {"id": "loki-ticket", "label": "通行证票根", "group": "art", "accent": "#e2541f", "surface": "#eae4d6"}, {"id": "doodle-studio", "label": "涂鸦", "group": "art", "accent": "#ff4b19", "surface": "#f8f5ed"}, {"id": "loki-vapor", "label": "蒸汽波", "group": "retro", "accent": "#5ef1ff", "surface": "#1b1033"}, {"id": "urban-collage", "label": "拼贴", "group": "art", "accent": "#b8ef31", "surface": "#e9dfc7"}, {"id": "loki-console", "label": "创作台", "group": "art", "accent": "#fa6d46", "surface": "#fbf9f4"}, {"id": "loki-terminal", "label": "终端绿", "group": "retro", "accent": "#3ddc97", "surface": "#06120b"}, {"id": "loki-memphis", "label": "孟菲斯", "group": "art", "accent": "#2f6df6", "surface": "#fbf5ee"}, {"id": "loki-atlas", "label": "导览图", "group": "calm", "accent": "#dde996", "surface": "#12161a"}, {"id": "loki-mint", "label": "薄荷手账", "group": "art", "accent": "#1f8a70", "surface": "#e6f0ea"}, {"id": "loki-desk", "label": "老式桌面", "group": "retro", "accent": "#1560a8", "surface": "#c8c4bb"}, {"id": "loki-wire", "label": "线框稿", "group": "art", "accent": "#2f7a7a", "surface": "#f2f1ec"}, {"id": "loki-ease", "label": "纸墨·日", "group": "care", "accent": "#8a6a4a", "surface": "#efe9dd"}, {"id": "loki-moss", "label": "雾苔", "group": "care", "accent": "#4a6b57", "surface": "#e7ece6"}, {"id": "retro-poster", "label": "海报", "group": "art", "accent": "#f5422a", "surface": "#ffd43b"}, {"id": "loki-bauhaus", "label": "包豪斯", "group": "art", "accent": "#d8232a", "surface": "#f2efe6"}, {"id": "loki-wall", "label": "留言墙", "group": "art", "accent": "#ad4322", "surface": "#fdfcf4"}, {"id": "pixel-arcade", "label": "像素", "group": "retro", "accent": "#62e36c", "surface": "#11194f"}, {"id": "loki-rose", "label": "玫瑰纸片", "group": "art", "accent": "#c4495f", "surface": "#f6e2e3"}, {"id": "loki-ease-dark", "label": "纸墨·夜", "group": "care", "accent": "#c2a878", "surface": "#1c1b18"}, {"id": "loki-nine", "label": "九宫格", "group": "art", "accent": "#c73f55", "surface": "#f6f5e0"}, {"id": "sky-cinema", "label": "天空", "group": "calm", "accent": "#1550b7", "surface": "#dcecf7"}, {"id": "loki-8bit", "label": "像素冒险", "group": "retro", "accent": "#f0842c", "surface": "#0d2b51"}];
+  const GROUP_LABELS = {"care": "护眼阅读", "art": "艺术风格", "retro": "复古屏幕", "calm": "安静工作", "": "未分组"};
+  restoreTheme(THEMES.map((t) => t.id));
+  createThemeSwitcher({ sets: THEMES, mount: document.getElementById("switcher-mount"), groups: GROUP_LABELS });
+</script>
+</body></html>

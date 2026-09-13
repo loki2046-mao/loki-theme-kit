@@ -1,0 +1,73 @@
+/* loki-ticket —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-ticket"] {
+
+  --bg-canvas: #eae4d6;
+  --bg-canvas-soft: #f2ede0;
+  --bg-surface: #f8f4ea;
+  --bg-elevated: #fffdf7;
+  --bg-paper: #f1e9d8;
+  --bg-metal: #1b1f22;
+  --sidebar-text: #f3eee2;
+  --sidebar-muted: #a89f8d;
+  --sidebar-hover: rgba(250, 116, 57, .16);
+  --sidebar-active: rgba(250, 116, 57, .28);
+  --sidebar-rule: rgba(243, 238, 226, .2);
+  --border-subtle: #c8bda4;
+  --border-active: #d24572;
+  --text-primary: #1b1f22;
+  --text-secondary: #4f4a41;
+  --text-muted: #6a6459;
+  --accent-copper: #e2541f;
+  --accent-copper-deep: #b03c12;
+  --accent-cream: #d24572;
+  --accent-ink: #141414;
+  --state-running: #e2541f;
+  --state-success: #2f7a52;
+  --state-warning: #b07a00;
+  --state-danger: #b3203f;
+  --shadow-soft: 2px 2px 0 rgba(27, 31, 34, .18);
+  --shadow-panel: 3px 3px 0 rgba(27, 31, 34, .16);
+  --radius-panel: 6px;
+  --radius-control: 4px;
+  --font-display: "Rockwell", "Iowan Old Style", "Songti SC", serif;
+  --display-weight: 700;
+  --display-spacing: 0.02em;
+  /* 装饰槽位：原作者在这里挂过一件小道具（位置与尺寸已定，图片不随包分发）。
+     想挂自己的图就覆盖这个变量，例如 --deco-a: url("/your/icon.png"); */
+  --deco-a: none;
+  /* 装饰槽位：原作者在这里挂过一件小道具（位置与尺寸已定，图片不随包分发）。
+     想挂自己的图就覆盖这个变量，例如 --deco-a: url("/your/icon.png"); */
+  --deco-b: none;
+}
+
+:root[data-theme="loki-ticket"] .loki-surface-strong {
+  background-image: radial-gradient(circle at 0 50%, var(--bg-canvas) 6px, transparent 6px),
+    radial-gradient(circle at 100% 50%, var(--bg-canvas) 6px, transparent 6px);
+  border: 1px solid #1b1f22;
+}
+:root[data-theme="loki-ticket"] .loki-nav-group-label {
+  color: var(--accent-copper-deep);
+  letter-spacing: .18em;
+}
+:root[data-theme="loki-ticket"] .loki-conversation-item-active {
+  border-left: 3px solid #d24572;
+}
+:root[data-theme="loki-ticket"] .loki-bubble-assistant {
+  border-left: 3px dashed #c8bda4;
+}
+:root[data-theme="loki-ticket"] .loki-composer {
+  border-top: 1px dashed #c8bda4;
+}
+:root[data-theme="loki-ticket"] .loki-button-primary {
+  letter-spacing: .08em;
+}
+:root[data-theme="loki-ticket"] .loki-empty-hero {
+  background-repeat: no-repeat;
+}
+:root[data-theme="loki-ticket"] .loki-empty-hero {
+  background-image: var(--deco-a), var(--deco-b);
+  background-position: right 26px top 22px, right 22px bottom 20px;
+  background-size: 44px, 46px;
+  image-rendering: pixelated;
+}

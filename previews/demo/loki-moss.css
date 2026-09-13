@@ -1,0 +1,67 @@
+/* loki-moss —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-moss"] {
+
+  --bg-canvas: #e7ece6;
+  --bg-canvas-soft: #dfe5de;
+  --bg-surface: #eef2ec;
+  --bg-elevated: #eef2ec;
+  --bg-paper: #e9eee7;
+  --bg-metal: #39463e;
+  --sidebar-text: #eaf0ea;
+  --sidebar-muted: #a9bcae;
+  --sidebar-hover: rgba(213, 224, 211, .14);
+  --sidebar-active: rgba(213, 224, 211, .24);
+  --sidebar-rule: rgba(234, 240, 234, .2);
+  --border-subtle: #cfd8cd;
+  --border-active: #4a6b57;
+  --text-primary: #26332b;
+  --text-secondary: #3c4c42;
+  --text-muted: #4d6156;
+  --accent-copper: #4a6b57;
+  --accent-copper-deep: #375441;
+  --accent-cream: #d5e0d3;
+  --accent-ink: #f4f8f3;
+  --state-running: #4a6b57;
+  --state-success: #3f6b4a;
+  --state-warning: #7d6320;
+  --state-danger: #8f4340;
+  --shadow-soft: none;
+  --shadow-panel: none;
+  --radius-panel: 8px;
+  --radius-control: 6px;
+  /* 和纸墨两套一样，装饰层全关：安静工作不需要噪点和氛围光 */
+  --canvas-texture: none;
+  --canvas-noise: none;
+  --canvas-ambient: none;
+  --canvas-mark: none;
+  --surface-highlight: none;
+  --surface-glow: none;
+  --font-display: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  --display-weight: 600;
+  --display-spacing: 0.01em;
+}
+
+:root[data-theme="loki-moss"] .loki-chat-stream > div { max-width: 40rem; }
+:root[data-theme="loki-moss"] .loki-chat-stream { border-left: 1px solid rgba(74, 107, 87, .16); }
+:root[data-theme="loki-moss"] .loki-paper {
+  line-height: 1.8;
+  background: var(--bg-paper);
+  border: 1px solid var(--border-subtle);
+  box-shadow: none;
+}
+:root[data-theme="loki-moss"] .loki-surface, :root[data-theme="loki-moss"] .loki-surface-strong, :root[data-theme="loki-moss"] .loki-empty-hero {
+  border: 1px solid var(--border-subtle);
+  box-shadow: none;
+}
+:root[data-theme="loki-moss"] .loki-nav-item, :root[data-theme="loki-moss"] .loki-conversation-item { border-radius: 6px; }
+:root[data-theme="loki-moss"] .loki-nav-item-active { box-shadow: inset 3px 0 0 #9dc4a8; }
+:root[data-theme="loki-moss"] .loki-code-block, :root[data-theme="loki-moss"] .loki-chat-stream .loki-paper pre {
+  background: #e2e8e0;
+  border: 1px solid #cfd8cd;
+  box-shadow: none;
+  font-size: 13px;
+  line-height: 1.7;
+}
+:root[data-theme="loki-moss"] ::selection { background: #c9d8c9; color: #26332b; }
+:root[data-theme="loki-moss"] :focus-visible { outline: 2px solid #4a6b57; outline-offset: 2px; }

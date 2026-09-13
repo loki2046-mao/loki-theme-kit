@@ -1,0 +1,94 @@
+/* loki-wire —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-wire"] {
+
+  --bg-canvas: #f2f1ec;
+  --bg-canvas-soft: #eae9e3;
+  --bg-surface: #fbfaf6;
+  --bg-elevated: #fbfaf6;
+  --bg-paper: #fbfaf6;
+  --bg-metal: #22242a;
+  --sidebar-text: #f2f2ef;
+  --sidebar-muted: #a3a39e;
+  --sidebar-hover: rgba(184, 222, 222, .16);
+  --sidebar-active: rgba(184, 222, 222, .28);
+  --sidebar-rule: rgba(242, 242, 239, .16);
+  --border-subtle: #c9c7bf;
+  --border-active: #3f8f8f;
+  --text-primary: #110f13;
+  --text-secondary: #3d3b3f;
+  --text-muted: #5c5a58;
+  /* 青压深一档：奶油字压在 #3f8f8f 上只有 3.9:1 */
+  --accent-copper: #2f7a7a;
+  --accent-copper-deep: #226060;
+  --accent-cream: #b8dede;
+  --accent-ink: #fbfaf6;
+  --state-running: #3f8f8f;
+  --state-success: #3f7f5c;
+  --state-warning: #a8761a;
+  --state-danger: #b3342f;
+  --shadow-soft: none;
+  --shadow-panel: none;
+  --radius-panel: 2px;
+  --radius-control: 2px;
+  --font-display: "SF Mono", "Menlo", "PingFang SC", monospace;
+  --display-weight: 600;
+  --display-spacing: 0.06em;
+}
+
+:root[data-theme="loki-wire"] .loki-surface, :root[data-theme="loki-wire"] .loki-surface-strong, :root[data-theme="loki-wire"] .loki-paper {
+  border: 1px dashed #b4b2aa;
+  border-radius: 2px;
+  background: transparent;
+  box-shadow: none;
+}
+:root[data-theme="loki-wire"] .loki-surface-strong:not([class*="fixed"]) { position: relative; }
+:root[data-theme="loki-wire"] .loki-surface-strong:not([class*="fixed"])::before {
+  content: "// 组件";
+  position: absolute;
+  top: -8px;
+  left: 12px;
+  padding: 1px 6px;
+  font: 600 9px/1.5 var(--font-mono);
+  letter-spacing: .06em;
+  color: #fbfaf6;
+  background: var(--accent-copper);
+  border-radius: 2px;
+}
+:root[data-theme="loki-wire"] main h1 {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-size: 1.05em;
+  border-bottom: 1px dashed #b4b2aa;
+  padding-bottom: 7px;
+}
+:root[data-theme="loki-wire"] .loki-nav-group-label, :root[data-theme="loki-wire"] .loki-composer-meta {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-size: 9px;
+}
+:root[data-theme="loki-wire"] .loki-nav-item { border-radius: 2px; font-family: var(--font-mono); font-size: 12.5px; }
+:root[data-theme="loki-wire"] .loki-nav-item-active { background: #110f13; color: #fbfaf6; }
+:root[data-theme="loki-wire"] .loki-nav-item-active * { color: #fbfaf6; }
+:root[data-theme="loki-wire"] .loki-nav-item-active .loki-nav-icon { background: #b8dede; color: #110f13; border-radius: 2px; box-shadow: none; }
+:root[data-theme="loki-wire"] .loki-nav-icon { border-radius: 2px; }
+:root[data-theme="loki-wire"] .loki-button-primary, :root[data-theme="loki-wire"] .loki-sidebar .loki-button-primary, :root[data-theme="loki-wire"] .loki-composer .loki-button-primary {
+  background-color: var(--accent-copper);
+  background-image: none;
+  color: #fbfaf6;
+  border: 0;
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 600;
+  box-shadow: none;
+}
+:root[data-theme="loki-wire"] .loki-button-secondary, :root[data-theme="loki-wire"] .loki-sidebar .loki-button-secondary {
+  border: 1px dashed #b4b2aa;
+  border-radius: 2px;
+  color: var(--text-primary);
+}
+:root[data-theme="loki-wire"] .loki-header-sticker { border: 1px dashed #b4b2aa; padding: 3px; border-radius: 2px; background: #b8dede; }

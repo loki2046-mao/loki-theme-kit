@@ -1,0 +1,105 @@
+/* loki-desk —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-desk"] {
+
+  --bg-canvas: #b8b4ab;
+  --bg-canvas-soft: #c8c4bb;
+  --bg-surface: #f2f0eb;
+  --bg-elevated: #f7f5f1;
+  --bg-paper: #f2f0eb;
+  --bg-metal: #c8c4bb;
+  --sidebar-text: #1b1a18;
+  --sidebar-muted: #524f49;
+  --sidebar-hover: rgba(21, 96, 168, .12);
+  --sidebar-active: #1560a8;
+  --sidebar-rule: #8f8b84;
+  --border-subtle: #8f8b84;
+  --border-active: #1560a8;
+  --text-primary: #1b1a18;
+  --text-secondary: #363430;
+  --text-muted: #484541;
+  --accent-copper: #1560a8;
+  --accent-copper-deep: #0d4680;
+  --accent-cream: #e8e4db;
+  --accent-ink: #ffffff;
+  --state-running: #1560a8;
+  --state-success: #1f7a3d;
+  --state-warning: #a07000;
+  --state-danger: #b02020;
+  --shadow-soft: none;
+  --shadow-panel: none;
+  --radius-panel: 0;
+  --radius-control: 0;
+  --font-body: "Tahoma", "Geneva", "PingFang SC", sans-serif;
+  --font-display: "Tahoma", "Geneva", "PingFang SC", sans-serif;
+  --display-weight: 700;
+  --display-spacing: 0;
+}
+
+:root[data-theme="loki-desk"] .loki-sidebar-head {
+  background-image: linear-gradient(90deg, #0f4f92 0%, #2b7ecb 100%);
+  color: #ffffff;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .4);
+}
+:root[data-theme="loki-desk"] .loki-sidebar-head * { color: #ffffff; }
+:root[data-theme="loki-desk"] .loki-workbench-toolbar {
+  background-image: none;
+  border-bottom: 1px solid #8f8b84;
+}
+:root[data-theme="loki-desk"] .loki-sidebar { border-right: 1px solid #8f8b84; }
+:root[data-theme="loki-desk"] .loki-nav-group-label {
+  background: #c8c4bb;
+  border: 1px solid;
+  border-color: #ffffff #6f6b64 #6f6b64 #ffffff;
+  padding: 3px 8px;
+  margin-bottom: 5px;
+  font-weight: 700;
+  letter-spacing: .03em;
+  text-transform: none;
+}
+:root[data-theme="loki-desk"] .loki-sidebar .loki-nav-item {
+  border-radius: 0;
+  padding: 5px 8px;
+}
+:root[data-theme="loki-desk"] .loki-sidebar .loki-nav-item-active, :root[data-theme="loki-desk"] .loki-sidebar .loki-nav-item-active * { color: #ffffff; }
+:root[data-theme="loki-desk"] .loki-nav-item-active .loki-nav-icon {
+  background: rgba(255, 255, 255, .2);
+  color: #ffffff;
+  border-radius: 0;
+  box-shadow: none;
+}
+:root[data-theme="loki-desk"] .loki-nav-icon { border-radius: 0; }
+:root[data-theme="loki-desk"] .loki-surface, :root[data-theme="loki-desk"] .loki-surface-strong, :root[data-theme="loki-desk"] .loki-paper {
+  border: 1px solid #8f8b84;
+  border-radius: 0;
+  box-shadow: none;
+}
+:root[data-theme="loki-desk"] .loki-button-primary, :root[data-theme="loki-desk"] .loki-button-secondary, :root[data-theme="loki-desk"] .loki-sidebar .loki-button-primary, :root[data-theme="loki-desk"] .loki-sidebar .loki-button-secondary {
+  background-color: #dcd8cf;
+  background-image: none;
+  color: #1b1a18;
+  border: 1px solid;
+  border-color: #ffffff #565149 #565149 #ffffff;
+  box-shadow: inset 1px 1px 0 #f2f0eb, inset -1px -1px 0 #8f8b84;
+  border-radius: 0;
+  font-weight: 600;
+}
+:root[data-theme="loki-desk"] .loki-button-primary {
+  border: 2px solid #1b1a18;
+  box-shadow: inset 1px 1px 0 #f2f0eb, inset -1px -1px 0 #8f8b84;
+}
+:root[data-theme="loki-desk"] .loki-button-primary:active, :root[data-theme="loki-desk"] .loki-button-secondary:active {
+  border-color: #565149 #ffffff #ffffff #565149;
+  box-shadow: inset 1px 1px 0 #8f8b84;
+  transform: translate(1px, 1px);
+}
+:root[data-theme="loki-desk"] .loki-input {
+  background: #ffffff;
+  border: 1px solid;
+  border-color: #565149 #ffffff #ffffff #565149;
+  box-shadow: inset 1px 1px 0 #8f8b84;
+  border-radius: 0;
+}
+:root[data-theme="loki-desk"] main h1 { letter-spacing: 0; }
+:root[data-theme="loki-desk"] .loki-header-sticker { border: 1px solid #8f8b84; padding: 3px; background: #e8e4db; }
+:root[data-theme="loki-desk"] .loki-sidebar .loki-button-primary:hover { color: #1b1a18; }

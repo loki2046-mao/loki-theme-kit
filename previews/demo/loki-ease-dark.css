@@ -1,0 +1,71 @@
+/* loki-ease-dark —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-ease-dark"] {
+
+  --bg-canvas: #1c1b18;
+  --bg-canvas-soft: #232220;
+  --bg-surface: #232220;
+  --bg-elevated: #2a2825;
+  --bg-paper: #232220;
+  --bg-metal: #171614;
+  --sidebar-text: #cfc8ba;
+  --sidebar-muted: #8d8779;
+  --sidebar-hover: rgba(207, 200, 186, .08);
+  --sidebar-active: rgba(194, 168, 120, .18);
+  --sidebar-rule: rgba(207, 200, 186, .16);
+  --border-subtle: #3a3733;
+  --border-active: #c2a878;
+  --text-primary: #cfc8ba;
+  --text-secondary: #a9a294;
+  --text-muted: #908a7c;
+  --accent-copper: #c2a878;
+  --accent-copper-deep: #9d8558;
+  --accent-cream: #e2d7bd;
+  --accent-ink: #1c1b18;
+  --state-running: #8fa4b8;
+  --state-success: #7fa07f;
+  --state-warning: #c2a03f;
+  --state-danger: #c07a6f;
+  --shadow-soft: none;
+  --shadow-panel: none;
+  --radius-panel: 8px;
+  --radius-control: 7px;
+  --canvas-texture: none;
+  --canvas-noise: none;
+  --canvas-ambient: none;
+  --canvas-mark: none;
+  --surface-highlight: none;
+  --surface-glow: none;
+  --font-display: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  --display-weight: 600;
+  --display-spacing: 0.01em;
+}
+
+:root[data-theme="loki-ease-dark"] .loki-chat-stream > div { max-width: 38rem; }
+:root[data-theme="loki-ease-dark"] .loki-paper {
+  font-family: "Iowan Old Style", "Songti SC", "STSong", Georgia, "PingFang SC", serif;
+  font-size: 15px;
+  line-height: 1.85;
+  letter-spacing: .01em;
+  background: var(--bg-paper);
+  border: 1px solid var(--border-subtle);
+  box-shadow: none;
+}
+:root[data-theme="loki-ease-dark"] .loki-code-block, :root[data-theme="loki-ease-dark"] .loki-chat-stream .loki-paper pre {
+  background: #191816;
+  color: #c8c1b3;
+  border: 1px solid #34312d;
+  box-shadow: none;
+  font-size: 13px;
+  line-height: 1.72;
+}
+:root[data-theme="loki-ease-dark"] img { filter: brightness(.88) saturate(.97); }
+:root[data-theme="loki-ease-dark"] ::selection { background: #4a4232; color: #ece5d6; }
+:root[data-theme="loki-ease-dark"] :focus-visible { outline: 2px solid #c2a878; outline-offset: 2px; }
+:root[data-theme="loki-ease-dark"] .loki-nav-item { border-radius: 7px; }
+:root[data-theme="loki-ease-dark"] .loki-button-primary { box-shadow: none; }
+:root[data-theme="loki-ease-dark"] .loki-nav-item-active .loki-nav-icon {
+  color: var(--accent-ink);
+  background: var(--accent-copper);
+  box-shadow: none;
+}

@@ -1,0 +1,150 @@
+/* loki-pop —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-pop"] {
+
+  --bg-canvas: #fff3e2;
+  --bg-canvas-soft: #fffaf3;
+  --bg-surface: #fffdf8;
+  --bg-elevated: #ffffff;
+  --bg-paper: #fff6e6;
+  --bg-metal: #1c1410;
+  --sidebar-text: #fff4e2;
+  --sidebar-muted: #c9a98d;
+  --sidebar-hover: rgba(255, 107, 0, .18);
+  --sidebar-active: rgba(255, 107, 0, .3);
+  --sidebar-rule: rgba(255, 244, 226, .16);
+  --border-subtle: #ecd9c1;
+  --border-active: #1c1410;
+  --text-primary: #1c1410;
+  --text-secondary: #6b5140;
+  --text-muted: #846955;
+  --accent-copper: #ff6b00;
+  --accent-copper-deep: #c24300;
+  --accent-cream: #ffd23f;
+  --accent-ink: #1c1410;
+  --state-running: #ff6b00;
+  --state-success: #12805a;
+  --state-warning: #c98a00;
+  --state-danger: #d7263d;
+  --shadow-soft: 3px 3px 0 rgba(28, 20, 16, .9);
+  --shadow-panel: 4px 4px 0 rgba(28, 20, 16, .85);
+  --radius-panel: 14px;
+  --radius-control: 999px;
+  --nav-tone-work: #ff8a2b;
+  --nav-tone-knowledge: #45d8ea;
+  --nav-tone-briefing: #ffd45c;
+  --nav-tone-system: #ff7ab8;
+  --loki-fur: #e0713a;
+  --loki-fur-deep: #a8491c;
+  --loki-cream: #fff4e2;
+  --loki-ink: #1c1410;
+  --loki-accent: #ff6b00;
+
+    --bg-canvas: #17131c;
+    --bg-canvas-soft: #1e1926;
+    --bg-surface: #221c2b;
+    --bg-elevated: #2a2334;
+    --bg-paper: #241d2e;
+    --bg-metal: #100d15;
+    --sidebar-text: #f6ebff;
+    --sidebar-muted: #a998b8;
+    --sidebar-hover: rgba(255, 107, 0, .2);
+    --sidebar-active: rgba(255, 107, 0, .34);
+    --sidebar-rule: rgba(246, 235, 255, .14);
+    --border-subtle: #3a3145;
+    --border-active: #ffd23f;
+    --text-primary: #f8f2ff;
+    --text-secondary: #c3b6d1;
+    --text-muted: #948aa3;
+    --shadow-soft: 3px 3px 0 rgba(0, 0, 0, .55);
+    --shadow-panel: 4px 4px 0 rgba(0, 0, 0, .5);
+    --loki-cream: #fff4e2;
+    --loki-ink: #1c1410;
+  }
+
+:root[data-theme="loki-pop"] .loki-surface, :root[data-theme="loki-pop"] .loki-surface-strong, :root[data-theme="loki-pop"] .loki-empty-hero, :root[data-theme="loki-pop"] .loki-paper {
+  border: 2px solid var(--loki-ink);
+  box-shadow: var(--shadow-panel);
+}
+:root[data-theme="loki-pop"] .loki-button-primary {
+  border: 2px solid var(--loki-ink);
+  box-shadow: 3px 3px 0 var(--loki-ink);
+  font-weight: 600;
+}
+:root[data-theme="loki-pop"] .loki-button-primary { padding-inline: 10px; }
+:root[data-theme="loki-pop"] .loki-button-secondary { padding-inline: 6px; }
+:root[data-theme="loki-pop"] .loki-button-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--loki-ink);
+}
+:root[data-theme="loki-pop"] .loki-button-secondary, :root[data-theme="loki-pop"] .loki-input {
+  border: 2px solid var(--loki-ink);
+  background: var(--bg-elevated);
+}
+:root[data-theme="loki-pop"] .loki-nav-icon { border-radius: 999px; }
+:root[data-theme="loki-pop"] .loki-nav-icon {
+  background: color-mix(in srgb, var(--nav-tone, var(--accent-copper)) 24%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--nav-tone, var(--accent-copper)) 42%, transparent);
+}
+:root[data-theme="loki-pop"] .loki-nav-item-active .loki-nav-icon {
+  background: var(--nav-tone, var(--accent-copper));
+  color: var(--loki-ink);
+  box-shadow: none;
+}
+:root[data-theme="loki-pop"] .loki-nav-item-active {
+  border-color: var(--loki-ink);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, .5);
+}
+:root[data-theme="loki-pop"] .loki-brand-mark {
+  background: transparent;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, .45);
+  border-radius: 11px;
+}
+:root[data-theme="loki-pop"] .loki-bubble-user {
+  border: 2px solid var(--loki-ink);
+  box-shadow: 3px 3px 0 rgba(28, 20, 16, .35);
+}
+:root[data-theme="loki-pop"] .loki-drawer {
+  border-left: 2px solid var(--loki-ink);
+  box-shadow: -6px 0 0 rgba(28, 20, 16, .12);
+}
+:root[data-theme="loki-pop"] .loki-sticker-title {
+  color: var(--loki-ink);
+  background: var(--accent-cream);
+  border: 2px solid var(--loki-ink);
+  border-radius: 10px;
+  box-shadow: 3px 3px 0 var(--loki-ink);
+  transform: rotate(-1deg);
+}
+:root[data-theme="loki-pop"] .loki-nav-group-label {
+  width: fit-content;
+  margin-inline: 4px;
+  padding: 2px 9px;
+  color: var(--loki-ink);
+  background: var(--nav-tone, var(--accent-copper));
+  border: 2px solid var(--loki-ink);
+  border-radius: 999px;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, .38);
+  transform: rotate(-1deg);
+}
+:root[data-theme="loki-pop"] .loki-nav-group-dot {
+  background: var(--loki-ink);
+}
+:root[data-theme="loki-pop"] .loki-conversation-item:hover {
+  outline: 2px solid rgba(255, 244, 226, .35);
+  outline-offset: -2px;
+}
+:root[data-theme="loki-pop"] .loki-conversation-item-active {
+  border: 2px solid var(--loki-ink);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, .45);
+}
+:root[data-theme="loki-pop"] .loki-tint-success, :root[data-theme="loki-pop"] .loki-tint-warning, :root[data-theme="loki-pop"] .loki-tint-danger {
+  border: 2px solid var(--loki-ink);
+  box-shadow: 2px 2px 0 rgba(28, 20, 16, .25);
+}
+:root[data-theme="loki-pop"] .loki-page [class*="rounded-"][class*="border"] {
+  border-color: var(--loki-ink);
+}
+:root[data-theme="loki-pop"] .loki-page [class*="rounded-"][class*="border"]:not(.loki-table tr) {
+  box-shadow: 2px 2px 0 rgba(28, 20, 16, .18);
+}

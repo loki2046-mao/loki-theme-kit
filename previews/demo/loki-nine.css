@@ -1,0 +1,100 @@
+/* loki-nine —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-nine"] {
+
+  --bg-canvas: #f6f5e0;
+  --bg-canvas-soft: #eeedd6;
+  --bg-surface: #fcfbf0;
+  --bg-elevated: #fcfbf0;
+  --bg-paper: #fcfbf0;
+  --bg-metal: #0e0d0e;
+  --sidebar-text: #f7f6ea;
+  --sidebar-muted: #a9a79c;
+  --sidebar-hover: rgba(146, 232, 197, .14);
+  --sidebar-active: rgba(209, 81, 100, .4);
+  --sidebar-rule: rgba(247, 246, 234, .16);
+  --border-subtle: #0e0d0e;
+  --border-active: #c73f55;
+  --text-primary: #0e0d0e;
+  --text-secondary: #38312e;
+  --text-muted: #5a524d;
+  --accent-copper: #c73f55;
+  --accent-copper-deep: #9c2b3e;
+  --accent-cream: #92e8c5;
+  --accent-ink: #fcfbf0;
+  --state-running: #3f6f8a;
+  --state-success: #3f7f5c;
+  --state-warning: #a8761a;
+  --state-danger: #c73f55;
+  --shadow-soft: none;
+  --shadow-panel: none;
+  --radius-panel: 0;
+  --radius-control: 0;
+  --font-display: "Helvetica Neue", "PingFang SC", sans-serif;
+  --display-weight: 800;
+  --display-spacing: 0.02em;
+  --nav-tone-work: #c73f55;
+  --nav-tone-knowledge: #6f8f4a;
+  --nav-tone-briefing: #4e322b;
+  --nav-tone-system: #0e0d0e;
+}
+
+:root[data-theme="loki-nine"] .loki-chat-stream {
+  background-image:
+    repeating-linear-gradient(90deg, rgba(14, 13, 14, .22) 0 3px, transparent 3px 33.333%),
+    repeating-linear-gradient(0deg, rgba(14, 13, 14, .12) 0 1px, transparent 1px 33.333%);
+  background-size: 33.333% 100%, 100% 33.333%;
+}
+:root[data-theme="loki-nine"] main h1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+:root[data-theme="loki-nine"] main h1::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  flex: none;
+  background-image: radial-gradient(circle, #0e0d0e 1.6px, transparent 1.9px);
+  background-size: 5px 5px;
+}
+:root[data-theme="loki-nine"] .loki-nav-group-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 0;
+  background-image: radial-gradient(circle, currentColor 1px, transparent 1.3px);
+  background-size: 4px 4px;
+  background-color: transparent;
+  color: var(--nav-tone, #c73f55);
+}
+:root[data-theme="loki-nine"] .loki-surface, :root[data-theme="loki-nine"] .loki-surface-strong, :root[data-theme="loki-nine"] .loki-paper {
+  border: 3px solid #0e0d0e;
+  border-radius: 0;
+  box-shadow: none;
+}
+:root[data-theme="loki-nine"] .loki-nav-item { border-radius: 0; }
+:root[data-theme="loki-nine"] .loki-nav-item-active { background: #c73f55; color: #fcfbf0; }
+:root[data-theme="loki-nine"] .loki-nav-item-active * { color: #fcfbf0; }
+:root[data-theme="loki-nine"] .loki-nav-item-active .loki-nav-icon { background: #92e8c5; color: #0e0d0e; border-radius: 0; box-shadow: none; }
+:root[data-theme="loki-nine"] .loki-nav-icon { border-radius: 0; }
+:root[data-theme="loki-nine"] .loki-button-primary, :root[data-theme="loki-nine"] .loki-sidebar .loki-button-primary, :root[data-theme="loki-nine"] .loki-composer .loki-button-primary {
+  background-color: #c73f55;
+  background-image: none;
+  color: #fcfbf0;
+  border: 3px solid #0e0d0e;
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 800;
+  box-shadow: none;
+}
+:root[data-theme="loki-nine"] .loki-button-secondary, :root[data-theme="loki-nine"] .loki-sidebar .loki-button-secondary {
+  border: 3px solid #0e0d0e;
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 800;
+}
+:root[data-theme="loki-nine"] .loki-header-sticker { border: 3px solid #0e0d0e; background: #92e8c5; padding: 2px; }

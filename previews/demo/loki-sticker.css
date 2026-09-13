@@ -1,0 +1,87 @@
+/* loki-sticker —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-sticker"] {
+
+  --bg-canvas: #f7f5eb;
+  --bg-canvas-soft: #f0eee2;
+  --bg-surface: #fdfcf6;
+  --bg-elevated: #fdfcf6;
+  --bg-paper: #fdfcf6;
+  --bg-metal: #1f191b;
+  --sidebar-text: #f7f3ec;
+  --sidebar-muted: #b0a79e;
+  --sidebar-hover: rgba(188, 209, 180, .16);
+  --sidebar-active: rgba(125, 51, 49, .5);
+  --sidebar-rule: rgba(247, 243, 236, .16);
+  --border-subtle: #e0dbcb;
+  --border-active: #b03d24;
+  --text-primary: #1f191b;
+  --text-secondary: #443c3b;
+  --text-muted: #5c5450;
+  --accent-copper: #b03d24;
+  --accent-copper-deep: #8b2c18;
+  --accent-cream: #bcd1b4;
+  --accent-ink: #fdfcf6;
+  --state-running: #3f6f8a;
+  --state-success: #3f7f5c;
+  --state-warning: #a8761a;
+  --state-danger: #b03d24;
+  --shadow-soft: 2px 2px 0 rgba(31, 25, 27, .14);
+  --shadow-panel: 3px 3px 0 rgba(31, 25, 27, .18);
+  --radius-panel: 999px;
+  --radius-control: 999px;
+  --font-display: "Avenir Next", "PingFang SC", sans-serif;
+  --display-weight: 700;
+  --display-spacing: 0.01em;
+  --nav-tone-work: #b03d24;
+  --nav-tone-knowledge: #6f8f4a;
+  --nav-tone-briefing: #7c3331;
+  --nav-tone-system: #1f191b;
+}
+
+:root[data-theme="loki-sticker"] .loki-chat-stream {
+  background-image: repeating-linear-gradient(90deg, rgba(176, 61, 36, .35) 0 3px, transparent 3px 10px);
+  background-size: 100% 14px;
+  background-position: top 10px left;
+  background-repeat: repeat-x;
+}
+:root[data-theme="loki-sticker"] .loki-surface, :root[data-theme="loki-sticker"] .loki-surface-strong, :root[data-theme="loki-sticker"] .loki-paper {
+  border: 3px solid #ffffff;
+  outline: 1px dashed rgba(31, 25, 27, .38);
+  outline-offset: 3px;
+  border-radius: 18px;
+  box-shadow: var(--shadow-panel);
+}
+:root[data-theme="loki-sticker"] .loki-surface-strong:nth-child(odd) { transform: rotate(-.3deg); }
+:root[data-theme="loki-sticker"] .loki-surface-strong:nth-child(even) { transform: rotate(.25deg); }
+:root[data-theme="loki-sticker"] .loki-nav-icon { border-radius: 999px; }
+:root[data-theme="loki-sticker"] .loki-nav-group-dot { border-radius: 999px; }
+:root[data-theme="loki-sticker"] .loki-sidebar .loki-nav-item { border-radius: 999px; }
+:root[data-theme="loki-sticker"] .loki-nav-item-active { background: rgba(176, 61, 36, .26); box-shadow: none; }
+:root[data-theme="loki-sticker"] main h1 {
+  width: fit-content;
+  color: #7c3331;
+  text-shadow: 2px 2px 0 rgba(176, 61, 36, .35);
+}
+:root[data-theme="loki-sticker"] .loki-button-primary, :root[data-theme="loki-sticker"] .loki-sidebar .loki-button-primary, :root[data-theme="loki-sticker"] .loki-composer .loki-button-primary {
+  background-color: #b03d24;
+  background-image: none;
+  color: #fdfcf6;
+  border: 3px solid #ffffff;
+  outline: 1px dashed rgba(31, 25, 27, .38);
+  outline-offset: 3px;
+  border-radius: 999px;
+  box-shadow: 0 2px 0 rgba(31, 25, 27, .2);
+  font-weight: 700;
+}
+:root[data-theme="loki-sticker"] .loki-button-secondary, :root[data-theme="loki-sticker"] .loki-sidebar .loki-button-secondary {
+  border: 2px solid #1f191b;
+  border-radius: 999px;
+}
+:root[data-theme="loki-sticker"] .loki-header-sticker {
+  border: 3px solid #ffffff;
+  outline: 1px dashed rgba(31, 25, 27, .38);
+  outline-offset: 2px;
+  border-radius: 999px;
+  transform: rotate(-6deg);
+}

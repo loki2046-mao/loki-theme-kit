@@ -1,0 +1,98 @@
+/* loki-atlas —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-atlas"] {
+
+  --bg-canvas: #12161a;
+  --bg-canvas-soft: #181d22;
+  --bg-surface: #1b2127;
+  --bg-elevated: #212a31;
+  --bg-paper: #1b2127;
+  --bg-metal: #0d1114;
+  --sidebar-text: #eff2ea;
+  --sidebar-muted: #a9ae9c;
+  --sidebar-hover: rgba(221, 233, 150, .12);
+  --sidebar-active: rgba(221, 233, 150, .22);
+  --sidebar-rule: rgba(239, 242, 234, .16);
+  --border-subtle: #38424a;
+  --border-active: #dde996;
+  --text-primary: #f2f4e9;
+  --text-secondary: #cfd3c2;
+  --text-muted: #a9ae9c;
+  --accent-copper: #dde996;
+  --accent-copper-deep: #b8c46e;
+  --accent-cream: #b494a5;
+  --accent-ink: #12161a;
+  --state-running: #dde996;
+  --state-success: #8fd6a8;
+  --state-warning: #e8c86a;
+  --state-danger: #e08a7a;
+  --shadow-soft: none;
+  --shadow-panel: none;
+  --radius-panel: 6px;
+  --radius-control: 4px;
+  --font-display: "Avenir Next", "PingFang SC", sans-serif;
+  --display-weight: 700;
+  --display-spacing: 0.02em;
+  --nav-tone-work: #dde996;
+  --nav-tone-knowledge: #b494a5;
+  --nav-tone-briefing: #6e534d;
+  --nav-tone-system: #cfd3c2;
+}
+
+:root[data-theme="loki-atlas"] .loki-chat-stream {
+  background-image:
+    radial-gradient(rgba(180, 148, 165, .22) 1.4px, transparent 1.8px),
+    linear-gradient(90deg, transparent 0 22px, rgba(221, 233, 150, .22) 22px 23px, transparent 23px);
+  background-size: 46px 46px, 100% 100%;
+}
+:root[data-theme="loki-atlas"] .loki-chat-stream .loki-paper {
+  position: relative;
+  border: 1px solid var(--border-subtle);
+  border-left: 3px solid #b494a5;
+  background: var(--bg-paper);
+  box-shadow: none;
+}
+:root[data-theme="loki-atlas"] .loki-chat-stream .loki-paper::before {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: -8px;
+  width: 11px;
+  height: 11px;
+  border-radius: 999px;
+  background: #dde996;
+  box-shadow: 0 0 0 3px rgba(18, 22, 26, .9);
+}
+:root[data-theme="loki-atlas"] .loki-surface, :root[data-theme="loki-atlas"] .loki-surface-strong {
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  box-shadow: none;
+}
+:root[data-theme="loki-atlas"] main h1 {
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  border-bottom: 1px dashed rgba(221, 233, 150, .45);
+  padding-bottom: 7px;
+}
+:root[data-theme="loki-atlas"] .loki-nav-group-label, :root[data-theme="loki-atlas"] .loki-composer-meta {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  font-size: 9.5px;
+}
+:root[data-theme="loki-atlas"] .loki-nav-item { border-radius: 4px; }
+:root[data-theme="loki-atlas"] .loki-nav-item-active { box-shadow: inset 3px 0 0 #dde996; }
+:root[data-theme="loki-atlas"] .loki-button-primary, :root[data-theme="loki-atlas"] .loki-sidebar .loki-button-primary, :root[data-theme="loki-atlas"] .loki-composer .loki-button-primary {
+  background-color: #dde996;
+  background-image: none;
+  color: #12161a;
+  border: 1px solid #b8c46e;
+  border-radius: 4px;
+  font-weight: 700;
+  box-shadow: none;
+}
+:root[data-theme="loki-atlas"] .loki-button-secondary, :root[data-theme="loki-atlas"] .loki-sidebar .loki-button-secondary {
+  border: 1px solid rgba(221, 233, 150, .55);
+  border-radius: 4px;
+}
+:root[data-theme="loki-atlas"] .loki-header-sticker { border: 1px dashed rgba(221, 233, 150, .7); padding: 3px; }

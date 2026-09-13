@@ -1,0 +1,126 @@
+/* loki-bauhaus —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-bauhaus"] {
+
+  --bg-canvas: #f2efe6;
+  --bg-canvas-soft: #eae6db;
+  --bg-surface: #f8f6f0;
+  --bg-elevated: #fbfaf6;
+  --bg-paper: #f8f6f0;
+  --bg-metal: #141414;
+  --sidebar-text: #f6f4ee;
+  --sidebar-muted: #a8a49b;
+  --sidebar-hover: rgba(255, 255, 255, .13);
+  --sidebar-active: #d8232a;
+  --sidebar-rule: rgba(255, 255, 255, .2);
+  --border-subtle: #141414;
+  --border-active: #d8232a;
+  --text-primary: #141414;
+  --text-secondary: #3d3a35;
+  --text-muted: #6b6760;
+  --accent-copper: #d8232a;
+  --accent-copper-deep: #a8121a;
+  --accent-cream: #f2b705;
+  --accent-ink: #ffffff;
+  --state-running: #1a4fa0;
+  --state-success: #1a4fa0;
+  --state-warning: #f2b705;
+  --state-danger: #d8232a;
+  --shadow-soft: none;
+  --shadow-panel: none;
+  --radius-panel: 0;
+  --radius-control: 0;
+  --font-display: "Helvetica Neue", "Arial", "PingFang SC", sans-serif;
+  --display-weight: 800;
+  --display-spacing: 0.04em;
+  /* 分组色＝三原色轮转，直接复用导航分组机制 */
+  --nav-tone-work: #d8232a;
+  --nav-tone-knowledge: #f2b705;
+  --nav-tone-briefing: #1a4fa0;
+  --nav-tone-system: #f6f4ee;
+}
+
+:root[data-theme="loki-bauhaus"] .loki-workbench-toolbar, :root[data-theme="loki-bauhaus"] .loki-sidebar-head {
+  background-image: linear-gradient(90deg, #d8232a 0 33.3%, #f2b705 33.3% 66.6%, #1a4fa0 66.6% 100%);
+  background-size: 100% 5px;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+}
+:root[data-theme="loki-bauhaus"] .loki-nav-group-dot { border-radius: 0; width: 8px; height: 8px; }
+:root[data-theme="loki-bauhaus"] .loki-sidebar .loki-nav-item {
+  border-radius: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, .14);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  font-weight: 700;
+  font-size: 12px;
+}
+:root[data-theme="loki-bauhaus"] .loki-sidebar .loki-nav-item-active, :root[data-theme="loki-bauhaus"] .loki-sidebar .loki-nav-item-active * { color: #ffffff; }
+:root[data-theme="loki-bauhaus"] .loki-nav-item-active .loki-nav-icon {
+  background: #ffffff;
+  color: #141414;
+  box-shadow: none;
+  border-radius: 0;
+}
+:root[data-theme="loki-bauhaus"] .loki-nav-icon { border-radius: 0; }
+:root[data-theme="loki-bauhaus"] .loki-surface, :root[data-theme="loki-bauhaus"] .loki-surface-strong, :root[data-theme="loki-bauhaus"] .loki-paper {
+  border: 2px solid #141414;
+  border-radius: 0;
+  box-shadow: none;
+}
+:root[data-theme="loki-bauhaus"] .loki-surface-strong:not([class*="fixed"]) { position: relative; }
+:root[data-theme="loki-bauhaus"] .loki-surface-strong:not([class*="fixed"])::before, :root[data-theme="loki-bauhaus"] .loki-surface-strong:not([class*="fixed"])::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+}
+:root[data-theme="loki-bauhaus"] .loki-surface-strong:not([class*="fixed"])::before {
+  top: 0;
+  left: 0;
+  background: #d8232a;
+}
+:root[data-theme="loki-bauhaus"] .loki-surface-strong:not([class*="fixed"])::after {
+  right: 0;
+  bottom: 0;
+  background: #1a4fa0;
+}
+:root[data-theme="loki-bauhaus"] main h1 {
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+:root[data-theme="loki-bauhaus"] main h1::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  flex: none;
+  background: #d8232a;
+}
+:root[data-theme="loki-bauhaus"] .loki-button-primary, :root[data-theme="loki-bauhaus"] .loki-sidebar .loki-button-primary, :root[data-theme="loki-bauhaus"] .loki-composer .loki-button-primary {
+  background-color: #d8232a;
+  background-image: none;
+  color: #ffffff;
+  border: 2px solid #141414;
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-weight: 700;
+  box-shadow: none;
+}
+:root[data-theme="loki-bauhaus"] .loki-button-secondary, :root[data-theme="loki-bauhaus"] .loki-sidebar .loki-button-secondary {
+  border: 2px solid #141414;
+  border-radius: 0;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  font-weight: 700;
+}
+:root[data-theme="loki-bauhaus"] .loki-header-sticker {
+  border-radius: 999px;
+  border: 2px solid #141414;
+  background: #f2b705;
+  padding: 3px;
+}
+:root[data-theme="loki-bauhaus"] .loki-nav-group-label { text-transform: uppercase; letter-spacing: .16em; font-weight: 700; }

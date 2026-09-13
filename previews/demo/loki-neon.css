@@ -1,0 +1,81 @@
+/* loki-neon —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-neon"] {
+
+  --bg-canvas: #131a1f;
+  --bg-canvas-soft: #182127;
+  --bg-surface: #1c262d;
+  --bg-elevated: #222d35;
+  --bg-paper: #162027;
+  --bg-metal: #0b1115;
+  --sidebar-text: #eef5f7;
+  --sidebar-muted: #7e939b;
+  --sidebar-hover: rgba(85, 226, 250, .14);
+  --sidebar-active: rgba(85, 226, 250, .26);
+  --sidebar-rule: rgba(85, 226, 250, .3);
+  --border-subtle: #2c3a42;
+  --border-active: #55e2fa;
+  --text-primary: #eef5f7;
+  --text-secondary: #b0c0c6;
+  --text-muted: #7e939b;
+  --accent-copper: #ff7a35;
+  --accent-copper-deep: #d1511a;
+  --accent-cream: #55e2fa;
+  --accent-ink: #06171c;
+  --state-running: #55e2fa;
+  --state-success: #3ddc97;
+  --state-warning: #ffc857;
+  --state-danger: #ff4d6d;
+  --shadow-soft: 0 0 14px rgba(85, 226, 250, .22);
+  --shadow-panel: 0 0 20px rgba(85, 226, 250, .18);
+  --radius-panel: 10px;
+  --radius-control: 8px;
+  --surface-highlight: rgba(85, 226, 250, .12);
+  --surface-glow: 0 0 18px rgba(85, 226, 250, .12);
+  --font-display: "Avenir Next", "PingFang SC", sans-serif;
+  --display-weight: 600;
+  --display-spacing: 0.04em;
+  /* 装饰槽位：原作者在这里挂过一件小道具（位置与尺寸已定，图片不随包分发）。
+     想挂自己的图就覆盖这个变量，例如 --deco-a: url("/your/icon.png"); */
+  --deco-a: none;
+  /* 装饰槽位：原作者在这里挂过一件小道具（位置与尺寸已定，图片不随包分发）。
+     想挂自己的图就覆盖这个变量，例如 --deco-a: url("/your/icon.png"); */
+  --deco-b: none;
+}
+
+:root[data-theme="loki-neon"] main h1, :root[data-theme="loki-neon"] .loki-brand-name {
+  text-shadow: 0 0 10px rgba(85, 226, 250, .55), 0 0 2px rgba(85, 226, 250, .8);
+}
+:root[data-theme="loki-neon"] .loki-surface, :root[data-theme="loki-neon"] .loki-surface-strong, :root[data-theme="loki-neon"] .loki-paper, :root[data-theme="loki-neon"] .loki-empty-hero {
+  border: 1px solid rgba(85, 226, 250, .38);
+}
+:root[data-theme="loki-neon"] .loki-sidebar {
+  border-right: 1px solid rgba(85, 226, 250, .3);
+  background-image: linear-gradient(180deg, rgba(85, 226, 250, .08), transparent 42%);
+}
+:root[data-theme="loki-neon"] .loki-nav-item-active {
+  border-color: rgba(85, 226, 250, .7);
+  box-shadow: 0 0 12px rgba(85, 226, 250, .35);
+}
+:root[data-theme="loki-neon"] .loki-button-primary {
+  border: 1px solid rgba(85, 226, 250, .55);
+  box-shadow: 0 0 14px rgba(85, 226, 250, .35);
+}
+:root[data-theme="loki-neon"] .loki-bubble-user {
+  background: rgba(85, 226, 250, .16);
+  border: 1px solid rgba(85, 226, 250, .45);
+}
+:root[data-theme="loki-neon"] .loki-conversation-item-active {
+  border-color: rgba(255, 77, 109, .6);
+  box-shadow: inset 3px 0 0 #ff4d6d;
+}
+:root[data-theme="loki-neon"] .loki-empty-hero {
+  background-repeat: no-repeat;
+}
+:root[data-theme="loki-neon"] .loki-empty-hero {
+  background-image: var(--deco-a), var(--deco-b);
+  background-position: right 24px bottom 20px, right 92px top 20px;
+  background-size: 40px, 36px;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 0 10px rgba(85, 226, 250, .45));
+}

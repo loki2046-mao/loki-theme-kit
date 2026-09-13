@@ -1,0 +1,11 @@
+<!-- 放在 <head> 里、任何样式表之前：首帧就是正确主题，不会先闪一下默认色。
+     这是"防闪白"的标准做法，比在 React 里 useEffect 里恢复更早（那已经晚了一帧）。 -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("loki_theme");
+      if (t) document.documentElement.setAttribute("data-theme", t);
+      else document.documentElement.setAttribute("data-theme", "loki-ease");
+    } catch (e) {}
+  })();
+</script>

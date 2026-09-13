@@ -1,0 +1,102 @@
+/* loki-wall —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-wall"] {
+
+  --bg-canvas: #fdfcf4;
+  --bg-canvas-soft: #f4f1e4;
+  --bg-surface: #fffefa;
+  --bg-elevated: #fffefa;
+  --bg-paper: #fffefa;
+  --bg-metal: #1d232c;
+  --sidebar-text: #f6f4ec;
+  --sidebar-muted: #a8a49a;
+  --sidebar-hover: rgba(202, 84, 42, .18);
+  --sidebar-active: rgba(202, 84, 42, .38);
+  --sidebar-rule: rgba(246, 244, 236, .16);
+  --border-subtle: #e3ddc9;
+  --border-active: #ad4322;
+  --text-primary: #121114;
+  --text-secondary: #3f3a35;
+  --text-muted: #5e564f;
+  --accent-copper: #ad4322;
+  --accent-copper-deep: #8a3218;
+  --accent-cream: #a79f93;
+  --accent-ink: #fffefa;
+  --state-running: #3f6f8a;
+  --state-success: #3f7f5c;
+  --state-warning: #a8761a;
+  --state-danger: #a83228;
+  --shadow-soft: 1px 2px 0 rgba(18, 17, 20, .1);
+  --shadow-panel: 2px 3px 0 rgba(18, 17, 20, .14);
+  --radius-panel: 6px;
+  --radius-control: 6px;
+  --font-display: "Marker Felt", "Kaiti SC", "STKaiti", "PingFang SC", cursive;
+  --display-weight: 600;
+  --display-spacing: 0.01em;
+  --nav-tone-work: #ad4322;
+  --nav-tone-knowledge: #6f8f4a;
+  --nav-tone-briefing: #a79f93;
+  --nav-tone-system: #1d232c;
+}
+
+:root[data-theme="loki-wall"] .loki-surface-strong:not([class*="fixed"]) { position: relative; }
+:root[data-theme="loki-wall"] .loki-surface-strong:not([class*="fixed"])::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  margin-left: -6px;
+  border-radius: 999px;
+  background: #ad4322;
+  box-shadow: 0 1px 0 rgba(18, 17, 20, .4);
+}
+:root[data-theme="loki-wall"] .loki-surface, :root[data-theme="loki-wall"] .loki-surface-strong, :root[data-theme="loki-wall"] .loki-paper {
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  box-shadow: var(--shadow-panel);
+}
+:root[data-theme="loki-wall"] .loki-surface-strong:nth-child(3n) { transform: rotate(-.35deg); }
+:root[data-theme="loki-wall"] .loki-surface-strong:nth-child(3n + 2) { transform: rotate(.3deg); }
+:root[data-theme="loki-wall"] .loki-chat-stream { border-left: 2px solid rgba(173, 67, 34, .25); }
+:root[data-theme="loki-wall"] .loki-chat-stream .loki-paper::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: -20px;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #a79f93;
+  box-shadow: 0 0 0 3px #fdfcf4;
+}
+:root[data-theme="loki-wall"] .loki-chat-stream .loki-paper { position: relative; }
+:root[data-theme="loki-wall"] main h1 {
+  width: fit-content;
+  border-bottom: 2px solid #ad4322;
+  padding-bottom: 6px;
+}
+:root[data-theme="loki-wall"] .loki-nav-group-label { font-family: var(--font-display); transform: rotate(-1deg); width: fit-content; }
+:root[data-theme="loki-wall"] .loki-nav-icon { border-radius: 999px; background: #fffefa; border: 1px solid var(--border-subtle); }
+:root[data-theme="loki-wall"] .loki-sidebar .loki-nav-item { border-radius: 6px; }
+:root[data-theme="loki-wall"] .loki-nav-item-active { background: rgba(202, 84, 42, .2); box-shadow: inset 3px 0 0 #ad4322; }
+:root[data-theme="loki-wall"] .loki-button-primary, :root[data-theme="loki-wall"] .loki-sidebar .loki-button-primary, :root[data-theme="loki-wall"] .loki-composer .loki-button-primary {
+  background-color: #ad4322;
+  background-image: none;
+  color: #fffefa;
+  border: 0;
+  border-radius: 6px;
+  font-weight: 600;
+  box-shadow: none;
+}
+:root[data-theme="loki-wall"] .loki-button-secondary, :root[data-theme="loki-wall"] .loki-sidebar .loki-button-secondary {
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  color: var(--text-primary);
+}
+:root[data-theme="loki-wall"] .loki-header-sticker {
+  border: 3px solid #fffefa;
+  box-shadow: 2px 2px 0 rgba(18, 17, 20, .2);
+  transform: rotate(-3deg);
+}

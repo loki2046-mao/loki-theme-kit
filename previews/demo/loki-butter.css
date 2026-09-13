@@ -1,0 +1,116 @@
+/* loki-butter —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-butter"] {
+
+  --bg-canvas: #fceccb;
+  --bg-canvas-soft: #fff6de;
+  --bg-surface: #fffdf6;
+  --bg-elevated: #fffdf6;
+  --bg-paper: #f7e0b0;
+  --bg-metal: #3b2a17;
+  --sidebar-text: #fff3d9;
+  --sidebar-muted: #cbb28c;
+  --sidebar-hover: rgba(246, 209, 107, .16);
+  --sidebar-active: rgba(246, 209, 107, .3);
+  --sidebar-rule: rgba(255, 243, 217, .22);
+  --border-subtle: #e6cf9f;
+  --border-active: #c9761f;
+  --text-primary: #3b2a17;
+  --text-secondary: #6c5535;
+  --text-muted: #7c6749;
+  --accent-copper: #c9761f;
+  --accent-copper-deep: #9a5611;
+  --accent-cream: #f6d16b;
+  --accent-ink: #141414;
+  --state-running: #c9761f;
+  --state-success: #5f8a2c;
+  --state-warning: #c99a00;
+  --state-danger: #bc3b22;
+  --shadow-soft: 0 2px 0 rgba(59, 42, 23, .16);
+  --shadow-panel: 0 4px 0 rgba(59, 42, 23, .12);
+  --radius-panel: 0;
+  --radius-control: 0;
+  --font-display: "Helvetica Neue", "Arial", "PingFang SC", "Hiragino Sans GB", sans-serif;
+  --display-weight: 800;
+  --display-spacing: 0.08em;
+}
+
+:root[data-theme="loki-butter"] body {
+  background-image: radial-gradient(rgba(201, 118, 31, .12) 1.5px, transparent 1.6px);
+  background-size: 22px 22px;
+}
+:root[data-theme="loki-butter"] .loki-surface, :root[data-theme="loki-butter"] .loki-surface-strong, :root[data-theme="loki-butter"] .loki-paper, :root[data-theme="loki-butter"] .loki-empty-hero {
+  border: 2px solid var(--text-primary);
+  border-radius: 0;
+  outline: 1px solid rgba(201, 118, 31, .5);
+  outline-offset: 3px;
+}
+:root[data-theme="loki-butter"] .loki-surface-strong:not([class*="fixed"]) { position: relative; }
+:root[data-theme="loki-butter"] .loki-surface-strong:not([class*="fixed"])::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 8px;
+  height: 8px;
+  background: var(--accent-copper);
+}
+:root[data-theme="loki-butter"] .loki-sidebar nav { counter-reset: loki-index; }
+:root[data-theme="loki-butter"] .loki-sidebar .loki-nav-item {
+  counter-increment: loki-index;
+  border-radius: 0;
+  border-bottom: 2px solid var(--text-primary);
+  font-size: 12px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+}
+:root[data-theme="loki-butter"] .loki-sidebar .loki-nav-item::before {
+  content: counter(loki-index, decimal-leading-zero);
+  align-self: center;
+  margin-right: 1px;
+  font: 700 9.5px/1 var(--font-mono);
+  letter-spacing: .04em;
+  color: var(--sidebar-muted);
+}
+:root[data-theme="loki-butter"] .loki-sidebar .loki-nav-item-active {
+  background: var(--accent-copper);
+  color: var(--accent-ink);
+}
+:root[data-theme="loki-butter"] .loki-sidebar .loki-nav-item-active::before { color: var(--accent-ink); }
+:root[data-theme="loki-butter"] .loki-nav-group-label {
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: 10px;
+  font-weight: 800;
+}
+:root[data-theme="loki-butter"] main h1 {
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  border-top: 3px solid var(--text-primary);
+  border-bottom: 1px solid var(--text-primary);
+  padding: 7px 0;
+}
+:root[data-theme="loki-butter"] .loki-brand-name { text-transform: uppercase; letter-spacing: .18em; }
+:root[data-theme="loki-butter"] .loki-button-primary, :root[data-theme="loki-butter"] .loki-button-secondary, :root[data-theme="loki-butter"] .loki-sidebar .loki-button-primary {
+  border-radius: 0;
+  border: 2px solid var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: .13em;
+  font-weight: 800;
+  padding-inline: 14px;
+}
+:root[data-theme="loki-butter"] .loki-button-primary:active {
+  transform: translate(2px, 2px);
+}
+:root[data-theme="loki-butter"] .loki-input {
+  border-radius: 0;
+  border-width: 0 0 2px 0;
+  border-color: var(--text-primary);
+  background: transparent;
+}
+:root[data-theme="loki-butter"] .loki-chat-stream > div { max-width: 50rem; }
+:root[data-theme="loki-butter"] .loki-header-sticker {
+  border: 2px solid var(--text-primary);
+  background: var(--accent-cream);
+  padding: 3px;
+}

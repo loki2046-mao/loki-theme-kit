@@ -1,0 +1,54 @@
+/* 悬浮切换器（接入包自带，不需要你写任何 HTML） */
+.loki-floating-switcher {
+  position: fixed; right: 18px; bottom: 18px; z-index: 2147483000;
+  font: 13px/1.5 -apple-system, "PingFang SC", "Segoe UI", sans-serif;
+  display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
+}
+.loki-floating-trigger {
+  display: flex; align-items: center; gap: 7px;
+  padding: 9px 14px; border-radius: 999px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, .18);
+  cursor: pointer;
+}
+.loki-floating-trigger-text { font-weight: 600; }
+.loki-floating-dot { width: 11px; height: 11px; border-radius: 999px; }
+.loki-floating-panel {
+  width: 250px; max-height: min(60vh, 420px); overflow: hidden;
+  display: flex; flex-direction: column;
+  border-radius: var(--radius-panel, 12px);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-elevated);
+  box-shadow: 0 14px 44px rgba(0, 0, 0, .26);
+}
+.loki-floating-search {
+  margin: 8px; padding: 7px 10px; font-size: 12px;
+  border: 1px solid var(--border-subtle); border-radius: 8px;
+  background: var(--bg-surface); color: var(--text-primary);
+}
+.loki-floating-list { overflow-y: auto; padding: 0 6px 6px; }
+.loki-floating-group {
+  padding: 8px 6px 4px; font-size: 10px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--text-muted);
+}
+.loki-floating-item {
+  display: flex; align-items: center; gap: 8px; width: 100%;
+  padding: 6px; border: 0; border-radius: 8px; background: transparent;
+  color: var(--text-primary); font-size: 12.5px; text-align: left; cursor: pointer;
+}
+.loki-floating-item:hover { background: var(--bg-canvas-soft); }
+.loki-floating-item[aria-selected="true"] { box-shadow: inset 2px 0 0 var(--accent-copper); }
+.loki-floating-swatch {
+  width: 26px; height: 18px; flex: none; border-radius: 4px;
+  border: 1px solid var(--border-subtle); display: grid; place-items: center;
+}
+.loki-floating-swatch i { width: 10px; height: 10px; border-radius: 999px; display: block; }
+.loki-floating-empty { padding: 10px; color: var(--text-muted); font-size: 12px; }
+.loki-floating-foot {
+  display: flex; justify-content: space-between; gap: 8px;
+  padding: 7px 10px; border-top: 1px solid var(--border-subtle);
+  font-size: 10.5px; color: var(--text-muted);
+}
+.loki-floating-credit { opacity: .8; }

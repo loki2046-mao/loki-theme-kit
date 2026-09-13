@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>外观装好了：35 套</title>
+<style>
+:root { --bg:#efe9dd; --paper:#f7f3e9; --ink:#3a352e; --muted:#6b6355; --line:#d8cfba; --accent:#8a5a2b; }
+* { box-sizing:border-box; }
+body { margin:0; padding:40px 20px 80px; background:var(--bg); color:var(--ink);
+  font:16px/1.85 "Iowan Old Style","Songti SC","STSong",Georgia,"PingFang SC",serif; }
+.wrap { max-width:820px; margin:0 auto; background:var(--paper); border:1px solid var(--line);
+  border-radius:14px; padding:36px 44px 44px; box-shadow:0 1px 0 rgba(0,0,0,.04), 0 18px 40px -32px rgba(60,50,30,.5); }
+h1 { font-size:26px; line-height:1.35; margin:0 0 6px; letter-spacing:.01em; }
+h2 { font-size:19px; margin:34px 0 10px; padding-top:16px; border-top:1px solid var(--line); }
+h3 { font-size:16px; margin:22px 0 8px; }
+p, li { margin:9px 0; }
+strong { color:#2b2620; }
+code { background:#ece5d4; border:1px solid var(--line); border-radius:5px; padding:1px 5px;
+  font:13px/1.6 "SF Mono",Menlo,Consolas,monospace; }
+pre { background:#ece5d4; border:1px solid var(--line); border-radius:8px; padding:12px 14px; overflow-x:auto; }
+pre code { background:none; border:0; padding:0; }
+table { border-collapse:collapse; width:100%; margin:14px 0; font-size:14.5px; }
+th, td { border:1px solid var(--line); padding:9px 11px; text-align:left; vertical-align:top; }
+th { background:#e9e1ce; font-weight:600; }
+blockquote { margin:14px 0; padding:12px 16px; background:#f1ead8; border-left:3px solid var(--accent);
+  border-radius:0 8px 8px 0; }
+hr { border:0; border-top:1px solid var(--line); margin:28px 0; }
+a { color:var(--accent); }
+.foot { margin-top:34px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted);
+  font-size:13px; display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg:#14120f; --paper:#1c1916; --ink:#e6ddca; --muted:#a19684; --line:#3a3429; --accent:#d0a267; }
+  strong { color:#f2ead8; }
+  code, pre { background:#241f19; }
+  th { background:#241f19; }
+  blockquote { background:#221d17; }
+}
+</style>
+</head><body><div class="wrap">
+<h1>你的界面现在有 35 套外观主题了</h1>
+<h2>一、现在就能用</h2>
+<p>打开页面 → <strong>右下角会有「外观」按钮</strong>（你的宿主自带皮肤面板的话，就多出一组 「LOKI 外观套组」，用的还是<strong>你原来的那个入口</strong>）→ 35 套随便切。 你选的那套会被记住，下次打开还是它。</p>
+<p>不想用了：<strong>删掉那一行 <code>&lt;script src="..."&gt;</code></strong>，或者告诉你的 Agent 一句，就全还原了。 你的项目文件除了那一行，没有被改过任何东西（改前都留了 <code>.loki-bak-*</code> 备份）。</p>
+<h2>二、先跟你说清楚一件事（免得误会）</h2>
+<p><strong>配色和整套 UI 是两层。</strong></p>
+<ul><li><strong>第一层（已经装好了）</strong>：配色、文字、边框、圆角、投影、字体、成功/警告/危险状态色。</li></ul>
+<p>换一套 = 一眼就看出来变了。</p>
+<ul><li><strong>第二层（还没做）</strong>：侧栏、卡片、会话行、气泡、代码块、表格这些<strong>具体 UI 部件</strong>，</li></ul>
+<p>也跟着变成这套主题的样子（纸面纹理、贴纸圆边、撕口、计数器编号、扫描线、四角准星…）。</p>
+<p>第二层没法通用地搬过去 —— 每个界面的结构不一样，得<strong>针对你的界面单独适配一遍</strong>。 想要就跟你的 Agent 说一句：</p>
+<blockquote><strong>「连 UI 部件也一起变」</strong></blockquote>
+<p>（如果你用的是改不了源码的桌面应用，也是同一句话；Agent 会自己在外面接上去。）</p>
+<h2>三、你接下来可能想要的，都在这里 —— 说一句话就行</h2>
+<p><strong>你不用开终端、不用粘命令，也不用手动改文件。</strong> 对你的 Agent 说下面任意一句：</p>
+<table><thead><tr><th>你想要的</th><th>你就说</th><th>你的 Agent 会做什么</th><th>你要额外做什么</th></tr></thead><tbody>
+<tr><td>换一套看看</td><td>（自己点「外观」就行）</td><td>——</td><td>无</td></tr>
+<tr><td><strong>整套 UI 部件也变成这套主题的样子</strong></td><td>「连 UI 部件也一起变」</td><td>盘点你的界面、认领角色、逐个部件挂上主题的结构件，再逐条实测有没有改坏排版</td><td>无（跑完看一眼效果）</td></tr>
+<tr><td><strong>只要其中几套，其余不要</strong></td><td>「我只要这几套，其余删掉」</td><td>重打包成只含那几套，其余从你的界面和文件里走掉</td><td>无</td></tr>
+<tr><td><strong>重启/升级之后，外观没了</strong></td><td>「把外观恢复回来」</td><td>重新装回去；界面变了还会自动重新认领一次</td><td>无</td></tr>
+<tr><td><strong>不想每次都叫你，打开就有</strong></td><td>「我要开机自动恢复」</td><td>装一个常驻守护：应用一起来，外观自己回来</td><td>无（可以随时一句关掉）</td></tr>
+<tr><td><strong>我想自己新做一套</strong></td><td>「按这张图/这个风格做一套」+ 给参考图或说风格</td><td>从参考图量色 → 起一套骨架 → 写结构件 → 过六道质检门</td><td>有图就给图，没图就说风格</td></tr>
+<tr><td><strong>我想沿用现成的一套，改一改</strong></td><td>「就用这套，把主色改成 XX / 圆角改小 / 字体换掉」</td><td>复制那套成你自己的，按你说的改，再跑质检</td><td>无</td></tr>
+<tr><td><strong>我想把别人的主题搬进来</strong></td><td>「把这个 theme.css 加进来」</td><td>放进 <code>sets/</code>、改好 id 和名字、并入接入包</td><td>把文件给他</td></tr>
+<tr><td><strong>这套我不要了，全部卸掉</strong></td><td>「把外观全卸了」</td><td>删掉接入、清掉档案</td><td>无</td></tr>
+</tbody></table>
+<h2>四、"我选的那套会不会丢？" —— 讲清楚，别到时候懵</h2>
+<table><thead><tr><th>你的界面是什么</th><th>重启</th><th>应用升级</th><th>你要做什么</th></tr></thead><tbody>
+<tr><td>能改源码的项目（网页/自己的应用）</td><td><strong>在</strong></td><td><strong>在</strong>（写进代码了）</td><td>什么都不用做</td></tr>
+<tr><td>改不了源码的桌面应用</td><td><strong>会掉</strong></td><td><strong>会掉</strong></td><td>说一句「把外观恢复回来」，或者装一次「开机自动恢复」让它自己回来</td></tr>
+</tbody></table>
+<p><strong>为什么桌面应用会掉</strong>：它是个打包好的程序，只能从外面挂上去，程序一重启就没了 （你的原文件一个字节没动，所以也不会有残留）。 <strong>怎么让它不掉</strong>：装一次常驻守护（对你 Agent 说「我要开机自动恢复」）。 之后不管是重启、退出重开、还是应用升级，<strong>打开就是你的外观</strong>。</p>
+<p><strong>关于"沿用"的另一个提醒</strong>：如果那个应用本来就有自己的皮肤系统， 我们<strong>不会抢它</strong> —— 你选它自带的皮肤时，我们自动让位；你选我们的套组时， 两套都还在，随时切回来。</p>
+<h2>五、想自己动手改？文件都在这儿</h2>
+<pre><code>&lt;你的项目&gt;/loki-themes/          ← 接入包（生成物，删掉即还原）
+loki-themes.js                   自包含：35 套 + 切换器，一个文件</code></pre>
+<p>想真正改造一套主题，找你的 Agent 要 Skill 目录里的 <code>sets/</code>：</p>
+<table><thead><tr><th>你想做什么</th><th>怎么做</th></tr></thead><tbody>
+<tr><td>改颜色</td><td><code>sets/&lt;套组id&gt;/theme.css</code> 顶部那一坨 <code>--bg-canvas</code> / <code>--text</code> / <code>--accent</code> … 逐条都是令牌</td></tr>
+<tr><td>改形状/性格</td><td>同一个文件的<strong>结构件</strong>部分（圆角、边框、纹理、<code>::before</code> 编号、<code>::after</code> 撕口…）—— 这才是"一套主题"和"一个色卡"的区别</td></tr>
+<tr><td>从一张图做新的</td><td>Agent 跑 <code>palette.py 参考图.png</code> 量色 → <code>new-theme.py</code> 起骨架 → 写 6 条以上结构规则 → <code>check.py</code></td></tr>
+<tr><td>沿用别人的</td><td>把别人的 <code>theme.css</code> + <code>meta.json</code> 拷进 <code>sets/</code>，改 <code>id</code>/<code>label</code>，就是你的</td></tr>
+<tr><td>交付前自检</td><td><code>python3 scripts/check.py</code> —— 六道门：令牌完整 / 正文对比度 / 强调色上文字对比度 / <strong>结构件数量（防"只是换了个色号"）</strong> / 护眼专项 / 零素材依赖</td></tr>
+</tbody></table>
+<h2>六、这一包不会做的三件事（你的底线）</h2>
+<ol><li><strong>没有任何图片文件。</strong> 35 套全是纯 CSS，不夹带任何人的图。</li><li><strong>不含任何人的 IP 形象。</strong> 换外观只换壳，不重画角色、不替换品牌位、不生成"第二个吉祥物"。</li></ol>
+<p>装饰位留成变量，要图就用你自己的。</p>
+<ol><li><strong>不偷偷改你的东西。</strong> 改任何文件前留备份；<code>--dry-run</code> 可以只看不动；一行接入随时删掉还原。</li></ol>
+<div class="foot"><span>Loki 外观套组工坊 · 作者 Loki</span><span>关掉这一页就行，它不影响任何东西</span></div>
+</div></body></html>

@@ -1,0 +1,153 @@
+/* urban-collage —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="urban-collage"] {
+
+  --bg-canvas: #e9dfc7;
+  --bg-canvas-soft: #f4eddf;
+  --bg-surface: #f9f2e5;
+  --bg-elevated: #fffaf0;
+  --bg-paper: #eee2cd;
+  --bg-metal: #111111;
+  --border-subtle: #c2b49e;
+  --border-active: #b8ef31;
+  --text-primary: #161616;
+  --text-secondary: #554f48;
+  --text-muted: #686158;
+  --accent-copper: #8648d7;
+  --accent-copper-deep: #5d259f;
+  --accent-cream: #b8ef31;
+  --accent-ink: #ffffff;
+  --state-running: #8648d7;
+  --state-success: #4f851a;
+  --state-warning: #c16d22;
+  --state-danger: #d23e68;
+  --shadow-soft: 4px 4px 0 rgba(17,17,17,.2);
+  --shadow-panel: 2px 2px 0 rgba(17,17,17,.16);
+  --radius-panel: 0;
+  --radius-control: 0;
+
+  --bg-metal: #111111;
+  --sidebar-text: #f6efdf;
+  --sidebar-muted: #c7baa5;
+  --sidebar-hover: rgba(184,239,49,.16);
+  --sidebar-active: rgba(184,239,49,.24);
+  --shell-width: 13.5rem;
+
+  --font-display: "Helvetica Neue", "Arial", "PingFang SC", sans-serif;
+  --display-weight: 800;
+  --display-spacing: 0.07em;
+
+  --surface-glow: inset 0 0 0 1px rgba(17,17,17,.08);
+
+  --canvas-texture: repeating-linear-gradient(0deg, rgba(17,17,17,.03) 0 1px, transparent 1px 3px);
+  --canvas-texture-size: 100% 3px;
+  --canvas-ambient: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(184,239,49,.07), transparent 60%);
+
+  --canvas-ambient: radial-gradient(ellipse 85% 60% at 50% -12%, rgba(184,239,49,.10), transparent 60%);
+
+  --canvas-ambient: radial-gradient(ellipse 90% 60% at 50% -14%, rgba(184,239,49,.13), transparent 62%);
+
+  --canvas-texture: radial-gradient(rgba(17,17,17,.055) 1px, transparent 1.4px);
+  --canvas-texture-size: 14px 14px;
+}
+
+:root[data-theme="urban-collage"] .loki-surface-strong:nth-child(odd), :root[data-theme="urban-collage"] .loki-paper { transform: rotate(-.15deg); }
+:root[data-theme="urban-collage"] .loki-sidebar { border-right: 3px solid #b8ef31; }
+:root[data-theme="urban-collage"] .loki-sidebar nav { gap: .15rem; }
+:root[data-theme="urban-collage"] .loki-sidebar .loki-nav-item { border-radius: 0; border-left-width: 0; }
+:root[data-theme="urban-collage"] .loki-sidebar .loki-nav-item:nth-child(even) { margin-left: .35rem; }
+:root[data-theme="urban-collage"] .loki-chat-stream { padding-left: clamp(1rem, 7vw, 6rem); }
+:root[data-theme="urban-collage"] .loki-bubble-assistant { border: 1px solid #111; border-left: 6px solid #8648d7; }
+:root[data-theme="urban-collage"] .loki-bubble-user { border: 1px solid #111; transform: rotate(.2deg); }
+:root[data-theme="urban-collage"] .loki-chat-sidebar { background: #eee2cd; border-right: 3px solid #111; }
+:root[data-theme="urban-collage"] .loki-chat-sidebar > div:first-child { transform: rotate(-.25deg); border-bottom: 2px solid #111; }
+:root[data-theme="urban-collage"] .loki-conversation-item { border-radius: 0; margin-bottom: .3rem; border: 1px solid transparent; }
+:root[data-theme="urban-collage"] .loki-conversation-item:nth-child(even) { margin-left: .5rem; }
+:root[data-theme="urban-collage"] .loki-workbench-toolbar { border-bottom: 2px solid #111; }
+:root[data-theme="urban-collage"] .loki-composer { border-top: 3px solid #8648d7; }
+:root[data-theme="urban-collage"] { --surface-highlight: rgba(255,255,255,.14); }
+:root[data-theme="urban-collage"] body {
+  background-image:
+    repeating-linear-gradient(0deg, rgba(17,17,17,.03) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(184,239,49,.07), transparent 60%);
+  background-size: 100% 3px, auto;
+}
+:root[data-theme="urban-collage"] .loki-sidebar::after {
+  content: "LOKI DAILY · EST. 2026";
+  display: block;
+  margin: .9rem .85rem 1rem;
+  padding: .4rem .55rem;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .16em;
+  color: #f6efdf;
+  background: rgba(184,239,49,.14);
+  border: 1px solid rgba(184,239,49,.4);
+  transform: rotate(-.6deg);
+  box-shadow: 2px 2px 0 rgba(0,0,0,.5);
+}
+:root[data-theme="urban-collage"] .loki-sidebar .loki-nav-item-active {
+  box-shadow: inset 3px 0 0 var(--accent-cream), 3px 3px 0 rgba(0,0,0,.35);
+}
+:root[data-theme="urban-collage"] .loki-empty-hero {
+  border: 1px solid #111;
+  box-shadow: 6px 6px 0 rgba(17,17,17,.18), inset 0 1px 0 rgba(255,255,255,.7);
+}
+:root[data-theme="urban-collage"] .loki-button-primary {
+  box-shadow: 3px 3px 0 #111;
+}
+:root[data-theme="urban-collage"] .loki-button-primary:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #111; }
+:root[data-theme="urban-collage"] {
+  --canvas-ambient: none;
+  --canvas-noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='linear' slope='0.035'/></feComponentTransfer></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  --surface-glow: none;
+}
+:root[data-theme="urban-collage"] .loki-sidebar { background: #111111; }
+:root[data-theme="urban-collage"] .loki-sidebar, :root[data-theme="urban-collage"] .loki-sidebar .loki-nav-item, :root[data-theme="urban-collage"] .loki-sidebar .loki-nav-item-active, :root[data-theme="urban-collage"] .loki-sidebar .loki-theme-swatch, :root[data-theme="urban-collage"] .loki-sidebar button { color: #f5efdf; }
+:root[data-theme="urban-collage"] .loki-sidebar .loki-nav-item:hover { background: rgba(184,239,49,.1); }
+:root[data-theme="urban-collage"] .loki-sidebar .loki-nav-item-active {
+  background: #b8ef31; color: #111; box-shadow: 3px 3px 0 rgba(0,0,0,.55);
+}
+:root[data-theme="urban-collage"] .loki-sidebar .loki-theme-swatch-active { border-color: #b8ef31; }
+:root[data-theme="urban-collage"] .loki-bubble-assistant {
+  border: 2px solid #111; border-radius: 0;
+  box-shadow: 4px 4px 0 rgba(17,17,17,.85);
+  transform: rotate(.25deg);
+}
+:root[data-theme="urban-collage"] .loki-bubble-user {
+  border: 2px solid #111; border-radius: 0;
+  box-shadow: 4px 4px 0 rgba(17,17,17,.85);
+  transform: rotate(-.3deg);
+  background: #b8ef31;
+}
+:root[data-theme="urban-collage"] .loki-composer {
+  border: 2px solid #111; border-radius: 0;
+  box-shadow: 5px 5px 0 rgba(17,17,17,.9);
+}
+:root[data-theme="urban-collage"] .loki-composer:focus-within { box-shadow: 0 0 0 2px #b8ef31, 5px 5px 0 rgba(17,17,17,.9); }
+:root[data-theme="urban-collage"] .loki-chat-sidebar .loki-button-primary {
+  background: #111111; color: #b8ef31;
+  border: 2px solid #111111; border-radius: 0;
+  box-shadow: 3px 3px 0 rgba(17,17,17,.5);
+}
+:root[data-theme="urban-collage"] .loki-chat-sidebar .loki-button-primary:hover { background: #b8ef31; color: #111111; }
+:root[data-theme="urban-collage"] .loki-context-panel {
+  background: #f2ecdc;
+  border-left: 2px solid #111;
+}
+:root[data-theme="urban-collage"] .loki-composer .loki-button-primary {
+  background: #b8ef31; color: #111;
+  border: 2px solid #111; border-radius: 0;
+  box-shadow: 3px 3px 0 rgba(17,17,17,.85);
+}
+:root[data-theme="urban-collage"] .loki-composer .loki-button-primary:hover { filter: brightness(1.06); }
+:root[data-theme="urban-collage"] .loki-composer .loki-button-primary:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 rgba(17,17,17,.85); }
+:root[data-theme="urban-collage"] .loki-sidebar nav {
+  padding-block: 6px;
+  gap: 3px;
+}
+:root[data-theme="urban-collage"] .loki-sidebar::after {
+  margin: .45rem .85rem .55rem;
+  padding: .3rem .55rem;
+}
+:root[data-theme="urban-collage"] .loki-sidebar .loki-nav-item { padding-block: 4px; }

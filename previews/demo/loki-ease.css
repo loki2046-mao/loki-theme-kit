@@ -1,0 +1,70 @@
+/* loki-ease —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-ease"] {
+
+  --bg-canvas: #efe9dd;
+  --bg-canvas-soft: #e8e1d3;
+  --bg-surface: #f6f1e6;
+  --bg-elevated: #f6f1e6;
+  --bg-paper: #f2ece0;
+  /* 侧栏也是浅暖灰：写作时注意力留在正文那一块，不跟侧栏抢对比度 */
+  --bg-metal: #e2dbcb;
+  --sidebar-text: #35302a;
+  --sidebar-muted: #675e50;
+  --sidebar-hover: rgba(53, 48, 42, .07);
+  --sidebar-active: rgba(122, 90, 60, .16);
+  --sidebar-rule: rgba(53, 48, 42, .14);
+  --border-subtle: #ded7c8;
+  --border-active: #7a5a3c;
+  --text-primary: #3a352e;
+  --text-secondary: #5c5548;
+  --text-muted: #6b6355;
+  --accent-copper: #7a5a3c;
+  --accent-copper-deep: #614529;
+  --accent-cream: #e7dcc4;
+  --accent-ink: #f8f3e8;
+  --state-running: #5a6b7a;
+  --state-success: #4a6b4a;
+  --state-warning: #8a6a1f;
+  --state-danger: #8f4a42;
+  --shadow-soft: none;
+  --shadow-panel: none;
+  --radius-panel: 8px;
+  --radius-control: 7px;
+  /* 护眼主题里把所有装饰层关掉：噪点/纹理/氛围光/网格统统 none。
+     这几个变量是全局背景层在用的（body / workbench / canvas），
+     只有在这里置空，整套页面才真的没有任何颗粒和图案。 */
+  --canvas-texture: none;
+  --canvas-noise: none;
+  --canvas-ambient: none;
+  --canvas-mark: none;
+  --surface-highlight: none;
+  --surface-glow: none;
+  --font-display: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  --display-weight: 600;
+  --display-spacing: 0.01em;
+}
+
+:root[data-theme="loki-ease"] .loki-chat-stream > div { max-width: 38rem; }
+:root[data-theme="loki-ease"] .loki-paper {
+  font-family: "Iowan Old Style", "Songti SC", "STSong", Georgia, "PingFang SC", serif;
+  font-size: 15px;
+  line-height: 1.85;
+  letter-spacing: .01em;
+  background: var(--bg-paper);
+  border: 1px solid var(--border-subtle);
+  box-shadow: none;
+}
+:root[data-theme="loki-ease"] .loki-code-block, :root[data-theme="loki-ease"] .loki-chat-stream .loki-paper pre {
+  background: #e7dfcd;
+  color: #3a352e;
+  border: 1px solid #d8cfba;
+  box-shadow: none;
+  font-size: 13px;
+  line-height: 1.72;
+}
+:root[data-theme="loki-ease"] img { filter: brightness(.97); }
+:root[data-theme="loki-ease"] ::selection { background: #ddd2b8; color: #2f2b26; }
+:root[data-theme="loki-ease"] :focus-visible { outline: 2px solid #7a5a3c; outline-offset: 2px; }
+:root[data-theme="loki-ease"] .loki-nav-item { border-radius: 7px; }
+:root[data-theme="loki-ease"] .loki-button-primary { box-shadow: none; }

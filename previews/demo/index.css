@@ -1,0 +1,45 @@
+/* 外观套组入口 —— 由 loki-theme-kit/scripts/install.py 生成。
+   在你的全局 CSS 里 @import 这一个文件就够了。 */
+
+/* --- 护眼阅读 --- */
+@import "./loki-ease.css";
+@import "./loki-moss.css";
+@import "./loki-ease-dark.css";
+
+/* --- 艺术风格 --- */
+@import "./loki-sticker.css";
+@import "./poster-stream.css";
+@import "./loki-die.css";
+@import "./loki-egg.css";
+@import "./loki-pop.css";
+@import "./loki-guide.css";
+@import "./loki-butter.css";
+@import "./loki-manual.css";
+@import "./loki-navkit.css";
+@import "./loki-ticket.css";
+@import "./doodle-studio.css";
+@import "./urban-collage.css";
+@import "./loki-console.css";
+@import "./loki-memphis.css";
+@import "./loki-mint.css";
+@import "./loki-wire.css";
+@import "./retro-poster.css";
+@import "./loki-bauhaus.css";
+@import "./loki-wall.css";
+@import "./loki-rose.css";
+@import "./loki-nine.css";
+
+/* --- 复古屏幕 --- */
+@import "./loki-neon.css";
+@import "./loki-sandbox.css";
+@import "./loki-vapor.css";
+@import "./loki-terminal.css";
+@import "./loki-desk.css";
+@import "./pixel-arcade.css";
+@import "./loki-8bit.css";
+
+/* --- 安静工作 --- */
+@import "./loki-blueprint.css";
+@import "./loki-indigo.css";
+@import "./loki-atlas.css";
+@import "./sky-cinema.css";

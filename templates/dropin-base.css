@@ -1,0 +1,59 @@
+/* 宿主基础层（接入包版）
+   目标：让任何一个普通页面挂上接入包之后**立刻看得见变化**，同时不碰布局。
+   所以这里只改：页面底色、文字色、标题字体、链接、按钮、表单控件、选中色、滚动条。
+   不动 margin/padding/宽高 —— 那会改坏别人的排版。 */
+body {
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+}
+h1, h2, h3 {
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-weight: var(--display-weight, 700);
+  letter-spacing: var(--display-spacing, 0);
+}
+h1 { border-color: var(--border-subtle); }
+a { color: var(--accent-copper); }
+a:hover { color: var(--accent-copper-deep); }
+button {
+  background-color: var(--accent-copper);
+  color: var(--accent-ink);
+  border: 1px solid transparent;
+  border-radius: var(--radius-control, 8px);
+  font-family: inherit;
+  cursor: pointer;
+}
+button:hover { background-color: var(--accent-copper-deep); }
+button:disabled { opacity: .5; cursor: not-allowed; }
+button.secondary, button[data-variant="secondary"] {
+  background-color: transparent;
+  color: var(--text-primary);
+  border-color: var(--border-subtle);
+}
+input, textarea, select {
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-control, 8px);
+  font-family: inherit;
+}
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--border-active);
+  outline-offset: 1px;
+}
+hr { border: 0; border-top: 1px solid var(--border-subtle); }
+table { border-color: var(--border-subtle); }
+th { color: var(--text-secondary); }
+td, th { border-color: var(--border-subtle); }
+blockquote {
+  border-left: 3px solid var(--accent-copper);
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+}
+code, pre {
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  border-radius: 6px;
+}
+::selection { background: var(--accent-copper); color: var(--accent-ink); }
+* { scrollbar-color: var(--border-subtle) transparent; }

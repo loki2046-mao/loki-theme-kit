@@ -1,0 +1,159 @@
+/* loki-terminal —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-terminal"] {
+
+  --bg-canvas: #06120b;
+  --bg-canvas-soft: #08170e;
+  --bg-surface: #0a1c12;
+  --bg-elevated: #0d2417;
+  --bg-paper: #08170e;
+  --bg-metal: #030b06;
+  --sidebar-text: #c9f6dd;
+  --sidebar-muted: #5f9c7c;
+  --sidebar-hover: rgba(61, 220, 151, .14);
+  --sidebar-active: rgba(61, 220, 151, .26);
+  --sidebar-rule: rgba(61, 220, 151, .28);
+  --border-subtle: #17402c;
+  --border-active: #3ddc97;
+  --text-primary: #d5f7e4;
+  --text-secondary: #9ad4b6;
+  --text-muted: #6ba888;
+  --accent-copper: #3ddc97;
+  --accent-copper-deep: #24b273;
+  --accent-cream: #d7ffe9;
+  --accent-ink: #04140c;
+  --state-running: #3ddc97;
+  --state-success: #3ddc97;
+  --state-warning: #e8d44d;
+  --state-danger: #ff6b6b;
+  --shadow-soft: 0 0 10px rgba(61, 220, 151, .25);
+  --shadow-panel: 0 0 16px rgba(61, 220, 151, .18);
+  --radius-panel: 6px;
+  --radius-control: 4px;
+  --font-body: "SF Mono", "Menlo", "PingFang SC", monospace;
+  --font-display: "SF Mono", "Menlo", "PingFang SC", monospace;
+  --display-weight: 600;
+  --display-spacing: 0.05em;
+}
+
+:root[data-theme="loki-terminal"] .loki-chat-stream {
+  background-image: repeating-linear-gradient(
+    0deg,
+    rgba(61, 220, 151, .06) 0 1px,
+    transparent 1px 4px
+  );
+}
+:root[data-theme="loki-terminal"] .loki-chat-canvas {
+  box-shadow: inset 0 0 140px rgba(0, 0, 0, .55);
+}
+:root[data-theme="loki-terminal"] .loki-chat-stream .loki-paper, :root[data-theme="loki-terminal"] .loki-chat-stream .loki-bubble-assistant {
+  position: relative;
+  padding-left: 2.3rem;
+  border-left: 1px dashed rgba(61, 220, 151, .45);
+  border-radius: 2px;
+  box-shadow: none;
+  background: rgba(10, 28, 18, .82);
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  line-height: 1.72;
+}
+:root[data-theme="loki-terminal"] .loki-chat-stream .loki-paper::before, :root[data-theme="loki-terminal"] .loki-chat-stream .loki-bubble-assistant::before {
+  content: ">";
+  position: absolute;
+  top: .55rem;
+  left: .8rem;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent-copper);
+  opacity: .9;
+}
+:root[data-theme="loki-terminal"] .loki-bubble-user {
+  position: relative;
+  padding-left: 2rem;
+  background: rgba(61, 220, 151, .12);
+  border: 1px solid rgba(61, 220, 151, .5);
+  border-radius: 2px;
+  font-family: var(--font-mono);
+}
+:root[data-theme="loki-terminal"] .loki-bubble-user::before {
+  content: "$";
+  position: absolute;
+  top: .45rem;
+  left: .6rem;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent-copper);
+  opacity: .85;
+}
+:root[data-theme="loki-terminal"] .loki-sidebar nav { gap: 0; }
+:root[data-theme="loki-terminal"] .loki-sidebar .loki-nav-item {
+  border-radius: 0;
+  padding: .34rem .55rem;
+  font-size: 12.5px;
+}
+:root[data-theme="loki-terminal"] .loki-sidebar .loki-nav-item::before {
+  content: "|--";
+  margin-right: 5px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--sidebar-muted);
+}
+:root[data-theme="loki-terminal"] .loki-sidebar .loki-nav-group:last-child .loki-nav-item:last-child::before {
+  content: "`--";
+}
+:root[data-theme="loki-terminal"] .loki-sidebar .loki-nav-item-active {
+  background: var(--accent-copper);
+  color: var(--accent-ink);
+}
+:root[data-theme="loki-terminal"] .loki-sidebar .loki-nav-item-active::before { color: var(--accent-ink); }
+:root[data-theme="loki-terminal"] .loki-nav-group-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+:root[data-theme="loki-terminal"] .loki-nav-group-label::before {
+  content: "//";
+  margin-right: 5px;
+  color: var(--accent-copper);
+  opacity: .75;
+}
+:root[data-theme="loki-terminal"] main h1 {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  text-shadow: 0 0 12px rgba(61, 220, 151, .6);
+}
+:root[data-theme="loki-terminal"] .loki-brand-name {
+  text-shadow: 0 0 12px rgba(61, 220, 151, .6);
+}
+:root[data-theme="loki-terminal"] .loki-surface, :root[data-theme="loki-terminal"] .loki-surface-strong, :root[data-theme="loki-terminal"] .loki-paper, :root[data-theme="loki-terminal"] .loki-empty-hero {
+  border: 1px solid rgba(61, 220, 151, .4);
+}
+:root[data-theme="loki-terminal"] .loki-context-panel, :root[data-theme="loki-terminal"] .loki-composer-meta {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+}
+:root[data-theme="loki-terminal"] .loki-brand-sub::after {
+  content: "\258D";
+  margin-left: 2px;
+  animation: loki-term-cursor 1.1s steps(1) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+:root[data-theme="loki-terminal"] .loki-brand-sub::after { animation: none; }
+}
+:root[data-theme="loki-terminal"] .loki-button-primary, :root[data-theme="loki-terminal"] .loki-button-secondary, :root[data-theme="loki-terminal"] .loki-sidebar .loki-button-primary, :root[data-theme="loki-terminal"] .loki-sidebar .loki-button-secondary, :root[data-theme="loki-terminal"] .loki-composer .loki-button-primary {
+  border: 1px solid var(--accent-copper);
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 600;
+}
+:root[data-theme="loki-terminal"] .loki-button-primary::before { content: "["; margin-right: 6px; }
+:root[data-theme="loki-terminal"] .loki-button-primary::after { content: "]"; margin-left: 6px; }
+:root[data-theme="loki-terminal"] .loki-input {
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+:root[data-theme="loki-terminal"] ::selection { background: #3ddc97; color: #04140c; }

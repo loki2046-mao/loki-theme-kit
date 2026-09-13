@@ -1,0 +1,174 @@
+/* sky-cinema —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="sky-cinema"] {
+
+  --bg-canvas: #dcecf7;
+  --bg-canvas-soft: #eff7fc;
+  --bg-surface: #f8fcff;
+  --bg-elevated: #ffffff;
+  --bg-paper: #edf6fb;
+  --bg-metal: #092b59;
+  --border-subtle: #b7cfe1;
+  --border-active: #1550b7;
+  --text-primary: #092b59;
+  --text-secondary: #355980;
+  --text-muted: #4b6a8c;
+  --accent-copper: #1550b7;
+  --accent-copper-deep: #092b59;
+  --accent-cream: #f0b46b;
+  --accent-ink: #ffffff;
+  --state-running: #1550b7;
+  --state-success: #2c8b74;
+  --state-warning: #bd7c1b;
+  --state-danger: #c74e55;
+  --shadow-soft: 0 18px 42px rgba(9,43,89,.14);
+  --shadow-panel: 0 5px 18px rgba(9,43,89,.08);
+  --radius-panel: 16px;
+  --radius-control: 999px;
+
+  --sidebar-text: #f5f9ff;
+  --sidebar-muted: #bed3eb;
+  --sidebar-hover: rgba(255,255,255,.12);
+  --sidebar-active: rgba(255,255,255,.19);
+  --shell-width: 14rem;
+
+  --font-display: "Avenir Next", "PingFang SC", sans-serif;
+  --display-weight: 500;
+  --display-spacing: 0.03em;
+
+  --canvas-ambient: linear-gradient(180deg, #cde3f4 0%, transparent 55%);
+
+  --canvas-ambient: linear-gradient(180deg, #cde3f4 0%, #e6f1f9 30%, transparent 62%);
+
+  --text-secondary: #3a5f8a;
+  --text-muted: #4a6f94;
+  --text-primary: #0a2c55;
+
+  --text-muted: #3f6590;
+  --text-secondary: #33577f;
+
+  --sidebar-text: #0a2c55;
+  --sidebar-hover: rgba(21,80,183,.09);
+  --sidebar-active: rgba(21,80,183,.16);
+  --sidebar-rule: rgba(21,80,183,.18);
+
+  --sidebar-muted: #3f6590;
+}
+
+:root[data-theme="sky-cinema"] .loki-chat-stream { padding-top: 3rem; }
+:root[data-theme="sky-cinema"] .loki-sidebar { border-right: 1px solid rgba(255,255,255,.36); }
+:root[data-theme="sky-cinema"] .loki-sidebar nav { gap: .55rem; padding: 1.2rem .85rem; }
+:root[data-theme="sky-cinema"] .loki-sidebar .loki-nav-item { border-radius: 999px; padding: .55rem .75rem; }
+:root[data-theme="sky-cinema"] .loki-chat-stream { padding-top: clamp(2.5rem, 7vh, 6rem); }
+:root[data-theme="sky-cinema"] .loki-chat-stream > div { max-width: 52rem; }
+:root[data-theme="sky-cinema"] .loki-bubble-assistant { border: 0; box-shadow: 0 8px 24px rgba(9,43,89,.11); }
+:root[data-theme="sky-cinema"] .loki-chat-sidebar { background: rgba(248,252,255,.68); }
+:root[data-theme="sky-cinema"] .loki-chat-sidebar > div:first-child { border-bottom-color: #b7cfe1; }
+:root[data-theme="sky-cinema"] .loki-conversation-item { border-radius: 999px; margin-bottom: .45rem; padding-inline: .85rem; }
+:root[data-theme="sky-cinema"] .loki-workbench-toolbar { background: rgba(248,252,255,.7); }
+:root[data-theme="sky-cinema"] .loki-composer { border-top-color: #b7cfe1; }
+:root[data-theme="sky-cinema"] .loki-empty-hero { animation: loki-sky-float 9s ease-in-out infinite; }
+:root[data-theme="sky-cinema"] body {
+  background-image: linear-gradient(180deg, #cde3f4 0%, var(--bg-canvas) 52%, var(--bg-canvas) 100%);
+  background-size: auto;
+}
+:root[data-theme="sky-cinema"] .loki-bubble-assistant {
+  box-shadow: 0 8px 24px rgba(9,43,89,.10), inset 0 1px 0 rgba(255,255,255,.7);
+  border: 1px solid rgba(23,80,183,.08);
+}
+:root[data-theme="sky-cinema"] .loki-empty-hero {
+  background: linear-gradient(180deg, rgba(248,252,255,.9), rgba(248,252,255,.55));
+  backdrop-filter: blur(10px);
+}
+:root[data-theme="sky-cinema"] {
+  --canvas-ambient: none;
+  --canvas-noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='linear' slope='0.035'/></feComponentTransfer></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  --surface-glow: none;
+}
+:root[data-theme="sky-cinema"] .loki-context-panel { background: #f3f8fc; border-left: 1px solid rgba(23,80,183,.1); }
+:root[data-theme="sky-cinema"] .loki-workbench {
+  background-image: linear-gradient(180deg, #a9cdea 0 34%, #dcecf7 34% 50%, #7fb0dd 50% 60%, #1550b7 60%) !important;
+  background-color: #a9cdea !important;
+}
+:root[data-theme="sky-cinema"] .loki-composer {
+  background: rgba(255,255,255,.62) !important;
+  backdrop-filter: blur(14px) saturate(1.2);
+  border: 1px solid rgba(255,255,255,.5);
+  box-shadow: 0 14px 40px rgba(21,80,183,.16);
+}
+:root[data-theme="sky-cinema"] .loki-chat-sidebar {
+  background: rgba(255,255,255,.42) !important;
+  backdrop-filter: blur(10px);
+}
+:root[data-theme="sky-cinema"] .loki-context-panel {
+  background: rgba(255,255,255,.5) !important;
+  backdrop-filter: blur(12px);
+}
+:root[data-theme="sky-cinema"] .loki-empty-hero {
+  background: rgba(255,255,255,.5) !important;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 50px rgba(21,80,183,.14);
+}
+:root[data-theme="sky-cinema"] .loki-bubble-assistant {
+  background: rgba(255,255,255,.66) !important;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.55);
+}
+:root[data-theme="sky-cinema"] .loki-workbench {
+  background-image: linear-gradient(180deg, #b5d7ed 0%, #dcecf7 38%, #a9cdea 52%, #6fa3d8 64%, #1550b7 76%) !important;
+  background-color: #b5d7ed !important;
+}
+:root[data-theme="sky-cinema"] .loki-sidebar {
+  background: rgba(207,228,242,.55) !important;
+  backdrop-filter: blur(10px);
+  border-right-color: rgba(21,80,183,.12);
+}
+:root[data-theme="sky-cinema"] .loki-composer {
+  background: rgba(255,255,255,.5) !important;
+  backdrop-filter: blur(18px) saturate(1.3);
+  border: 1px solid rgba(255,255,255,.6);
+  box-shadow: 0 16px 44px rgba(21,80,183,.18), inset 0 0 0 1px rgba(255,255,255,.25);
+}
+:root[data-theme="sky-cinema"] .loki-bubble-assistant {
+  background: rgba(255,255,255,.55) !important;
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.6);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.2), 0 8px 24px rgba(21,80,183,.08);
+}
+:root[data-theme="sky-cinema"] .loki-empty-hero {
+  background: rgba(255,255,255,.55) !important;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 50px rgba(21,80,183,.14), inset 0 0 0 1px rgba(255,255,255,.3);
+}
+:root[data-theme="sky-cinema"] .loki-chat-stream {
+  background: rgba(222,238,249,.78) !important;
+}
+:root[data-theme="sky-cinema"] .loki-bubble-assistant {
+  background: rgba(255,255,255,.86) !important;
+}
+:root[data-theme="sky-cinema"] .loki-bubble-user {
+  background: rgba(185,216,239,.9) !important;
+}
+:root[data-theme="sky-cinema"] .loki-chat-sidebar {
+  background: rgba(255,255,255,.68) !important;
+}
+:root[data-theme="sky-cinema"] .loki-context-panel {
+  background: rgba(255,255,255,.76) !important;
+}
+:root[data-theme="sky-cinema"] .loki-empty-hero {
+  background: rgba(255,255,255,.85) !important;
+}
+:root[data-theme="sky-cinema"] .loki-sidebar {
+  background: rgba(222,238,249,.72) !important;
+}
+:root[data-theme="sky-cinema"] .loki-composer {
+  background: rgba(255,255,255,.78) !important;
+}
+:root[data-theme="sky-cinema"] .loki-sidebar .loki-theme-swatch, :root[data-theme="sky-cinema"] .loki-sidebar .loki-theme-swatch-active {
+  border-color: rgba(21,80,183,.5);
+}
+:root[data-theme="sky-cinema"] .loki-sidebar nav {
+  padding-block: 6px;
+  gap: 3px;
+}
+:root[data-theme="sky-cinema"] .loki-sidebar .loki-nav-item { padding-block: 5px; }

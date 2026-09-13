@@ -1,0 +1,117 @@
+/* 参考宿主外壳（reference host shell）
+ *
+ * 这份 CSS 是「宿主那一半」的最小实现：把主题令牌消费成真实的布局与样式，
+ * 并给元素挂上契约钩子。套组（sets/*.css）只负责改这些钩子的外观。
+ *
+ * 抄法：把你的 App 里对应的元素加上同名 class，或者把这里的令牌引用搬进你自己的样式。
+ * 它不依赖任何框架，纯 CSS。
+ */
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: var(--bg-canvas, #f5f5f2);
+  color: var(--text-primary, #17171a);
+  font: 14px/1.7 -apple-system, "PingFang SC", "Segoe UI", sans-serif;
+  transition: background-color .18s ease, color .18s ease;
+}
+
+/* ---- 布局骨架：侧栏 + 主区（分栏是默认件，别做成单块） ---- */
+.loki-app { display: flex; min-height: 100vh; }
+
+.loki-sidebar {
+  width: 232px; flex: none;
+  background: var(--bg-metal, #1b1f22);
+  color: var(--sidebar-text, #f2f2ef);
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 10px 10px 12px;
+}
+.loki-sidebar-head {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 6px 12px;
+  border-bottom: 1px solid var(--sidebar-rule, rgba(255,255,255,.14));
+  margin-bottom: 8px;
+}
+.loki-brand-name { font-weight: 600; letter-spacing: -.01em; }
+.loki-brand-sub { font-size: 10px; color: var(--sidebar-muted, #a3a39e); }
+
+.loki-nav-group { margin-top: 6px; }
+.loki-nav-group-label {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 8px 4px; font-size: 10px; letter-spacing: .1em;
+  color: var(--sidebar-muted, #a3a39e);
+}
+.loki-nav-group-dot {
+  width: 6px; height: 6px; border-radius: 999px;
+  background: var(--nav-tone, var(--accent-copper, #c2410c));
+}
+.loki-nav-item {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 10px; border-radius: var(--radius-control, 8px);
+  color: inherit; text-decoration: none; font-size: 13px;
+  transition: background-color .15s ease;
+}
+.loki-nav-item:hover { background: var(--sidebar-hover, rgba(255,255,255,.1)); }
+.loki-nav-item-active { background: var(--sidebar-active, rgba(255,255,255,.18)); font-weight: 600; }
+.loki-nav-icon {
+  width: 20px; height: 20px; flex: none; display: grid; place-items: center;
+  border-radius: calc(var(--radius-control, 8px) - 2px);
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  font-size: 11px;
+}
+.loki-nav-spacer { flex: 1; }
+
+main { flex: 1; min-width: 0; padding: 22px 26px 40px; }
+main h1 { font-family: var(--font-display, inherit); font-weight: var(--display-weight, 700);
+          letter-spacing: var(--display-spacing, 0); font-size: 21px; margin: 0 0 4px; }
+.loki-page-sub { color: var(--text-secondary, #444); margin: 0 0 18px; font-size: 13px; }
+
+.loki-surface, .loki-surface-strong, .loki-paper {
+  border: 1px solid var(--border-subtle, #ddd);
+  border-radius: var(--radius-panel, 12px);
+  background: var(--bg-surface, #fff);
+  box-shadow: var(--shadow-soft, none);
+}
+.loki-surface-strong { background: var(--bg-elevated, #fff); box-shadow: var(--shadow-panel, none); }
+.loki-row { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.loki-surface, .loki-surface-strong { padding: 14px 16px; }
+.loki-paper { padding: 11px 13px; background: var(--bg-paper, #fff); }
+.loki-card-title { font-weight: 600; margin-bottom: 4px; }
+.loki-card-body { color: var(--text-secondary, #444); font-size: 13px; }
+.loki-card-meta { color: var(--text-muted, #777); font-size: 11.5px; margin-top: 8px; }
+
+.loki-button-primary, .loki-button-secondary {
+  font: inherit; font-size: 13px; padding: 8px 14px; cursor: pointer;
+  border-radius: var(--radius-control, 8px);
+}
+.loki-button-primary {
+  background: var(--accent-copper, #c2410c);
+  color: var(--accent-ink, #fff);
+  border: 0; font-weight: 600;
+}
+.loki-button-secondary {
+  background: transparent; color: var(--text-primary, #111);
+  border: 1px solid var(--border-subtle, #ddd);
+}
+
+.loki-input {
+  font: inherit; font-size: 13px; width: 100%;
+  padding: 9px 11px; border-radius: var(--radius-control, 8px);
+  border: 1px solid var(--border-subtle, #ddd);
+  background: var(--bg-surface, #fff); color: var(--text-primary, #111);
+}
+.loki-input:focus { outline: 2px solid var(--border-active, var(--accent-copper, #c2410c)); outline-offset: 1px; }
+.loki-composer { display: flex; gap: 8px; align-items: center; margin-top: 16px;
+                 padding: 10px; background: var(--bg-elevated, #fff);
+                 border: 1px solid var(--border-subtle, #ddd);
+                 border-radius: var(--radius-panel, 12px); }
+
+.loki-tint-success { background: color-mix(in srgb, var(--state-success) 14%, transparent);
+  border-left: 3px solid var(--state-success, #15803d); padding: 6px 10px; border-radius: 4px; }
+.loki-tint-warning { background: color-mix(in srgb, var(--state-warning) 16%, transparent);
+  border-left: 3px solid var(--state-warning, #a16207); padding: 6px 10px; border-radius: 4px; }
+
+.loki-header-sticker { display: inline-grid; place-items: center; width: 30px; height: 30px;
+  background: color-mix(in srgb, var(--accent-copper) 14%, transparent); border-radius: 8px; font-size: 15px; }
+.loki-header-row { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }

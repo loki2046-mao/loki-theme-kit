@@ -1,0 +1,140 @@
+/* retro-poster —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="retro-poster"] {
+
+  --bg-canvas: #f4e5bd;
+  --bg-canvas-soft: #fff4cf;
+  --bg-surface: #fff9e9;
+  --bg-elevated: #fffdf5;
+  --bg-paper: #ffeeb8;
+  --bg-metal: #173a89;
+  --border-subtle: #173a89;
+  --border-active: #f5422a;
+  --text-primary: #173a89;
+  --text-secondary: #385293;
+  --text-muted: #4e649f;
+  --accent-copper: #f5422a;
+  --accent-copper-deep: #c72b19;
+  --accent-cream: #ffd43b;
+  --accent-ink: #141414;
+  --state-running: #f5422a;
+  --state-success: #368a57;
+  --state-warning: #c8870e;
+  --state-danger: #b9232a;
+  --shadow-soft: 5px 5px 0 #173a89;
+  --shadow-panel: 3px 3px 0 #173a89;
+  --radius-panel: 0;
+  --radius-control: 0;
+
+  --sidebar-text: #fff9e9;
+  --sidebar-muted: #dbe4ff;
+  --sidebar-hover: rgba(255,212,59,.18);
+  --sidebar-active: rgba(245,66,42,.52);
+  --shell-width: 12.5rem;
+
+  --font-display: "Rockwell", "Iowan Old Style", "Songti SC", serif;
+  --display-weight: 800;
+  --display-spacing: 0.02em;
+
+  --canvas-texture: radial-gradient(rgba(23,58,137,.09) 1px, transparent 1.5px);
+  --canvas-texture-size: 15px 15px;
+  --canvas-ambient: radial-gradient(ellipse 70% 45% at 50% -8%, rgba(255,212,59,.07), transparent 60%);
+
+  --canvas-ambient: radial-gradient(ellipse 75% 50% at 50% -10%, rgba(255,212,59,.11), transparent 60%);
+
+  --canvas-ambient: radial-gradient(ellipse 80% 55% at 50% -12%, rgba(255,212,59,.15), transparent 62%);
+
+  --canvas-texture: radial-gradient(rgba(23,58,137,.07) 1px, transparent 1.4px);
+  --canvas-texture-size: 13px 13px;
+}
+
+:root[data-theme="retro-poster"] .loki-surface, :root[data-theme="retro-poster"] .loki-surface-strong { border-width: 2px; }
+:root[data-theme="retro-poster"] .loki-sidebar { border-right: 4px solid #f5422a; }
+:root[data-theme="retro-poster"] .loki-sidebar nav { gap: .35rem; padding-inline: .7rem; }
+:root[data-theme="retro-poster"] .loki-sidebar .loki-nav-item { border-radius: 0; border-width: 1px; padding: .55rem .6rem; }
+:root[data-theme="retro-poster"] .loki-surface, :root[data-theme="retro-poster"] .loki-surface-strong, :root[data-theme="retro-poster"] .loki-bubble-assistant { border-width: 2px; }
+:root[data-theme="retro-poster"] .loki-chat-stream { padding-top: 1.25rem; }
+:root[data-theme="retro-poster"] .loki-chat-sidebar { background: #fff4cf; border-right: 3px solid #173a89; }
+:root[data-theme="retro-poster"] .loki-chat-sidebar > div:first-child { border-bottom: 3px solid #173a89; }
+:root[data-theme="retro-poster"] .loki-conversation-item { border-radius: 0; border: 1px solid #173a89; margin-bottom: .4rem; }
+:root[data-theme="retro-poster"] .loki-workbench-toolbar { border-bottom: 3px solid #173a89; }
+:root[data-theme="retro-poster"] .loki-composer { border-top: 3px solid #f5422a; }
+:root[data-theme="retro-poster"] { --surface-highlight: rgba(255,255,255,.14); }
+:root[data-theme="retro-poster"] body {
+  background-image: radial-gradient(rgba(23,58,137,.09) 1px, transparent 1.5px);
+  background-size: 15px 15px;
+}
+:root[data-theme="retro-poster"] .loki-sidebar nav { counter-reset: loki-retro; }
+:root[data-theme="retro-poster"] .loki-nav-item { counter-increment: loki-retro; position: relative; }
+:root[data-theme="retro-poster"] .loki-nav-item > span {
+  display: inline-flex; align-items: center; gap: .55rem;
+}
+:root[data-theme="retro-poster"] .loki-nav-item > span::before {
+  content: counter(loki-retro, decimal-leading-zero);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .05em;
+  color: var(--accent-copper);
+  border: 1px solid currentColor;
+  padding: 0 .28em;
+  line-height: 1.35;
+}
+:root[data-theme="retro-poster"] .loki-sidebar::after {
+  content: "VOL. 01 · 招贴";
+  display: block;
+  margin: .9rem .85rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .22em;
+  color: var(--sidebar-muted);
+  border-top: 2px solid var(--accent-copper);
+  padding-top: .45rem;
+}
+:root[data-theme="retro-poster"] .loki-button-primary {
+  box-shadow: 4px 4px 0 var(--accent-copper-deep);
+  border: 2px solid var(--accent-ink);
+}
+:root[data-theme="retro-poster"] .loki-button-primary:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--accent-copper-deep); }
+:root[data-theme="retro-poster"] .loki-bubble-user {
+  box-shadow: 4px 4px 0 var(--accent-copper-deep);
+}
+:root[data-theme="retro-poster"] {
+  --canvas-ambient: none;
+  --canvas-noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='linear' slope='0.035'/></feComponentTransfer></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  --surface-glow: none;
+}
+:root[data-theme="retro-poster"] .loki-sidebar { background: #173a89; }
+:root[data-theme="retro-poster"] .loki-sidebar, :root[data-theme="retro-poster"] .loki-sidebar .loki-nav-item, :root[data-theme="retro-poster"] .loki-sidebar .loki-nav-item-active, :root[data-theme="retro-poster"] .loki-sidebar .loki-theme-swatch, :root[data-theme="retro-poster"] .loki-sidebar button { color: #f2e9d2; }
+:root[data-theme="retro-poster"] .loki-sidebar .loki-nav-item:hover { background: rgba(255,212,59,.1); }
+:root[data-theme="retro-poster"] .loki-sidebar .loki-nav-item-active {
+  background: #21408f; color: #ffd43b; border-color: #ffd43b; box-shadow: 3px 3px 0 rgba(0,0,0,.4);
+}
+:root[data-theme="retro-poster"] .loki-bubble-assistant, :root[data-theme="retro-poster"] .loki-bubble-user {
+  border: 2px solid #111b39; border-radius: 0;
+  box-shadow: 4px 4px 0 rgba(23,58,137,.9);
+}
+:root[data-theme="retro-poster"] .loki-bubble-user { background: #f5422a; color: #fff; }
+:root[data-theme="retro-poster"] .loki-composer {
+  border: 2px solid #111b39; border-radius: 0;
+  box-shadow: 5px 5px 0 rgba(23,58,137,.9);
+}
+:root[data-theme="retro-poster"] .loki-chat-sidebar .loki-button-primary {
+  background: #173a89; color: #ffd43b;
+  border: 2px solid #111b39; border-radius: 0;
+  box-shadow: 3px 3px 0 rgba(17,17,17,.4);
+}
+:root[data-theme="retro-poster"] .loki-chat-sidebar .loki-button-primary:hover { background: #f5422a; color: #fff; }
+:root[data-theme="retro-poster"] .loki-context-panel {
+  background: #f7e9c2;
+  border-left: 3px solid #173a89;
+}
+:root[data-theme="retro-poster"] .loki-composer .loki-button-primary {
+  background: #f5422a; color: #fff; border: 2px solid #111b39; border-radius: 0;
+  box-shadow: 4px 4px 0 rgba(23,58,137,.9);
+}
+:root[data-theme="retro-poster"] .loki-composer .loki-button-primary:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 rgba(23,58,137,.9); }
+:root[data-theme="retro-poster"] .loki-sidebar nav {
+  padding-block: 6px;
+  gap: 3px;
+}
+:root[data-theme="retro-poster"] .loki-sidebar .loki-nav-item { padding-block: 5px; }

@@ -1,0 +1,17 @@
+{
+  "id": "<id>",
+  "label": "<套组名>",
+  "group": "care | art | retro | calm",
+  "accent": "#c2410c",
+  "surface": "#ffffff",
+  "source_board": "<来源板：哪张图/哪个真实场景>",
+  "palette_measured": {
+    "#ffffff": "28%",
+    "#111111": "15%",
+    "#c2410c": "14%"
+  },
+  "devices": ["<装置1>", "<装置2>"],
+  "eye_safe": false,
+  "deco_slots": {},
+  "status": "draft"
+}

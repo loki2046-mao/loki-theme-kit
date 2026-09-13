@@ -1,0 +1,97 @@
+/* loki-console —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-console"] {
+
+  --bg-canvas: #fbf9f4;
+  --bg-canvas-soft: #f4f1e9;
+  --bg-surface: #fffdf8;
+  --bg-elevated: #fffdf8;
+  --bg-paper: #fffdf8;
+  --bg-metal: #f3efe6;
+  --sidebar-text: #0b1319;
+  --sidebar-muted: #5f5b54;
+  --sidebar-hover: rgba(11, 19, 25, .07);
+  --sidebar-active: rgba(250, 109, 70, .18);
+  --sidebar-rule: rgba(11, 19, 25, .14);
+  --border-subtle: #0b1319;
+  --border-active: #fa6d46;
+  --text-primary: #0b1319;
+  --text-secondary: #3c4247;
+  --text-muted: #6a635c;
+  --accent-copper: #fa6d46;
+  --accent-copper-deep: #c8451f;
+  --accent-cream: #b1cfb6;
+  --accent-ink: #0b1319;
+  --state-running: #4a6fa5;
+  --state-success: #4f7f5c;
+  --state-warning: #a8761a;
+  --state-danger: #b8342f;
+  --shadow-soft: 2px 2px 0 rgba(11, 19, 25, .12);
+  --shadow-panel: 3px 3px 0 rgba(11, 19, 25, .16);
+  --radius-panel: 12px;
+  --radius-control: 10px;
+  --font-display: "Avenir Next", "PingFang SC", "Helvetica Neue", sans-serif;
+  --display-weight: 700;
+  --display-spacing: 0.01em;
+  /* 分组色＝海报里的便签色：橙 / 鼠尾草 / 紫 / 酒红 */
+  --nav-tone-work: #fa6d46;
+  --nav-tone-knowledge: #4f8a63;
+  --nav-tone-briefing: #7b5ea7;
+  --nav-tone-system: #833443;
+}
+
+:root[data-theme="loki-console"] .loki-page { counter-reset: loki-block; }
+:root[data-theme="loki-console"] .loki-surface-strong:not([class*="fixed"]) {
+  position: relative;
+  counter-increment: loki-block;
+  border: 2px solid #0b1319;
+  box-shadow: var(--shadow-panel);
+}
+:root[data-theme="loki-console"] .loki-surface-strong:not([class*="fixed"])::before {
+  content: counter(loki-block, decimal-leading-zero);
+  position: absolute;
+  top: 7px;
+  right: 11px;
+  font: 700 10px/1 var(--font-mono);
+  letter-spacing: .12em;
+  color: #fa6d46;
+}
+:root[data-theme="loki-console"] .loki-surface, :root[data-theme="loki-console"] .loki-paper {
+  border: 2px solid #0b1319;
+  box-shadow: var(--shadow-soft);
+}
+:root[data-theme="loki-console"] .loki-nav-group-label {
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: .02em;
+  transform: rotate(-.8deg);
+  width: fit-content;
+}
+:root[data-theme="loki-console"] .loki-nav-group-dot { border-radius: 3px; }
+:root[data-theme="loki-console"] .loki-nav-item { border-radius: 8px; }
+:root[data-theme="loki-console"] .loki-nav-item-active {
+  background: rgba(250, 109, 70, .16);
+  box-shadow: inset 3px 0 0 #fa6d46;
+}
+:root[data-theme="loki-console"] .loki-sticker-title { font-style: italic; }
+:root[data-theme="loki-console"] main h1 { border-bottom: 1px dashed rgba(11, 19, 25, .4); padding-bottom: 6px; }
+:root[data-theme="loki-console"] .loki-button-primary, :root[data-theme="loki-console"] .loki-sidebar .loki-button-primary, :root[data-theme="loki-console"] .loki-composer .loki-button-primary {
+  background-color: #fa6d46;
+  background-image: none;
+  color: #0b1319;
+  border: 2px solid #0b1319;
+  border-radius: 8px;
+  font-weight: 700;
+  box-shadow: 2px 2px 0 rgba(11, 19, 25, .8);
+}
+:root[data-theme="loki-console"] .loki-button-secondary, :root[data-theme="loki-console"] .loki-sidebar .loki-button-secondary {
+  border: 2px solid #0b1319;
+  border-radius: 8px;
+  box-shadow: 2px 2px 0 rgba(11, 19, 25, .3);
+}
+:root[data-theme="loki-console"] .loki-header-sticker {
+  border: 2px solid #0b1319;
+  background: #b1cfb6;
+  padding: 3px;
+  transform: rotate(-4deg);
+}

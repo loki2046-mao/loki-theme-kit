@@ -1,0 +1,109 @@
+/* loki-blueprint —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="loki-blueprint"] {
+
+  --bg-canvas: #10305a;
+  --bg-canvas-soft: #143a68;
+  --bg-surface: #16406f;
+  --bg-elevated: #19477a;
+  --bg-paper: #123459;
+  --bg-metal: #0b2340;
+  --sidebar-text: #eaf2ff;
+  --sidebar-muted: #9fc0e6;
+  --sidebar-hover: rgba(234, 242, 255, .1);
+  --sidebar-active: rgba(234, 242, 255, .18);
+  --sidebar-rule: rgba(234, 242, 255, .24);
+  --border-subtle: rgba(234, 242, 255, .3);
+  --border-active: #dbe8ff;
+  --text-primary: #eaf2ff;
+  --text-secondary: #c2d6f2;
+  --text-muted: #9fc0e6;
+  --accent-copper: #dbe8ff;
+  --accent-copper-deep: #b9cff2;
+  --accent-cream: #ffe08a;
+  --accent-ink: #10305a;
+  --state-running: #dbe8ff;
+  --state-success: #8ee0b0;
+  --state-warning: #ffd76e;
+  --state-danger: #ff9a8a;
+  --shadow-soft: none;
+  --shadow-panel: none;
+  --radius-panel: 2px;
+  --radius-control: 2px;
+  --font-display: "SF Mono", "Menlo", "PingFang SC", monospace;
+  --display-weight: 600;
+  --display-spacing: 0.08em;
+}
+
+:root[data-theme="loki-blueprint"] .loki-chat-stream {
+  background-image:
+    linear-gradient(rgba(234, 242, 255, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(234, 242, 255, .08) 1px, transparent 1px),
+    linear-gradient(rgba(234, 242, 255, .16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(234, 242, 255, .16) 1px, transparent 1px);
+  background-size: 12px 12px, 12px 12px, 60px 60px, 60px 60px;
+}
+:root[data-theme="loki-blueprint"] .loki-workbench-toolbar {
+  background-image:
+    repeating-linear-gradient(90deg, rgba(234, 242, 255, .45) 0 1px, transparent 1px 10px),
+    repeating-linear-gradient(90deg, rgba(234, 242, 255, .8) 0 1px, transparent 1px 50px);
+  background-size: 100% 4px, 100% 9px;
+  background-position: bottom left, bottom left;
+  background-repeat: no-repeat;
+}
+:root[data-theme="loki-blueprint"] .loki-surface, :root[data-theme="loki-blueprint"] .loki-surface-strong, :root[data-theme="loki-blueprint"] .loki-paper {
+  border: 1px dashed rgba(234, 242, 255, .45);
+  background: rgba(22, 64, 111, .5);
+}
+:root[data-theme="loki-blueprint"] .loki-surface-strong:not([class*="fixed"]) { position: relative; }
+:root[data-theme="loki-blueprint"] .loki-surface-strong:not([class*="fixed"])::before, :root[data-theme="loki-blueprint"] .loki-surface-strong:not([class*="fixed"])::after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 0 solid rgba(234, 242, 255, .8);
+  pointer-events: none;
+}
+:root[data-theme="loki-blueprint"] .loki-surface-strong:not([class*="fixed"])::before {
+  top: -1px;
+  left: -1px;
+  border-top-width: 1px;
+  border-left-width: 1px;
+}
+:root[data-theme="loki-blueprint"] .loki-surface-strong:not([class*="fixed"])::after {
+  right: -1px;
+  bottom: -1px;
+  border-right-width: 1px;
+  border-bottom-width: 1px;
+}
+:root[data-theme="loki-blueprint"] main h1 {
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  border-bottom: 1px dashed rgba(234, 242, 255, .5);
+  padding-bottom: 6px;
+}
+:root[data-theme="loki-blueprint"] .loki-nav-group-label, :root[data-theme="loki-blueprint"] .loki-composer-meta {
+  font-family: var(--font-mono);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+:root[data-theme="loki-blueprint"] .loki-nav-item, :root[data-theme="loki-blueprint"] .loki-conversation-item { border-radius: 2px; }
+:root[data-theme="loki-blueprint"] .loki-nav-item-active { box-shadow: inset 3px 0 0 #dbe8ff; }
+:root[data-theme="loki-blueprint"] .loki-button-primary, :root[data-theme="loki-blueprint"] .loki-sidebar .loki-button-primary, :root[data-theme="loki-blueprint"] .loki-composer .loki-button-primary {
+  background-color: #dbe8ff;
+  background-image: none;
+  color: #10305a;
+  border: 1px solid #dbe8ff;
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 600;
+  box-shadow: none;
+}
+:root[data-theme="loki-blueprint"] .loki-button-secondary, :root[data-theme="loki-blueprint"] .loki-sidebar .loki-button-secondary {
+  border: 1px solid rgba(234, 242, 255, .5);
+  border-radius: 2px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+:root[data-theme="loki-blueprint"] .loki-header-sticker { border: 1px dashed rgba(234, 242, 255, .6); padding: 3px; }

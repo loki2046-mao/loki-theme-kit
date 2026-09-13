@@ -1,0 +1,299 @@
+/* Loki 外观套组工坊 —— 接入包（由 scripts/bundle.py 生成，不要手改）
+ *
+ * 两种接法，由生成时决定：
+ *   A. 自己的开关（默认，Web 宿主）：主题名写在 <html data-theme="…"> 上，自带悬浮切换器。
+ *   B. 接到宿主自己的皮肤系统上（宿主已有皮肤切换器时，用这个）：
+ *      主题名走宿主的属性（Cola 是 data-cola-skin），我们的套组被注册进宿主自己的切换器面板，
+ *      **不再另起一个悬浮控件** —— 一个系统、一个入口，不打架也不挡东西。
+ *
+ * 公共部分：
+ *   1. 往 <head> 注入样式（通用元素层 + 契约钩子层 + 你选的每一套主题 + 宿主适配层）；
+ *   2. 定主题并记住选择（读宿主的 localStorage 键）；
+ *   3. 同步宿主的深浅色标记（Cola 用 .dark / .light）；
+ *   4. 可选：给常见元素自动贴契约类名（data-autotag="on"）。
+ */
+(function () {
+  "use strict";
+
+  var CSS = __CSS__;
+  var THEMES = __THEMES__;
+  var GROUP_LABELS = __GROUP_LABELS__;
+  var DEFAULT_THEME = __DEFAULT__;
+  var HOST = __HOST__;   // 宿主适配信息；null = 通用 Web 宿主
+
+  var self = document.currentScript;
+  var opt = (self && self.dataset) || {};
+  var root = document.documentElement;
+
+  /* 代际接管：同一个页面被注入两次（换清单、重装、Agent 重跑）时，新的一份必须
+     把上一代**整体撤下** —— 否则上一代还挂着自己的 MutationObserver 和面板条目，
+     改小了清单再注入会看到旧条目又长回来（真踩过）。 */
+  var GEN = Date.now();
+  var OBS = [];
+  var PREV = window.__LOKI_THEME_KIT__;
+  if (PREV && typeof PREV.destroy === "function") { try { PREV.destroy(); } catch (e) {} }
+
+  /** 主题名写哪个属性上：宿主有约定就用宿主的，否则用我们自己的 data-theme */
+  var ATTR = (HOST && HOST.attr) || "data-theme";
+  /** 选择存哪个键：宿主已有皮肤系统时跟它共用，避免两套记忆打架 */
+  var STORAGE_KEY = (HOST && HOST.storageKey) || "loki_theme";
+  /** 交给宿主切换器管的时候，不另建悬浮控件 */
+  var HOST_MANAGED = !!(HOST && HOST.switcher);
+
+  // ---------- 1. 注入样式 ----------
+  var styleId = "loki-theme-kit-styles";
+  var old = document.getElementById(styleId);
+  if (old) old.remove();
+  var st = document.createElement("style");
+  st.id = styleId;
+  st.textContent = CSS;
+  (document.head || document.documentElement).appendChild(st);
+
+  // ---------- 2. 定主题 ----------
+  function stored() {
+    try { return localStorage.getItem(STORAGE_KEY) || localStorage.getItem("loki_theme"); } catch (e) { return null; }
+  }
+  function remember(id) { try { localStorage.setItem(STORAGE_KEY, id); } catch (e) {} }
+  function byId(id) {
+    for (var i = 0; i < THEMES.length; i++) if (THEMES[i].id === id) return THEMES[i];
+    return null;
+  }
+  function available(id) { return !!byId(id); }
+
+  function syncHost(id) {
+    if (!HOST) return;
+    if (HOST.schemeClass) {
+      var isDark = HOST.darkThemes.indexOf(id) >= 0;
+      root.classList.toggle("dark", isDark);
+      root.classList.toggle("light", !isDark);
+    }
+  }
+
+  /* 宿主自己的皮肤系统会在属性变化后重设深浅 class（它不认识我们的主题名，多半会按 light 处理）。
+     所以只要我们的标记属性还在，就把深浅 class 再扳回来一次。 */
+  if (HOST && HOST.schemeClass) {
+    var fixing = false;
+    var moScheme = new MutationObserver(function () {
+      var id = root.getAttribute("data-loki-theme");
+      if (!id || fixing) return;
+      var want = HOST.darkThemes.indexOf(id) >= 0;
+      if (root.classList.contains("dark") !== want) {
+        fixing = true;
+        syncHost(id);
+        setTimeout(function () { fixing = false; }, 50);
+      }
+    });
+    moScheme.observe(root, { attributes: true, attributeFilter: ["class"] });
+    OBS.push(moScheme);
+  }
+
+  var current = stored();
+  if (!available(current)) current = available(opt.theme) ? opt.theme : null;
+
+  function apply(id, persist) {
+    root.setAttribute(ATTR, id);
+    root.setAttribute("data-loki-theme", id);   // 我们自己的标记，适配层的 CSS 靠它生效
+    if (persist !== false) remember(id);
+    syncHost(id);
+    current = id;
+    var dot = document.querySelector(".loki-floating-dot");
+    var label = document.querySelector(".loki-floating-current");
+    var t = byId(id);
+    if (dot && t) dot.style.background = t.accent || "#888";
+    if (label && t) label.textContent = t.label || id;
+    if (HOST_MANAGED) markHostSelection(id);
+  }
+
+  // 宿主已有主题（不是我们的）时，不抢它的开关：只在页面上放我们的标记属性，不动它的属性
+  if (current) apply(current, false);
+
+  // ---------- 3. 接到宿主自己的切换器上 ----------
+  function markHostSelection(id) {
+    var grid = document.querySelector(HOST.switcher.grid);
+    if (!grid) return;
+    var btns = grid.querySelectorAll("." + HOST.switcher.itemClass);
+    for (var i = 0; i < btns.length; i++) {
+      var mine = btns[i].getAttribute("data-loki-theme-id");
+      if (mine) btns[i].classList.toggle("on", mine === id);
+      else btns[i].classList.remove("on");
+    }
+  }
+
+  function registerIntoHost() {
+    if (!HOST_MANAGED) return;
+    var grid = document.querySelector(HOST.switcher.grid);
+    if (!grid || grid.querySelector("[data-loki-theme-id]")) return;
+    var itemClass = HOST.switcher.itemClass;
+    var start = HOST.switcher.indexStart || 10;
+
+    var label = document.createElement("div");
+    label.className = "loki-group-label";
+    label.textContent = HOST.switcher.groupLabel || "LOKI 外观套组";
+    label.style.gridColumn = "1 / -1";
+    grid.appendChild(label);
+
+    THEMES.forEach(function (t, i) {
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = itemClass + " loki-theme-entry";
+      b.setAttribute("data-loki-theme-id", t.id);
+      b.title = (t.label || t.id) + "（" + HOST.label + " 适配）";
+      b.textContent = String(start + i).padStart(2, "0") + " " + shortName(t.label || t.id);
+      if (current === t.id) b.classList.add("on");
+      b.addEventListener("click", function () { apply(t.id); }, true);   // 捕获：先于宿主自己的处理
+      grid.appendChild(b);
+    });
+  }
+
+  function shortName(s) {
+    // 宿主的面板格子很窄（5 列、9px 字），名字压到 3 个汉字以内
+    var map = { "纸墨·日": "纸墨", "纸墨·夜": "纸夜", "雾苔": "雾苔", "贴纸波普": "波普",
+      "包豪斯": "包豪", "孟菲斯": "孟菲", "创作台": "创作", "九宫格": "九宫", "导航件": "导航",
+      "模切贴纸": "模切", "彩蛋": "彩蛋", "线框稿": "线框", "音乐贴纸": "音贴", "现场手册": "手册",
+      "留言墙": "留言", "入场指南": "指南", "薄荷手账": "薄荷", "黄油海报": "黄油", "玫瑰纸片": "玫瑰",
+      "通行证票根": "票根", "拼贴": "拼贴", "海报": "海报", "涂鸦": "涂鸦", "展流": "展流",
+      "老式桌面": "老桌", "蒸汽波": "蒸汽", "像素冒险": "像素", "像素": "街机", "终端绿": "终端",
+      "霓虹电台": "霓虹", "沙盘": "沙盘", "蓝图": "蓝图", "导览图": "导览", "靖蓝夜色": "靖蓝", "天空": "天空" };
+    return map[s] || s.slice(0, 3);
+  }
+
+  function watchHostSwitcher() {
+    if (!HOST_MANAGED) return;
+    /* 观察 body，而不是宿主切换器的某个节点：宿主的面板是**懒挂载**的
+       （根节点先出现、面板内容等第一次打开才建），甚至可能整个根节点被换掉。
+       盯一个具体节点会出现「注入时面板还没建，之后建好了却再没人来注册」——
+       实测就是这样：面板里少了我们那 35 个条目。盯 body 一定能等到。 */
+    var pending = null;
+    var re = function () {
+      if (pending) return;
+      pending = setTimeout(function () { pending = null; registerIntoHost(); }, 250);
+    };
+    registerIntoHost();
+    var moHost = new MutationObserver(re);
+    moHost.observe(document.body, { childList: true, subtree: true });
+    OBS.push(moHost);
+    // 宿主自己的按钮被点：把我们的高亮撤掉（谁的切换器最后被用，谁说了算）
+    document.addEventListener("click", function (e) {
+      var b = e.target && e.target.closest ? e.target.closest("." + HOST.switcher.itemClass) : null;
+      if (!b || b.getAttribute("data-loki-theme-id")) return;
+      root.removeAttribute("data-loki-theme");
+      root.removeAttribute(ATTR);
+      current = null;
+    }, true);
+  }
+
+  // ---------- 4. 悬浮切换器（只有宿主没有自己的切换器时才建） ----------
+  function buildSwitcher() {
+    if (HOST_MANAGED || opt.switcher === "off" || !THEMES.length) return;
+    if (document.querySelector(".loki-floating-switcher")) return;
+    var box = document.createElement("div");
+    box.className = "loki-floating-switcher";
+    var cur = byId(current) || {};
+    box.innerHTML =
+      '<button type="button" class="loki-floating-trigger" aria-label="切换外观">' +
+        '<span class="loki-floating-dot" style="background:' + (cur.accent || "#888") + '"></span>' +
+        '<span class="loki-floating-trigger-text">外观</span>' +
+      '</button>' +
+      '<div class="loki-floating-panel" hidden>' +
+        '<input class="loki-floating-search" type="search" placeholder="搜索套组（名字 / 分组）">' +
+        '<div class="loki-floating-list"></div>' +
+        '<div class="loki-floating-foot"><span class="loki-floating-current">' + (cur.label || current || "") + '</span>' +
+        '<span class="loki-floating-credit">Loki 外观套组工坊</span></div>' +
+      '</div>';
+    document.body.appendChild(box);
+
+    var list = box.querySelector(".loki-floating-list");
+    var groups = [];
+    for (var i = 0; i < THEMES.length; i++) {
+      var g = THEMES[i].group || "";
+      if (groups.indexOf(g) === -1) groups.push(g);
+    }
+    function render(q) {
+      list.innerHTML = "";
+      q = (q || "").toLowerCase();
+      groups.forEach(function (g) {
+        var hits = THEMES.filter(function (t) {
+          if ((t.group || "") !== g) return false;
+          if (!q) return true;
+          return (t.id + " " + t.label + " " + (GROUP_LABELS[g] || "")).toLowerCase().indexOf(q) >= 0;
+        });
+        if (!hits.length) return;
+        if (GROUP_LABELS[g]) {
+          var h = document.createElement("div");
+          h.className = "loki-floating-group";
+          h.textContent = GROUP_LABELS[g];
+          list.appendChild(h);
+        }
+        hits.forEach(function (t) {
+          var b = document.createElement("button");
+          b.type = "button";
+          b.className = "loki-floating-item";
+          b.setAttribute("aria-selected", String(t.id === current));
+          b.innerHTML = '<span class="loki-floating-swatch" style="background:' + (t.surface || "#fff") +
+                        '"><i style="background:' + (t.accent || "#888") + '"></i></span>' +
+                        '<span>' + (t.label || t.id) + '</span>';
+          b.onclick = function () { apply(t.id); render(q); };
+          list.appendChild(b);
+        });
+      });
+      if (!list.children.length) list.innerHTML = '<div class="loki-floating-empty">没有匹配的套组</div>';
+    }
+    render("");
+    var trigger = box.querySelector(".loki-floating-trigger");
+    var panel = box.querySelector(".loki-floating-panel");
+    trigger.onclick = function () {
+      panel.hidden = !panel.hidden;
+      if (!panel.hidden) { var s = box.querySelector(".loki-floating-search"); if (s) s.focus(); }
+    };
+    box.querySelector(".loki-floating-search").oninput = function (e) { render(e.target.value); };
+  }
+
+  // ---------- 5. 可选：自动贴契约类名 ----------
+  function autotag() {
+    if (opt.autotag !== "on") return;
+    var rules = [
+      ["nav a, aside a, .sidebar a", "loki-nav-item"],
+      ["button", "loki-button-primary"],
+      ["input[type=text], input[type=search], input:not([type]), textarea", "loki-input"],
+      ["nav, aside", "loki-sidebar"],
+      ["main, article", "loki-page"],
+      ["section", "loki-surface"],
+    ];
+    rules.forEach(function (r) {
+      var els = document.querySelectorAll(r[0]);
+      for (var i = 0; i < els.length; i++) {
+        if (!/\bloki-/.test(els[i].className || "")) els[i].classList.add(r[1]);
+      }
+    });
+  }
+
+  /* 撤下自己：断开所有观察器、摘掉面板条目与样式、去掉我们的属性。
+     只动「自己加的东西」，宿主自己的皮肤和存储一个字不碰。 */
+  function destroy() {
+    OBS.forEach(function (m) { try { m.disconnect(); } catch (e) {} });
+    OBS.length = 0;
+    Array.prototype.forEach.call(document.querySelectorAll("[data-loki-theme-id]"), function (e) {
+      if (e.parentNode) e.parentNode.removeChild(e);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll(".loki-group-label"), function (e) {
+      if (e.parentNode) e.parentNode.removeChild(e);
+    });
+    var box = document.querySelector(".loki-floating-switcher");
+    if (box && box.parentNode) box.parentNode.removeChild(box);
+    var st_ = document.getElementById(styleId);
+    if (st_ && st_.parentNode) st_.parentNode.removeChild(st_);
+    root.removeAttribute("data-loki-theme");
+  }
+
+  function boot() { autotag(); buildSwitcher(); watchHostSwitcher(); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else boot();
+
+  window.__LOKI_THEME_KIT__ = {
+    gen: GEN,
+    register: registerIntoHost,      // 需要时可以强制把自己注册进宿主面板
+    sets: THEMES.map(function (t) { return t.id; }),
+    current: function () { return root.getAttribute(ATTR) || current; },
+    destroy: destroy
+  };
+})();

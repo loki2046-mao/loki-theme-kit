@@ -1,0 +1,88 @@
+/* poster-stream —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="poster-stream"] {
+
+  --bg-canvas: #f6f5f2;
+  --bg-canvas-soft: #ffffff;
+  --bg-surface: #ffffff;
+  --bg-elevated: #ffffff;
+  --bg-paper: #f2f1ed;
+  --bg-metal: #1c1c1b;
+  --border-subtle: #deddd8;
+  --border-active: #d23f31;
+  --text-primary: #1c1c1b;
+  --text-secondary: #565653;
+  --text-muted: #6f6f6b;
+  --accent-copper: #d23f31;
+  --accent-copper-deep: #9e231b;
+  --accent-cream: #315fbe;
+  --accent-ink: #ffffff;
+  --state-running: #315fbe;
+  --state-success: #327157;
+  --state-warning: #b98021;
+  --state-danger: #d23f31;
+  --shadow-soft: 0 8px 22px rgba(28,28,27,.1);
+  --shadow-panel: 0 1px 3px rgba(28,28,27,.1);
+  --radius-panel: 2px;
+  --radius-control: 2px;
+
+  --bg-metal: #ffffff;
+  --sidebar-text: #1c1c1b;
+  --sidebar-muted: #676762;
+  --sidebar-hover: rgba(28,28,27,.06);
+  --sidebar-active: rgba(210,63,49,.12);
+  --shell-width: 14rem;
+
+  --font-display: "Helvetica Neue", "Arial", sans-serif;
+  --display-weight: 600;
+  --display-spacing: 0.005em;
+}
+
+:root[data-theme="poster-stream"] .loki-surface-strong { box-shadow: none; }
+:root[data-theme="poster-stream"] .loki-sidebar { border-right: 1px solid #deddd8; }
+:root[data-theme="poster-stream"] .loki-sidebar nav { gap: .1rem; padding-inline: .85rem; }
+:root[data-theme="poster-stream"] .loki-sidebar .loki-nav-item { border-radius: 2px; padding: .6rem .7rem; }
+:root[data-theme="poster-stream"] .loki-sidebar .loki-nav-item-active { box-shadow: inset 2px 0 0 #d23f31; }
+:root[data-theme="poster-stream"] .loki-chat-stream { padding-inline: clamp(1rem, 8vw, 8rem); }
+:root[data-theme="poster-stream"] .loki-bubble-assistant { box-shadow: none; border-left: 2px solid #d23f31; }
+:root[data-theme="poster-stream"] .loki-chat-sidebar { background: #fff; border-right-color: #deddd8; }
+:root[data-theme="poster-stream"] .loki-chat-sidebar > div:first-child { border-bottom-color: #deddd8; }
+:root[data-theme="poster-stream"] .loki-conversation-item { border-radius: 0; margin-bottom: .2rem; padding-block: .8rem; }
+:root[data-theme="poster-stream"] .loki-workbench-toolbar { background: #fff; }
+:root[data-theme="poster-stream"] .loki-composer { border-top: 1px solid #deddd8; }
+:root[data-theme="poster-stream"] .loki-nav-item-active::before {
+  content: "";
+  display: inline-block;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: var(--accent-copper);
+  margin-right: .45rem;
+  vertical-align: middle;
+}
+:root[data-theme="poster-stream"] {
+  --canvas-ambient: none;
+  --canvas-noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='linear' slope='0.035'/></feComponentTransfer></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  --surface-glow: none;
+}
+:root[data-theme="poster-stream"] .loki-context-panel { background: #faf8f2; border-left: 1px solid rgba(17,17,17,.08); }
+:root[data-theme="poster-stream"] .loki-conversation-item {
+  border: 1px solid #d2d0ca;
+  background: #ffffff;
+  margin: 5px 10px;
+  box-shadow: 0 1px 2px rgba(28,28,27,.04);
+}
+:root[data-theme="poster-stream"] .loki-conversation-item-active {
+  border-color: #d23f31;
+  background: #fdf3f1;
+}
+:root[data-theme="poster-stream"] .loki-conversation-item:nth-child(2n) { min-height: 3.2rem; }
+:root[data-theme="poster-stream"] .loki-conversation-item:nth-child(2n+1) { min-height: 4rem; }
+:root[data-theme="poster-stream"] .loki-bubble-user {
+  border-radius: 4px 18px 4px 18px;
+}
+:root[data-theme="poster-stream"] .loki-conversation-item-active { box-shadow: inset 3px 0 0 #d23f31; }
+:root[data-theme="poster-stream"] .loki-sidebar nav {
+  padding-block: 6px;
+  gap: 3px;
+}
+:root[data-theme="poster-stream"] .loki-sidebar .loki-nav-item { padding-block: 5px; }

@@ -1,0 +1,74 @@
+/* 契约元素的基础长相（接入包版）
+   套组只负责"覆盖"这些钩子的外观，不负责定义它们的排版。所以在没有参考宿主的情况下
+   （比如只引了接入包的普通页面），这一层必须补上，套组的覆盖才有意义。
+   范围：只碰 .loki-* 这些契约类名，一行都不碰 body/main/nav 这类通用标签。 */
+.loki-surface, .loki-surface-strong, .loki-paper {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-panel);
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-soft);
+  padding: 14px 16px;
+}
+.loki-surface-strong { background: var(--bg-elevated); box-shadow: var(--shadow-panel); }
+.loki-paper { background: var(--bg-paper); padding: 11px 13px; }
+.loki-page { display: block; }
+.loki-sidebar {
+  background: var(--bg-metal);
+  color: var(--sidebar-text);
+  border-radius: var(--radius-panel);
+  padding: 10px;
+}
+.loki-nav-item {
+  display: flex; align-items: center; gap: 9px;
+  padding: 8px 10px; border-radius: var(--radius-control);
+  color: inherit; text-decoration: none; font-size: 13px;
+}
+.loki-nav-item:hover { background: var(--sidebar-hover); }
+.loki-nav-item-active { background: var(--sidebar-active); font-weight: 600; }
+.loki-nav-icon {
+  width: 20px; height: 20px; flex: none; display: grid; place-items: center;
+  border-radius: calc(var(--radius-control) - 2px);
+  background: color-mix(in srgb, currentColor 12%, transparent);
+  font-size: 11px;
+}
+.loki-nav-group-label {
+  display: flex; align-items: center; gap: 6px;
+  padding: 6px 8px 4px; font-size: 10px; letter-spacing: .1em; color: var(--sidebar-muted);
+}
+.loki-nav-group-dot {
+  width: 6px; height: 6px; border-radius: 999px;
+  background: var(--nav-tone, var(--accent-copper));
+}
+.loki-button-primary, .loki-button-secondary {
+  font-size: 13px; padding: 8px 14px; border-radius: var(--radius-control);
+  cursor: pointer;
+}
+.loki-button-primary { background: var(--accent-copper); color: var(--accent-ink); border: 0; font-weight: 600; }
+.loki-button-secondary { background: transparent; color: var(--text-primary); border: 1px solid var(--border-subtle); }
+.loki-input {
+  font-size: 13px; padding: 9px 11px; border-radius: var(--radius-control);
+  border: 1px solid var(--border-subtle); background: var(--bg-surface); color: var(--text-primary);
+}
+.loki-input:focus { outline: 2px solid var(--border-active); outline-offset: 1px; }
+.loki-composer {
+  display: flex; gap: 8px; align-items: center; margin-top: 16px; padding: 10px;
+  background: var(--bg-elevated); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-panel);
+}
+.loki-tint-success { background: color-mix(in srgb, var(--state-success) 14%, transparent);
+  border-left: 3px solid var(--state-success); padding: 6px 10px; border-radius: 4px; }
+.loki-tint-warning { background: color-mix(in srgb, var(--state-warning) 16%, transparent);
+  border-left: 3px solid var(--state-warning); padding: 6px 10px; border-radius: 4px; }
+.loki-tint-danger { background: color-mix(in srgb, var(--state-danger) 15%, transparent);
+  border-left: 3px solid var(--state-danger); padding: 6px 10px; border-radius: 4px; }
+.loki-empty-hero {
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-panel);
+  background: var(--bg-elevated); padding: 20px;
+}
+.loki-header-sticker {
+  display: inline-grid; place-items: center; width: 30px; height: 30px;
+  background: color-mix(in srgb, var(--accent-copper) 14%, transparent);
+  border-radius: 8px;
+}
+.loki-code-block { background: var(--bg-surface); color: var(--text-secondary);
+  border-radius: var(--radius-control); padding: 10px 12px; }

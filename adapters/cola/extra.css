@@ -1,0 +1,45 @@
+/* Cola 专属修补（适配器的结构层）—— 依据全部来自真机 DOM 实测
+ *
+ * 这一层只在该主题生效时起作用：运行时会往 <html> 放一个自己的标记属性 data-loki-theme，
+ * 所有规则都以它为前缀，所以它不会污染 Cola 自己的皮肤。
+ */
+
+/* ── 1. 宿主那条 `button { color: var(--accent-ink) !important }` 的连带伤害 ──
+   它把"压在强调色上的字色"套到了所有按钮上。深色主题里 accent-ink 是近黑，落到深色底上
+   实测 1.03:1（一个「模型：GLM 5.3 Flash」小标签）；它还会漏进宿主自己的切换器按钮里。
+   按「这个元素到底坐在什么底上」分两类修。 */
+html[data-loki-theme] button { color: var(--text-primary) !important; }
+
+/* 真的把强调色当底色的那几类列表行（会话行、文件行）：行与行内非按钮元素用 --accent-ink，
+   行内嵌的按钮自己有底色，留给上一条规则，否则会继承出"深字压深底"。 */
+html[data-loki-theme] button { color: var(--text-primary) !important; }
+/* 说明：Cola 的「选中行 / 强调块」用 --cola-highlight 当底色，块里的文字走它自己的规则。
+   我们只把令牌接过来，不改这些块的结构与底色（那是宿主的设计），只保证字色落在什么底上都够看。 */
+
+/* ── 2. 宿主切换器面板要装得下 35 套 ──
+   它的面板原本没有滚动（9 套两行刚好）。加我们的 35 套之后会顶出屏幕外，给它一个上限 + 滚动。 */
+#cola-skin-switcher .css-panel {
+  max-height: min(70vh, 560px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+/* 面板里的按钮别被上面那条通用 button 规则带跑：继承面板自己的字色 */
+#cola-skin-switcher .css-btn { color: inherit !important; }
+/* 分组标题（我们要往面板里插 35 个按钮，得分个组，不然跟它自己的 9 套混在一起） */
+#cola-skin-switcher .loki-group-label {
+  margin: 6px 0 2px;
+  font: 600 9px/1.5 ui-monospace, Menlo, monospace;
+  letter-spacing: .08em;
+  opacity: .55;
+  border-top: 1px dashed rgba(128, 128, 128, .35);
+  padding-top: 6px;
+}
+#cola-skin-switcher .loki-theme-entry.on { outline: 1px solid currentColor; }
+
+/* ── 3. 材质层：让主题在 Cola 里不只是"换个色" ──
+   我们的主题各自带了材质令牌（环境光 / 纹理 / 噪点），Cola 不消费它们，于是这里接一下。
+   只加背景图，不动任何布局与尺寸。 */
+html[data-loki-theme] body {
+  background-image: var(--canvas-ambient), var(--canvas-noise), var(--canvas-texture);
+  background-attachment: fixed;
+}

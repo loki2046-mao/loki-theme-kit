@@ -1,0 +1,91 @@
+/* doodle-studio —— 由 scripts/extract.py 从 作者自己的 App（Loki Assistant）的 app/globals.css 抽出，未人工整理。
+   契约见 references/host-contract.md；选择器前缀可按宿主改写。 */
+:root[data-theme="doodle-studio"] {
+
+  --bg-canvas: #f8f5ed;
+  --bg-canvas-soft: #fffdf7;
+  --bg-surface: #fffef9;
+  --bg-elevated: #ffffff;
+  --bg-paper: #fff8dc;
+  --bg-metal: #111111;
+  --border-subtle: #d5cdbd;
+  --border-active: #ff4b19;
+  --text-primary: #111111;
+  --text-secondary: #4d4a45;
+  --text-muted: #736e67;
+  --accent-copper: #ff4b19;
+  --accent-copper-deep: #c62c08;
+  --accent-cream: #ffd431;
+  --accent-ink: #111111;
+  --state-running: #2e65d2;
+  --state-success: #31885c;
+  --state-warning: #bb7600;
+  --state-danger: #d53c34;
+  --shadow-soft: 3px 4px 0 rgba(17,17,17,.16);
+  --shadow-panel: 1px 2px 0 rgba(17,17,17,.14);
+  --radius-panel: 10px 4px 9px 3px;
+  --radius-control: 7px 3px 6px 2px;
+
+  --bg-metal: #fff1d2;
+  --sidebar-text: #111111;
+  --sidebar-muted: #5f5a50;
+  --sidebar-hover: rgba(255,75,25,.11);
+  --sidebar-active: rgba(255,212,49,.48);
+  --shell-width: 13.5rem;
+
+  --font-display: "Chalkboard SE", "Kaiti SC", "STKaiti", "Comic Sans MS", cursive;
+  --display-weight: 600;
+  --display-spacing: 0.005em;
+
+  --canvas-texture: repeating-linear-gradient(0deg, transparent 0 27px, rgba(17,17,17,.05) 27px 28px);
+  --canvas-texture-size: 100% 28px;
+  --canvas-ambient: radial-gradient(ellipse 70% 40% at 50% -8%, rgba(255,75,25,.05), transparent 60%);
+
+  --canvas-ambient: radial-gradient(ellipse 75% 45% at 50% -10%, rgba(255,75,25,.07), transparent 60%);
+
+  --canvas-ambient: radial-gradient(ellipse 80% 50% at 50% -12%, rgba(255,75,25,.09), transparent 62%);
+}
+
+:root[data-theme="doodle-studio"] .loki-paper { border-style: dashed; }
+:root[data-theme="doodle-studio"] .loki-sidebar { border-right: 2px dashed #111; }
+:root[data-theme="doodle-studio"] .loki-sidebar nav { gap: .35rem; padding-inline: .75rem; }
+:root[data-theme="doodle-studio"] .loki-sidebar .loki-nav-item { border-radius: 8px 3px 9px 2px; }
+:root[data-theme="doodle-studio"] .loki-sidebar .loki-nav-item:nth-child(3n) { transform: rotate(-.35deg); }
+:root[data-theme="doodle-studio"] .loki-empty-hero { border-width: 2px; border-style: dashed; }
+:root[data-theme="doodle-studio"] .loki-bubble-user { transform: rotate(.25deg); }
+:root[data-theme="doodle-studio"] .loki-chat-sidebar { background: #fff8dc; border-right: 2px dashed #111; }
+:root[data-theme="doodle-studio"] .loki-chat-sidebar > div:first-child { border-bottom-style: dashed; }
+:root[data-theme="doodle-studio"] .loki-conversation-item { border-radius: 9px 3px 8px 2px; border: 1px dashed transparent; margin-bottom: .35rem; }
+:root[data-theme="doodle-studio"] .loki-conversation-item:hover { border-color: #111; }
+:root[data-theme="doodle-studio"] .loki-workbench-toolbar { border-bottom-style: dashed; }
+:root[data-theme="doodle-studio"] .loki-composer { border-top: 2px dashed #111; }
+:root[data-theme="doodle-studio"] .loki-paper {
+  transition: transform .18s cubic-bezier(.34,1.56,.64,1);
+}
+:root[data-theme="doodle-studio"] .loki-paper:hover { transform: rotate(-.4deg) scale(1.012); }
+:root[data-theme="doodle-studio"] body {
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 27px, rgba(17,17,17,.05) 27px 28px),
+    radial-gradient(ellipse 70% 40% at 50% -8%, rgba(255,75,25,.05), transparent 60%);
+  background-size: 100% 28px, auto;
+}
+:root[data-theme="doodle-studio"] .loki-bubble-assistant {
+  box-shadow: 3px 4px 0 rgba(17,17,17,.08), inset 0 1px 0 rgba(255,255,255,.7);
+}
+:root[data-theme="doodle-studio"] {
+  --canvas-ambient: none;
+  --canvas-noise: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='linear' slope='0.035'/></feComponentTransfer></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  --surface-glow: none;
+}
+:root[data-theme="doodle-studio"] .loki-bubble-assistant, :root[data-theme="doodle-studio"] .loki-bubble-user, :root[data-theme="doodle-studio"] .loki-composer, :root[data-theme="doodle-studio"] .loki-surface-strong {
+  border-radius: 18px 6px 16px 8px;
+  border: 1.5px solid #222;
+  box-shadow: 4px 5px 0 rgba(217,201,126,.85);
+}
+:root[data-theme="doodle-studio"] .loki-bubble-user { transform: rotate(-.5deg); background: #d9e7ff; }
+:root[data-theme="doodle-studio"] .loki-bubble-assistant { transform: rotate(.4deg); }
+:root[data-theme="doodle-studio"] .loki-context-panel { background: #f4efe2; border-left: 1.5px dashed #222; }
+:root[data-theme="doodle-studio"] .loki-composer .loki-button-primary {
+  background: #ff4b19; color: #fff; border: 1.5px solid #222;
+  border-radius: 14px 4px 12px 5px; box-shadow: 3px 4px 0 rgba(217,201,126,.9);
+}

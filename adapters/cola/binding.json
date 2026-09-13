@@ -1,0 +1,317 @@
+{
+  "host": "cola",
+  "title": "Cola 桌面应用（Electron，改不了源码，走 CDP 运行时注入）",
+  "probed_at": "2026-09-13",
+  "probe_evidence": {
+    "viewport": "1512×949",
+    "note": "宿主外壳用的是语义类名（coding-cola-*），正文用的是 Tailwind 令牌工具类（bg-[var(--cola-bg-surface)]）。\n外壳按语义类名挂，正文按令牌工具类挂 —— 这两类都稳，不用 nth-of-type 这种一改就断的路径。",
+    "button_note": "注意：不能写 button[class*=fill-black] —— --cola-fill-black 这个令牌既当背景又当**文字色**用（text-[var(--cola-fill-black)]），子串匹配会一次命中 68 个按钮，把主按钮样式糊到一片普通按钮上。要连着属性一起匹配：bg-[var(--cola-fill-black)]。"
+  },
+  "prefix": "loki-",
+  "roles": {
+    "page": "html",
+    "sidebar": "aside.coding-cola-agent-sidebar",
+    "sidebar-head": ".coding-cola-agent-pane-header",
+    "chat-sidebar": "aside.coding-cola-agent-sidebar",
+    "nav-group-label": ".coding-cola-pane-mark",
+    "nav-item": ".coding-cola-agent-session-item",
+    "nav-item-active": ".coding-cola-agent-session-active",
+    "nav-icon": "aside .lucide",
+    "conversation-item": ".coding-cola-agent-session-item",
+    "conversation-item-active": ".coding-cola-agent-session-active",
+    "chat-canvas": "main.coding-cola-panes",
+    "surface": "section.coding-cola-pane",
+    "surface-strong": ".coding-cola-chat-pane-shell",
+    "paper": ".coding-cola-chat-pane-shell",
+    "bubble-user": ".coding-cola-chat-pane-shell .group.items-end",
+    "bubble-assistant": ".coding-cola-chat-pane-shell .group.mb-3:not(.items-end)",
+    "input": ".chat-composer-editor",
+    "header-sticker": ".coding-cola-pane-header",
+    "sticker-title": ".coding-cola-pane-mark",
+    "code-block": ".coding-cola-chat-pane-shell pre",
+    "table": ".cola-md-table",
+    "context-panel": "section.coding-cola-pane[aria-label='文件']",
+    "workbench": "section.coding-cola-pane[aria-label='文件']",
+    "workbench-toolbar": "section.coding-cola-pane[aria-label='文件'] .coding-cola-pane-header",
+    "button-primary": "button[class*=\"bg-[var(--cola-fill-black)]\"]",
+    "button-secondary": ".coding-cola-pane-header-actions button, aside .coding-cola-agent-pane-header button"
+  },
+  "unbound": {
+    "why": "下面这些钩子这个宿主里没有可认领的位置，或者认了会碰到用户明确不许动的 IP 形象。\n宁可空着，也不乱挂。",
+    "list": [
+      "loki-brand-mark / loki-brand-name / loki-brand-sub —— 侧栏品牌区没有独立元素（品牌文字在顶部 header 里，跟按钮混在一起）",
+      "loki-empty-hero —— 空状态只在没有会话时出现，抓不到",
+      "loki-drawer —— 弹层是运行时挂到 body 上的，抓盘点时不存在",
+      "loki-workbench（另外那个含义）—— 宿主这里的工作台就是右侧文件栏，已经复用同一个元素",
+      "loki-avatar / loki-mascot-frame —— **不碰**：用户明确不许动他的 IP 形象"
+    ]
+  },
+  "withdrawn": {
+    "nav-group": {
+      "selector": ".coding-cola-agent-session-section",
+      "reason": "隔离测试：某套主题给这个容器加了宽度限制，侧栏内容宽度 231.98→197.98px，整页 41% 元素尺寸跟着变 —— 宿主自己的分栏宽度会被顶歪",
+      "triage": "adapt.py --triage（采样 loki-ease/loki-terminal/loki-pop/urban-collage）",
+      "at": "2026-09-13"
+    },
+    "chat-stream": {
+      "selector": ".coding-cola-chat-pane-shell .overflow-y-auto",
+      "reason": "隔离测试：某套主题给消息流加了左内边距 24px→96px（那是给自家版面的计数器轨道留的位），在别人的宿主上就是把整段对话往右推 72px",
+      "triage": "adapt.py --triage（采样 loki-ease/loki-terminal/loki-pop/urban-collage）",
+      "at": "2026-09-13"
+    },
+    "composer": {
+      "selector": ".coding-cola-chat-pane-shell > div:has(.chat-composer-editor)",
+      "reason": "隔离测试：把输入区容器从 block 改成 flex、高度 877→861px、上边距 +16px —— 输入区是用户天天用的地方，不该被外部主题接管排版机制",
+      "triage": "adapt.py --triage（采样 loki-ease/loki-terminal/loki-pop/urban-collage）",
+      "at": "2026-09-13"
+    }
+  },
+  "triage_note": "2026-13 隔离测试结果：29 个角色里 0 个「藏元素」类硬伤、3 个有明确伤害证据的已撤下（见 withdrawn）、5 个进了「要人看一眼」名单。剩下的角色基本只动装饰。撤下不是失败 —— 那三套装饰位在这个宿主上就是空的，其它 34 套不受影响。",
+  "evidence": {
+    "page": {
+      "n": 1,
+      "rect": [
+        0,
+        0,
+        1512,
+        949
+      ]
+    },
+    "sidebar": {
+      "n": 1,
+      "rect": [
+        19,
+        57,
+        234,
+        875
+      ]
+    },
+    "sidebar-head": {
+      "n": 1,
+      "rect": [
+        29,
+        67,
+        30,
+        32
+      ]
+    },
+    "chat-sidebar": {
+      "n": 1,
+      "rect": [
+        19,
+        57,
+        234,
+        875
+      ]
+    },
+    "nav-group-label": {
+      "n": 3,
+      "rect": [
+        33,
+        73,
+        44,
+        20
+      ]
+    },
+    "nav-item": {
+      "n": 51,
+      "rect": [
+        35,
+        105,
+        194,
+        62
+      ]
+    },
+    "nav-item-active": {
+      "n": 1,
+      "rect": [
+        35,
+        105,
+        194,
+        62
+      ]
+    },
+    "nav-icon": {
+      "n": 53,
+      "rect": [
+        94,
+        73,
+        20,
+        20
+      ]
+    },
+    "conversation-item": {
+      "n": 51,
+      "rect": [
+        35,
+        105,
+        194,
+        62
+      ]
+    },
+    "conversation-item-active": {
+      "n": 1,
+      "rect": [
+        35,
+        105,
+        194,
+        62
+      ]
+    },
+    "chat-canvas": {
+      "n": 1,
+      "rect": [
+        0,
+        40,
+        1512,
+        909
+      ]
+    },
+    "surface": {
+      "n": 3,
+      "rect": [
+        0,
+        40,
+        272,
+        909
+      ]
+    },
+    "surface-strong": {
+      "n": 1,
+      "rect": [
+        292,
+        57,
+        1015,
+        875
+      ]
+    },
+    "paper": {
+      "n": 1,
+      "rect": [
+        292,
+        57,
+        1015,
+        875
+      ]
+    },
+    "bubble-user": {
+      "n": 10,
+      "rect": [
+        345,
+        -18850,
+        901,
+        538
+      ]
+    },
+    "bubble-assistant": {
+      "n": 8,
+      "rect": [
+        345,
+        -18300,
+        901,
+        2382
+      ]
+    },
+    "input": {
+      "n": 1,
+      "rect": [
+        346,
+        775,
+        907,
+        79
+      ]
+    },
+    "header-sticker": {
+      "n": 3,
+      "rect": [
+        29,
+        67,
+        30,
+        32
+      ]
+    },
+    "sticker-title": {
+      "n": 3,
+      "rect": [
+        33,
+        73,
+        44,
+        20
+      ]
+    },
+    "code-block": {
+      "n": 18,
+      "rect": [
+        383,
+        -18122,
+        861,
+        134
+      ]
+    },
+    "table": {
+      "n": 10,
+      "rect": [
+        383,
+        -17037,
+        861,
+        148
+      ]
+    },
+    "context-panel": {
+      "n": 1,
+      "rect": [
+        1326,
+        40,
+        186,
+        909
+      ]
+    },
+    "workbench": {
+      "n": 1,
+      "rect": [
+        1326,
+        40,
+        186,
+        909
+      ]
+    },
+    "workbench-toolbar": {
+      "n": 1,
+      "rect": [
+        1345,
+        57,
+        30,
+        32
+      ]
+    },
+    "button-primary": {
+      "n": 3,
+      "rect": [
+        1157,
+        -2772,
+        80,
+        28
+      ]
+    },
+    "button-secondary": {
+      "n": 3,
+      "rect": [
+        87,
+        69,
+        34,
+        28
+      ]
+    }
+  },
+  "refresh_log": [
+    {
+      "at": "2026-09-13",
+      "auto_fixed": {
+        "table": "table"
+      },
+      "needs_human": [
+        "button-primary"
+      ]
+    }
+  ]
+}
