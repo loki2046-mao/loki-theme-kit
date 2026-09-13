@@ -2,9 +2,29 @@
 
 **35 套现成的界面外观主题**，一行接入就全部可用；不满意，就用同一套方法从一张参考图做自己的。
 
+| | |
+|---|---|
+| 在线看 35 套 | https://loki2046-mao.github.io/loki-theme-kit/ |
+| 直接下载接入包 | [Releases](https://github.com/loki2046-mao/loki-theme-kit/releases) |
+| 质检状态 | `python3 scripts/check.py` → 35/35 通过 |
+
 > 作者：**Loki**（lokimao2046@gmail.com）· MIT 许可，可自由使用、改造、商用。
 
 ![主题画廊](previews/gallery-screenshot.jpg)
+
+## 在真实宿主里的样子
+
+下面这些是在一个**改不了源码**的桌面 App（Electron 打包）里跑的：套组挂进宿主**自己的**切换器面板
+（用户不用学新入口），结构件也落到了真实元素上。（截图里会话列表是隐藏的，不是摆拍。）
+
+| | |
+|---|---|
+| ![宿主自己的切换器里多了一组 LOKI 外观套组](previews/cola/01-宿主的切换器里多了一组-LOKI-外观套组.png) | **宿主的切换器里多了一组**：用户自己的 9 套 + 我们的 35 套，在同一个面板里选。 |
+| ![纸墨·日](previews/cola/02-loki-ease-纸墨·日.png) | **纸墨·日**（护眼默认款）—— 正文对比度 10:1 以上、零图案零动效、无纯白。 |
+| ![雾苔](previews/cola/03-loki-moss-雾苔.png) | **雾苔** —— 低饱和绿，长时间看代码不累。 |
+| ![老式桌面](previews/cola/04-loki-desk-老式桌面.png) | **老式桌面** —— 复古屏幕组，窗口边框和标题栏都跟着变。 |
+| ![像素](previews/cola/05-loki-8bit-像素.png) | **像素** —— 深底霓虹，终端味。 |
+| ![贴纸波普](previews/cola/06-loki-pop-贴纸波普.png) | **贴纸波普** —— 结构件最重的一套，圆角、描边、贴纸边都出来了。 |
 
 ## 给 Agent（推荐路径）
 
