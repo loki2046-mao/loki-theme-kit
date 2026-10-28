@@ -162,3 +162,9 @@ MIT（见 [LICENSE](LICENSE)）。**不含任何图片素材、不含任何人�
 同系列：[ai-career-compass](https://github.com/loki2046-mao/ai-career-compass)（求职 AI 暴露度）·
 [cine-type-poster-generator-skill](https://github.com/loki2046-mao/cine-type-poster-generator-skill)（电影字报）·
 [self-mirror-skill](https://github.com/loki2046-mao/self-mirror-skill)（AI 自我画像）
+
+## 作者与相关作品
+
+由[赛博小熊猫 Loki](https://hiloki.ai/about)制作与维护。用 AI 做产品、做内容，把真实制作中的修改、取舍和方法留下来。
+
+[个人网站](https://hiloki.ai/) · [作品与制作记录](https://hiloki.ai/works) · [公众号文章](https://hiloki.ai/articles/) · [GitHub](https://github.com/loki2046-mao)
